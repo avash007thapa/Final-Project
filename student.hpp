@@ -14,6 +14,16 @@ class Student{
 		//Constructors
 		Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
 		Student();
+		
+		//Dynamic big three
+
+		//Copy constructor
+
+		//Overloading assingment operator
+
+		//Destructor
+
+		
 
 		//Friend functions
 		friend int compareCGPA(Student student1, Student student2);
@@ -24,7 +34,5 @@ class Student{
 };
 //rounding function for CGPA
 float round1f(float num);
-
-
 
 #endif

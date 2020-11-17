@@ -24,12 +24,4 @@ class Node{
 };
 typedef Node* NodePtr;
 
-
-
-
-
-
-
-
-
 #endif
