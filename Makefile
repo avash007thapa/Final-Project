@@ -35,4 +35,4 @@ node.o: node.cpp
 
 #remove built files
 clean:
-	del -rf main main.o student.o internationalStudent.o domesticStudent.o toefl.o node.o *~
+	del main.exe main.o student.o internationalStudent.o domesticStudent.o toefl.o node.o *~

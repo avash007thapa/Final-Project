@@ -23,14 +23,10 @@ class Student{
 
 		//Destructor
 
-		
+		//insert node
 
-		//Friend functions
-		friend int compareCGPA(Student student1, Student student2);
-		friend int compareResearchScore(Student student1, Student student2);
-		friend int compareFirstName(Student student1, Student student2);
-		friend int compareLastName(Student student1, Student student2);
-		friend ostream& operator <<(ostream& outs, Student& student);
+		//delete node
+
 };
 //rounding function for CGPA
 float round1f(float num);
