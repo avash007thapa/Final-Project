@@ -19,8 +19,10 @@ class Node{
         Node* link;
 
         //constructors
-        Node(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
-        Node();
+        Node(int firstName, string lastName, float CGPA, int researchScore, int applicationID);
+        Node(); 
+        
+        
 };
 typedef Node* NodePtr;
 
