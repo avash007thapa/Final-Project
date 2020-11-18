@@ -20,7 +20,7 @@ Student::Student():head(nullptr),tail(nullptr){ // Default constructior
 }
 
 // //Get functions
-// string Student::getFirstName(){
+// string Student::getFirstName(){ 
 // 	return firstName;
 // }
 // string Student::getLastName(){
