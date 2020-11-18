@@ -4,7 +4,7 @@ using namespace std;
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
-#include "domesticStudent.hpp"
+#include "DomesticStudent.hpp"
 #include "internationalStudent.hpp"
 
 // avash was here
@@ -17,9 +17,18 @@ int main(){
 
   //Read the domestic-stu.txt file and exit if failed
   ifstream domesticFile("domestic-stu.txt");
+  string test;
+  
   if(!domesticFile.is_open()) {
     cout << "Unable to open file domestic-stu.txt" << endl;
     return -1;
+  }
+  
+  while(domesticFile >> test)
+  {
+    if (!(getline)){
+            cout<<;
+        }
   }
   getline(domesticFile, line);
   cout << "File format: " << line << endl;
@@ -27,10 +36,15 @@ int main(){
   //inputing data into domesitcArr
   while( getline(domesticFile, line) ) {
 
+    for(int i = 0; i < line.size(); i++){
+      if(line(i) == ",")
+      cout << "Found comma"<<endl; 
+    }
     istringstream ss(line);
 
     //get firstName separated by comma
-    getline(ss, firstName, ',');
+    (getline(ss, firstName, ',');
+    
     domesticArr[index].setFirstName(firstName);
 
     //get lastName separated by comma
