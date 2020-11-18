@@ -3,13 +3,13 @@
 
 
 #include <string> 
-#include "node.hpp"
+#include "studentNode.hpp"
 using namespace std; 
 
 class Student{
 	protected:
-		NodePtr head;
-		NodePtr tail;
+		StudentNodePtr head;
+		StudentNodePtr tail;
 	public:
 		//Constructors
 		Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
@@ -28,7 +28,5 @@ class Student{
 		//delete node
 
 };
-//rounding function for CGPA
-float round1f(float num);
 
 #endif

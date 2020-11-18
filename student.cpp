@@ -8,30 +8,15 @@ using namespace std;
 
 //Constructors
 Student::Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID){
-	//error checking CGPA, researchScore, applicationID
-	if(CGPA < 0 || round1f(CGPA) > (float)4.3){
-		std::cout<<"Error (Student): CGPA"<<CGPA<<" is in valid.\n";
+	try{
+		head = new StudentNode(firstName, lastName, CGPA, researchScore, applicationID);
 	}
-	else{
-		head->CGPA = round1f(CGPA);
-	}
-	if(researchScore < 0 || researchScore > 100){
-		std::cout<<"Error (Student): researchScore cannot be a negative number.\n";
-	}
-	else{
-		head->researchScore = researchScore;
-	}
-	if(applicationID < 0 || applicationID > 20210000){
-		std::cout<<"Error (Student): applicationID cannot be a negative number.\n";
-	}
-	else{
-		head->applicationID = applicationID;
-	}
-	head->firstName = firstName;
-	head->lastName = lastName;
+	catch(bad_alloc){
+		cerr<<"Bad Memory allocation\n";
+		exit(1);
+	};
 }
-
-Student::Student:head(nullptr),tail(nullptr){ // Default constructior	 
+Student::Student():head(nullptr),tail(nullptr){ // Default constructior	 
 }
 
 // //Get functions
@@ -88,47 +73,3 @@ Student::Student:head(nullptr),tail(nullptr){ // Default constructior
 
 //Friend functions
 //comparing the CGPA between two students
-
-int compareCGPA(Student student1, Student student2){
-	if(student1.CGPA < student2.CGPA){
-		return -1;
-	}else if(student1.CGPA == student2.CGPA){
-		return 0;
-	}
-	return 1;
-}
-
-//comparing the research score between two students
-int compareResearchScore(Student student1, Student student2){
-	if(student1.researchScore < student2.researchScore){
-		return -1;
-	}else if(student1.researchScore == student2.researchScore){
-		return 0;
-	}
-	return 1;
-}
-
-//comparing the first names between two students
-int compareFirstName(Student student1, Student student2){
-	return student1.firstName.compare(student2.firstName);
-}
-
-//comparing the last names between two students
-int compareLastName(Student student1, Student student2){
-	return student1.lastName.compare(student2.lastName);
-}
-
-//overloading the output operator
-ostream& operator<<(ostream& outs, Student& student){
-	outs<<student.firstName<<" "<<student.lastName<<endl;
-	outs<<"CGPA: "<<student.CGPA<<endl;
-	outs<<"Research Score: "<<student.researchScore<<endl;
-	outs<<"Application ID: "<<student.applicationID<<endl;
-	return outs;
-}
-
-
-//round function to the first decimal. Used to round the CGPA 
-float round1f(float num){
-	return roundf(num * 10)/10;
-}
