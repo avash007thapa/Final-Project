@@ -13,80 +13,82 @@ Student::Student(string firstName, string lastName, float CGPA, int researchScor
 		std::cout<<"Error (Student): CGPA"<<CGPA<<" is in valid.\n";
 	}
 	else{
-		this->CGPA = round1f(CGPA);
+		head->CGPA = round1f(CGPA);
 	}
 	if(researchScore < 0 || researchScore > 100){
 		std::cout<<"Error (Student): researchScore cannot be a negative number.\n";
 	}
 	else{
-		this->researchScore = researchScore;
+		head->researchScore = researchScore;
 	}
 	if(applicationID < 0 || applicationID > 20210000){
 		std::cout<<"Error (Student): applicationID cannot be a negative number.\n";
 	}
 	else{
-		this->applicationID = applicationID;
+		head->applicationID = applicationID;
 	}
-	this->firstName = firstName;
-	this->lastName = lastName;
-}
-Student::Student():firstName(""),lastName(""),CGPA(0),researchScore(0),applicationID(0){
+	head->firstName = firstName;
+	head->lastName = lastName;
 }
 
-//Get functions
-string Student::getFirstName(){
-	return firstName;
-}
-string Student::getLastName(){
-	return lastName;
-}
-float Student::getCGPA(){
-	return CGPA;
-}
-int Student::getResearchScore(){
-	return researchScore;
-}
-int Student::getApplicationID(){
-	return applicationID;
+Student::Student:head(nullptr),tail(nullptr){ // Default constructior	 
 }
 
-//Set functions
-void Student::setFirstName(string firstName){
-	this->firstName = firstName;
-}
-void Student::setLastName(string lastName){
-	this->lastName = lastName;
-}
-void Student::setCGPA(float CGPA){
-	//error checking 
-	if(CGPA < 0 || round1f(CGPA) > (float)4.3){
-		std::cout<<"Error (setCGPA): CGPA"<<round1f(CGPA)<<" is invalid.\n";
-	}
-	else{
-		this->CGPA = round1f(CGPA);
-	}
-}
-void Student::setResearchScore(int researchScore){
-	//error checking
-	if(researchScore < 0 || researchScore > 100){
-		std::cout<<"Error (setResearchScore): researchScore cannot be a negative number.\n";
-	}
-	else{
-		this->researchScore = researchScore;
-	}
-}
-void Student::setApplicationID(int applicationID){
-	//error checking
-	if(applicationID < 0 || applicationID > 20210000){
-		std::cout<<"Error (setApplicationID): applicationID cannot be a negative number.\n";
-	}
-	else{
-		this->applicationID = applicationID;
-	}
-}
+// //Get functions
+// string Student::getFirstName(){
+// 	return firstName;
+// }
+// string Student::getLastName(){
+// 	return lastName;
+// }
+// float Student::getCGPA(){
+// 	return CGPA;
+// }
+// int Student::getResearchScore(){
+// 	return researchScore;
+// }
+// int Student::getApplicationID(){
+// 	return applicationID;
+// }
+
+// //Set functions
+// void Student::setFirstName(string firstName){
+// 	this->firstName = firstName;
+// }
+// void Student::setLastName(string lastName){
+// 	this->lastName = lastName;
+// }
+// void Student::setCGPA(float CGPA){
+// 	//error checking 
+// 	if(CGPA < 0 || round1f(CGPA) > (float)4.3){
+// 		std::cout<<"Error (setCGPA): CGPA"<<round1f(CGPA)<<" is invalid.\n";
+// 	}
+// 	else{
+// 		this->CGPA = round1f(CGPA);
+// 	}
+// }
+// void Student::setResearchScore(int researchScore){
+// 	//error checking
+// 	if(researchScore < 0 || researchScore > 100){
+// 		std::cout<<"Error (setResearchScore): researchScore cannot be a negative number.\n";
+// 	}
+// 	else{
+// 		this->researchScore = researchScore;
+// 	}
+// }
+// void Student::setApplicationID(int applicationID){
+// 	//error checking
+// 	if(applicationID < 0 || applicationID > 20210000){
+// 		std::cout<<"Error (setApplicationID): applicationID cannot be a negative number.\n";
+// 	}
+// 	else{
+// 		this->applicationID = applicationID;
+// 	}
+// }
 
 //Friend functions
 //comparing the CGPA between two students
+
 int compareCGPA(Student student1, Student student2){
 	if(student1.CGPA < student2.CGPA){
 		return -1;

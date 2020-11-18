@@ -13,7 +13,7 @@ class Node{
         string firstName;
         string lastName;
         float CGPA;
-        int reserachScore;
+        int researchScore;
         int applicationID;
 
         //child class data
