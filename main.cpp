@@ -29,11 +29,22 @@ int main(){
   cout << "File format: " << line << endl;
 
   //inputing data into domesitcArr
-  while( getline(domesticFile, line) ) {
-
+  while( getline(domesticFile, line)) {
+   
+    int count = 0;
+    
     for(int i = 0; i < line.size(); i++){
-      if(line[i] == ',')
-      cout << "Found comma"<<endl; 
+      if(line[i] == ','){
+        count++;
+      } 
+    }
+
+    if(count == 4){
+      cout<<"We have all the elements"<<endl;
+    }
+    else if(count < 4){
+      cout<<"Missing an input For Domestic Student, check your file again \n"<<endl;
+      exit(-1);
     }
     /*istringstream ss(line);
 
