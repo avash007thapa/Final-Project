@@ -24,12 +24,7 @@ int main(){
     return -1;
   }
   
-  while(domesticFile >> test)
-  {
-    if (!(getline)){
-            cout<<;
-        }
-  }
+  
   getline(domesticFile, line);
   cout << "File format: " << line << endl;
 
@@ -37,10 +32,10 @@ int main(){
   while( getline(domesticFile, line) ) {
 
     for(int i = 0; i < line.size(); i++){
-      if(line(i) == ",")
+      if(line[i] == ',')
       cout << "Found comma"<<endl; 
     }
-    istringstream ss(line);
+    /*istringstream ss(line);
 
     //get firstName separated by comma
     (getline(ss, firstName, ',');
@@ -75,7 +70,7 @@ int main(){
     cout << domesticArr[index].getProvince() << " province has CGPA of ";
     cout << domesticArr[index].getCGPA() << ", and research score of ";
     cout << domesticArr[index].getResearchScore() << endl;
-    index++;
+   index++;*/ 
   }
   domesticFile.close();
   cout<<"INDEX: "<<index<<endl;
@@ -99,7 +94,7 @@ int main(){
 
     istringstream ss(line);
 
-    //get firstName separated by comma
+   /* //get firstName separated by comma
     getline(ss, firstName, ',');
     internationalArr[index].setFirstName(firstName);
 
@@ -153,8 +148,8 @@ int main(){
     cout << internationalArr[index].getResearchScore() << ", and a total toefl score of ";
     cout << internationalArr[index].getToeflScore().getTotalScore() << endl;
 
-    index++;
-  }
+    index++;*/
+  }/*
   internationalFile.close();
 
 
@@ -279,5 +274,6 @@ int main(){
         printValidStudents(internationalArr);
       }
     }
-  }
+  }*/
+  
 }
