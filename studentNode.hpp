@@ -14,7 +14,6 @@ class StudentNode{
         float CGPA;
         int researchScore;
         int applicationID;
-
         //link
         StudentNode* link;
 
@@ -22,11 +21,13 @@ class StudentNode{
         StudentNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
         StudentNode();
 
-        //Friend functions
-		friend int compareCGPA(StudentNode studentNode1, StudentNode studentNode2);
-		friend int compareResearchScore(StudentNode studentNode1, StudentNode studentNode2);
-		friend int compareFirstName(StudentNode studentNode1, StudentNode studentNode2);
-		friend int compareLastName(StudentNode studentNode1, StudentNode studentNode2);
+        //compare functions
+        int compareCGPA(StudentNode studentNode);
+		int compareResearchScore(StudentNode studentNode);
+		int compareFirstName(StudentNode studentNode);
+		int compareLastName(StudentNode studentNode);
+
+        //overloading output operator
 		friend ostream& operator <<(ostream& outs, StudentNode& studentNode);
 };
 //rounding function for CGPA

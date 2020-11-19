@@ -7,24 +7,28 @@ using namespace std;
 
 //constructors
 StudentNode::StudentNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID){
-    if(CGPA < 0 || round1f(CGPA) > (float)4.3){
+    //error checking CGPA
+	if(CGPA < 0 || round1f(CGPA) > (float)4.3){
 		std::cout<<"Error (Student Node): CGPA"<<CGPA<<" is in valid.\n";
 	}
 	else{
 		this->CGPA = round1f(CGPA);
 	}
+	//error checking reserachScore
 	if(researchScore < 0 || researchScore > 100){
 		std::cout<<"Error (Student Node): researchScore cannot be a negative number.\n";
 	}
 	else{
 		this->researchScore = researchScore;
 	}
+	//error checking applicationID
 	if(applicationID < 0 || applicationID > 20210000){
 		std::cout<<"Error (Student Node): applicationID cannot be a negative number.\n";
 	}
 	else{
 		this->applicationID = applicationID;
 	}
+	//setting firstName, lastName and link
 	this->firstName = firstName;
 	this->lastName = lastName;
 	link = nullptr;
@@ -33,35 +37,35 @@ StudentNode::StudentNode():firstName(""),lastName(""),CGPA(0),researchScore(0),a
 }
 
 //compare functions
+
 //comparing the CGPA between two students
-//comparing the CGPA between two students
-int compareCGPA(StudentNode student1, StudentNode student2){
-	if(student1.CGPA < student2.CGPA){
+int StudentNode::compareCGPA(StudentNode student){
+	if(CGPA < student.CGPA){
 		return -1;
-	}else if(student1.CGPA == student2.CGPA){
+	}else if(CGPA == student.CGPA){
 		return 0;
 	}
 	return 1;
 }
 
-//comparing the research score between two students
-int compareResearchScore(StudentNode student1, StudentNode student2){
-	if(student1.researchScore < student2.researchScore){
+//comparing the CGPA between two students
+int StudentNode::compareResearchScore(StudentNode student){
+	if(researchScore < student.researchScore){
 		return -1;
-	}else if(student1.researchScore == student2.researchScore){
+	}else if(researchScore == student.researchScore){
 		return 0;
 	}
 	return 1;
 }
 
 //comparing the first names between two students
-int compareFirstName(StudentNode student1, StudentNode student2){
-	return student1.firstName.compare(student2.firstName);
+int StudentNode::compareFirstName(StudentNode student){
+	return firstName.compare(student.firstName);
 }
 
 //comparing the last names between two students
-int compareLastName(StudentNode student1, StudentNode student2){
-	return student1.lastName.compare(student2.lastName);
+int StudentNode::compareLastName(StudentNode student){
+	return lastName.compare(student.lastName);
 }
 
 ostream& operator<<(ostream& outs, StudentNode& student){

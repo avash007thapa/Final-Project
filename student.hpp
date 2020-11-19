@@ -1,7 +1,6 @@
 #ifndef STUDENT
 #define STUDENT
 
-
 #include <string> 
 #include "studentNode.hpp"
 using namespace std; 
@@ -22,13 +21,12 @@ class Student{
 		StudentNodePtr deepCopyStudent(StudentNodePtr studentNode);
 
 		//Overloading assingment operator
-		void operator=(const Student& rStudent);
+		Student& operator=(const Student& rStudent);
 		StudentNodePtr replaceStudent(StudentNodePtr lStudent, StudentNodePtr rStudent);
 
 		//Destructor
 		~Student();
 		void deleteStudent(StudentNodePtr studentNode);
-
 
 
 		//insert node

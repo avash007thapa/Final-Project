@@ -1,10 +1,9 @@
-//student.cpp to implement your classes
-using namespace std;
 #include "student.hpp"
 #include <stdlib.h> //exit
 #include <iostream> //cout
 #include <string> //strings, compare
-#include <cmath>
+using namespace std;
+
 
 //Constructors
 Student::Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID){
@@ -16,24 +15,23 @@ Student::Student(string firstName, string lastName, float CGPA, int researchScor
 	catch(bad_alloc){
 		cerr<<"Bad Memory allocation in Student::Student\n";
 		exit(1);
-	};
+	}
 }
 Student::Student():head(nullptr),tail(nullptr){ // Default constructior	 
 }
 
-//Dynamic big three
+
+//DYNAMIC BIG THREE
 
 //copy constructor
 Student::Student(const Student& student){
 	head = deepCopyStudent(student.head);
 }
 StudentNodePtr Student::deepCopyStudent(StudentNodePtr studentNode){
-    
     //if stack is empty or at the end of the linked list
     if(studentNode == nullptr){
 		return nullptr;
     }
-    
     try{
         //allocating memory to new studentNode
         StudentNodePtr newStudentNode = new StudentNode(studentNode->firstName, studentNode->lastName, studentNode->CGPA, studentNode->researchScore, studentNode->applicationID);
@@ -42,10 +40,8 @@ StudentNodePtr Student::deepCopyStudent(StudentNodePtr studentNode){
         if(studentNode->link == nullptr){
             return newStudentNode;
         }
-
 		//recursive call to deepCopyStack
 		newStudentNode->link = deepCopyStudent(studentNode->link);
-
 		//assigning tail 
 		if(studentNode->link == nullptr){
 			tail = newStudentNode;
@@ -53,17 +49,19 @@ StudentNodePtr Student::deepCopyStudent(StudentNodePtr studentNode){
 		}
         return newStudentNode;
     }
-    catch(std::bad_alloc){
-        std::cerr<<"bad_alloc in Student::deepCopySudent\n";
-        std::exit(1);
+    catch(bad_alloc){
+        cerr<<"bad_alloc in Student::deepCopySudent.\n";
+        exit(1);
     }
 }
 
-//overloading assignment operator
-void Student::operator=(const Student& rStudent){
-	head = replaceStudent(head, rStudent.head);
-}
 
+
+//overloading assignment operator
+Student& Student::operator=(const Student& rStudent){
+	head = replaceStudent(head, rStudent.head);
+    return *this;
+}
 StudentNodePtr Student::replaceStudent(StudentNodePtr lStudent, StudentNodePtr rStudent){
     if(lStudent != rStudent){
         deleteStudent(lStudent);
@@ -71,6 +69,8 @@ StudentNodePtr Student::replaceStudent(StudentNodePtr lStudent, StudentNodePtr r
     }
     return lStudent;
 }
+
+
 
 //overloading destructor
 Student::~Student(){
@@ -88,26 +88,36 @@ void Student::deleteStudent(StudentNodePtr studentNode){
 	}
 }
 
+
+
 //member functions
 
 void Student::insertNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID){  
     //allocate node
-    StudentNodePtr new_node = new StudentNode(firstName, lastName, CGPA, researchScore, applicationID);
-    StudentNodePtr here = head; 
+    try{
+        StudentNodePtr new_node = new StudentNode(firstName, lastName, CGPA, researchScore, applicationID);
+        StudentNodePtr here = head; 
 
-    //if the Linked List is empty, then make the new node as head 
-    if (head == nullptr){  
-        head = new_node;  
-		tail = new_node;
-        return;  
-    }  
-  
-    //else traverse till the last node
-    while (here->link != nullptr){
-        //overload < and > operators
-	    here = here->link;  
-	} 
+        //if the Linked List is empty, then make the new node as head 
+        if (head == nullptr){  
+            head = new_node;  
+            tail = new_node;
+            return;  
+        }  
+    
+        //else traverse till the last node
+        while (here->link != nullptr){
+            //overload < and > operators
+            here = here->link;  
+        } 
+    }
+    catch(bad_alloc){
+        cerr<<"bad_alloc in Student::insertNode.\n";
+        exit(1);
+    }
+    
 } 
+
 
 // void Student::deleteNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID)
 // {
