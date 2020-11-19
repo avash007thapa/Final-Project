@@ -20,10 +20,15 @@ class Student{
 		//Copy constructor
 		Student(const Student& student);
 		StudentNodePtr deepCopyStudent(StudentNodePtr studentNode);
+
 		//Overloading assingment operator
-		void operator=(const Student& student);
+		void operator=(const Student& rStudent);
+		StudentNodePtr replaceStudent(StudentNodePtr lStudent, StudentNodePtr rStudent);
+
 		//Destructor
 		~Student();
+		void deleteStudent(StudentNodePtr studentNode);
+
 
 
 		//insert node

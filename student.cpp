@@ -22,6 +22,74 @@ Student::Student():head(nullptr),tail(nullptr){ // Default constructior
 }
 
 //Dynamic big three
+
+//copy constructor
+Student::Student(const Student& student){
+	head = deepCopyStudent(student.head);
+}
+StudentNodePtr Student::deepCopyStudent(StudentNodePtr studentNode){
+    
+    //if stack is empty or at the end of the linked list
+    if(studentNode == nullptr){
+		return nullptr;
+    }
+    
+    try{
+        //allocating memory to new studentNode
+        StudentNodePtr newStudentNode = new StudentNode(studentNode->firstName, studentNode->lastName, studentNode->CGPA, studentNode->researchScore, studentNode->applicationID);
+        
+        //base case
+        if(studentNode->link == nullptr){
+            return newStudentNode;
+        }
+
+		//recursive call to deepCopyStack
+		newStudentNode->link = deepCopyStudent(studentNode->link);
+
+		//assigning tail 
+		if(studentNode->link == nullptr){
+			tail = newStudentNode;
+			tail->link = nullptr;
+		}
+        return newStudentNode;
+    }
+    catch(std::bad_alloc){
+        std::cerr<<"bad_alloc in Student::deepCopySudent\n";
+        std::exit(1);
+    }
+}
+
+//overloading assignment operator
+void Student::operator=(const Student& rStudent){
+	head = replaceStudent(head, rStudent.head);
+}
+
+StudentNodePtr Student::replaceStudent(StudentNodePtr lStudent, StudentNodePtr rStudent){
+    if(lStudent != rStudent){
+        deleteStudent(lStudent);
+        lStudent = deepCopyStudent(rStudent);
+    }
+    return lStudent;
+}
+
+//overloading destructor
+Student::~Student(){
+	deleteStudent(head);
+}
+void Student::deleteStudent(StudentNodePtr studentNode){
+	if(studentNode != nullptr){
+		deleteStudent(studentNode->link);
+		delete studentNode;
+		studentNode = nullptr;
+	}
+	else{
+		head = nullptr;
+		tail = nullptr;
+	}
+}
+
+//member functions
+
 void Student::insertNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID){  
     //allocate node
     StudentNodePtr new_node = new StudentNode(firstName, lastName, CGPA, researchScore, applicationID);
@@ -74,39 +142,3 @@ void Student::insertNode(string firstName, string lastName, float CGPA, int rese
 // 	delete temp;
 // }
 
-//copy constructor
-Student::Student(const Student& student){
-	head = deepCopyStudent(student.head);
-}
-StudentNodePtr Student::deepCopyStudent(StudentNodePtr studentNode){
-    
-    //if stack is empty or at the end of the linked list
-    if(studentNode == nullptr){
-		return nullptr;
-    }
-    
-    try{
-        //allocating memory to new stackframe
-        StudentNodePtr newStudentNode = new StudentNode(studentNode->firstName, studentNode->lastName, studentNode->CGPA, studentNode->researchScore, studentNode->applicationID);
-        
-        //base case
-        if(studentNode->link == nullptr){
-            return newStudentNode;
-        }
-
-		//recursive call to deepCopyStack
-		newStudentNode->link = deepCopyStudent(studentNode->link);
-
-		//assigning tail 
-		if(studentNode->link == nullptr){
-			tail = newStudentNode;
-			tail->link = nullptr;
-		}
-
-        return newStudentNode;
-    }
-    catch(std::bad_alloc){
-        std::cout<<"bad_alloc in Student::deepCopySudent\n";
-        std::exit(1);
-    }
-}
