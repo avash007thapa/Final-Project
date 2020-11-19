@@ -10,7 +10,48 @@ DomesticStudent::DomesticStudent(string firstName, string lastName, float CGPA, 
 DomesticStudent::DomesticStudent():Student(),province(""){
 }
 
+//DYNAMIC BIG THREE
 
+//copy constructor
+DomesticStudent::DomesticStudent(const DomesticStudent& student):Student(student){
+	head = deepCopyStudent(student.head);
+}
+DomesticStudentNodePtr DomesticStudent::deepCopyStudent(DomesticStudentNodePtr studentNode){
+	
+}
+
+
+
+//overloading assignment operator
+DomesticStudent& DomesticStudent::operator=(const DomesticStudent& rStudent){
+	head = replaceStudent(head, rStudent.head);
+    return *this;
+}
+DomesticStudentNodePtr DomesticStudent::replaceStudent(StudentNodePtr lStudent, StudentNodePtr rStudent){
+    if(lStudent != rStudent){
+        deleteStudent(lStudent);
+        lStudent = deepCopyStudent(rStudent);
+    }
+    return lStudent;
+}
+
+
+
+//overloading destructor
+Student::~Student(){
+	deleteStudent(head);
+}
+void Student::deleteStudent(StudentNodePtr studentNode){
+	if(studentNode != nullptr){
+		deleteStudent(studentNode->link);
+		delete studentNode;
+		studentNode = nullptr;
+	}
+	else{
+		head = nullptr;
+		tail = nullptr;
+	}
+}
 //overloading the output operator for DomesticStudent objects
 ostream& operator<<(ostream& outs, DomesticStudent& student){
 	// outs<<student.firstName<<" "<<student.lastName<<endl;

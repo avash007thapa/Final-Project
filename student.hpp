@@ -10,21 +10,20 @@ class Student{
 		StudentNodePtr head;
 		StudentNodePtr tail;
 	public:
-		//Constructors
+		//constructors
 		Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
 		Student();
 		
-		//Dynamic big three
-
-		//Copy constructor
+		//DYNAMIC BIG THREE
+		//copy constructor
 		Student(const Student& student);
 		StudentNodePtr deepCopyStudent(StudentNodePtr studentNode);
 
-		//Overloading assingment operator
+		//overloading assingment operator
 		Student& operator=(const Student& rStudent);
 		StudentNodePtr replaceStudent(StudentNodePtr lStudent, StudentNodePtr rStudent);
 
-		//Destructor
+		//destructor
 		~Student();
 		void deleteStudent(StudentNodePtr studentNode);
 
