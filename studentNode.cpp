@@ -27,8 +27,9 @@ StudentNode::StudentNode(string firstName, string lastName, float CGPA, int rese
 	}
 	this->firstName = firstName;
 	this->lastName = lastName;
+	link = nullptr;
 }
-StudentNode::StudentNode():firstName(""),lastName(""),CGPA(0),researchScore(0),applicationID(0){
+StudentNode::StudentNode():firstName(""),lastName(""),CGPA(0),researchScore(0),applicationID(0),link(nullptr){
 }
 
 //compare functions
