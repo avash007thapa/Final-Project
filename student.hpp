@@ -24,8 +24,16 @@ class Student{
 		//Destructor
 
 		//insert node
+		void insertNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID); //for now inserts at tail end
+
+		//void findNode
 
 		//delete node 
+		void deleteNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
+
+		//print()
+
+		//delete()
 
 };
 
