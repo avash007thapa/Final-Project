@@ -3,12 +3,14 @@ using namespace std;
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
-//#include "studentList.hpp"
+#include "studentList.hpp"
 //#include "DomesticStudent.hpp"
 //#include "internationalStudent.hpp"
 
 // avash was here
-
+int main(){
+    StudentList test("Bryan","Wong",(float)4.3,100,200000);
+}
 
 // int main(){
 //   DomesticStudent domesticArr[100];
