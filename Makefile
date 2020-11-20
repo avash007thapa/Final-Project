@@ -6,8 +6,8 @@ run: main
 	./main
 
 #link to executable main
-main: main.o studentList.o toefl.o
-	g++ -g -o main main.o studentList.o toefl.o
+main: main.o studentList.o domStuList.o toefl.o
+	g++ -g -o main main.o studentList.o domStuList.o toefl.o
 
 #compile the main.cpp to main.o
 main.o: main.cpp
@@ -21,9 +21,9 @@ studentList.o: studentList.cpp
 # internationalStudent.o: internationalStudent.cpp
 # 	g++ -g -c internationalStudent.cpp -std=c++11
 
-# #compile the domesticStudent.cpp to domesticStudent.o
-# domesticStudent.o: domesticStudent.cpp
-# 	g++ -g -c domesticStudent.cpp -std=c++11
+#compile the domesticStudent.cpp to domesticStudent.o
+domStuList.o: domStuList.cpp
+	g++ -g -c domStuList.cpp -std=c++11
 
 #compile the toefl.cpp to toefl.o
 toefl.o: toefl.cpp
@@ -31,4 +31,4 @@ toefl.o: toefl.cpp
 
 #remove built files
 clean:
-	del main.exe main.o studentList.o toefl.o *~
+	del main.exe main.o studentList.o domStuList.o toefl.o *~
