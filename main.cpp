@@ -10,6 +10,7 @@ using namespace std;
 // avash was here
 int main(){
     StudentList test("Bryan","Wong",(float)4.3,100,200000);
+    //cout<<*(test.head)<<endl;
 }
 
 // int main(){

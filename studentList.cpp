@@ -6,7 +6,6 @@
 using namespace std;
 
 
-
 //constructors
 StudentList::Student::Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID){
     //error checking CGPA
@@ -70,18 +69,19 @@ int StudentList::Student::compareLastName(Student student){
 	return lastName.compare(student.lastName);
 }
 
-// ostream& operator<<(ostream& outs, StudentList::Student& student){
-// 	outs<<student.firstName<<" "<<student.lastName<<endl;
-// 	outs<<"CGPA: "<<student.CGPA<<endl;
-// 	outs<<"Research Score: "<<student.researchScore<<endl;
-// 	outs<<"Application ID: "<<student.applicationID<<endl;
-// 	return outs;
-// }
+ostream& operator<<(ostream& outs, StudentList::Student& student){
+	outs<<student.firstName<<" "<<student.lastName<<endl;
+	outs<<"CGPA: "<<student.CGPA<<endl;
+	outs<<"Research Score: "<<student.researchScore<<endl;
+	outs<<"Application ID: "<<student.applicationID<<endl;
+	return outs;
+}
 
 //round function to the first decimal. Used to round the CGPA 
 float round1f(float num){
 	return roundf(num * 10)/10;
 }
+
 
 
 

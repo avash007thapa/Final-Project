@@ -6,8 +6,8 @@
 using namespace std; 
 
 class StudentList{
-	protected:
-
+	
+    protected:
 		//Student class definition
 		class Student{
 			public:
@@ -27,15 +27,16 @@ class StudentList{
 				int compareResearchScore(Student student);
 				int compareFirstName(Student student);
 				int compareLastName(Student student);
-				//overloading output operator
-				//friend ostream& operator <<(ostream& outs, StudentList::Student& student);
+				
 		};
         typedef Student* StudentPtr;
-
-		//Student private variables
+       
+        //Student private variables
 		StudentPtr head;
 		StudentPtr tail;
+		
 	public:
+    
 		//constructors
 		StudentList(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
 		StudentList();
@@ -69,7 +70,9 @@ class StudentList{
 		//print()
 
 		//delete()
-		
+
+		//overloading Student's output operator
+		friend ostream& operator <<(ostream& outs, StudentList::Student& student);
 };
 
 //rounding function for CGPA
