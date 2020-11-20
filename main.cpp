@@ -29,8 +29,8 @@ int main(){
   cout << "File format: " << line << endl;
 
   //inputing data into domesitcArr
-  while( getline(domesticFile, line)) {
-   
+  while(getline(domesticFile, line)) {
+    
     int count = 0;
     
     for(int i = 0; i < line.size(); i++){

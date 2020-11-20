@@ -6,7 +6,7 @@
 using namespace std; 
 
 class Student{
-	protected:
+	private:
 		StudentNodePtr head;
 		StudentNodePtr tail;
 	public:
