@@ -176,6 +176,7 @@ void StudentList::deleteStudentList(StudentPtr student){
 void StudentList::insertNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID){  
     //allocate node
     try{
+		StudentPtr prev;
         StudentPtr new_node = new StudentList::Student(firstName, lastName, CGPA, researchScore, applicationID);
         StudentPtr here = head; 
 
@@ -188,9 +189,17 @@ void StudentList::insertNode(string firstName, string lastName, float CGPA, int 
     
         //else traverse till the last node
         while (here->link != nullptr){
-            //overload < and > operators
-            here = here->link;  
-        } 
+            if(here < new_node)
+				{	
+					here = here->link;
+				}
+			else
+				{
+					here->link = new_node;
+					break;
+				}
+			
+			} 
     }
     catch(bad_alloc){
         cerr<<"bad_alloc in Student::insertNode.\n";
