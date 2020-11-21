@@ -173,31 +173,87 @@ void StudentList::deleteStudentList(StudentPtr student){
 
 //member functions
 
-// void StudnetList::insertNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID){  
-//     //allocate node
-//     try{
-//         NodePtr new_node = new Node(firstName, lastName, CGPA, researchScore, applicationID);
-//         NodePtr here = head; 
+void StudentList::insertNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID){  
+    //allocate node
+    try{
+		StudentPtr prev;
+        StudentPtr new_node = new StudentList::Student(firstName, lastName, CGPA, researchScore, applicationID);
+        StudentPtr here = head; 
 
-//         //if the Linked List is empty, then make the new node as head 
-//         if (head == nullptr){  
-//             head = new_node;  
-//             tail = new_node;
-//             return;  
-//         }  
+        //if the Linked List is empty, then make the new node as head 
+        if (head == nullptr){  
+            head = new_node;  
+            tail = new_node;
+            return;  
+        }  
     
-//         //else traverse till the last node
-//         while (here->link != nullptr){
-//             //overload < and > operators
-//             here = here->link;  
-//         } 
-//     }
-//     catch(bad_alloc){
-//         cerr<<"bad_alloc in Student::insertNode.\n";
-//         exit(1);
-//     }
+        //else traverse till the last node
+        while (here->link != nullptr){
+            if(here < new_node) {	
+				prev = here;
+				here = here->link;
+			}
+			else {
+				
+				new_node->link = here;
+				prev->link = new_node;
+				break;
+			}
+			
+		} 
+    }
+    catch(bad_alloc){
+        cerr<<"bad_alloc in Student::insertNode.\n";
+        exit(1);
+    }
     
-// } 
+} 
+
+bool operator>(const StudentList::Student& s1, const StudentList::Student& s2)
+{
+    if(s1.researchScore > s2.researchScore)
+		{
+			return true;
+		}
+    else if(s1.researchScore == s2.researchScore)
+	   	{
+		   if(s1.CGPA > s2.CGPA)
+		   {
+			   return true;
+		   }
+	   	}
+	else if(s1.CGPA == s2.CGPA)
+		{
+			if(s1.applicationID > s2.applicationID)
+			{
+				return true;
+			}
+		}
+	else return false;
+}
+
+bool operator<(const StudentList::Student& s1, const StudentList::Student& s2)
+{
+    if(s1.researchScore < s2.researchScore)
+		{
+			return true;
+		}
+    else if(s1.researchScore == s2.researchScore)
+	   	{
+		   if(s1.CGPA < s2.CGPA)
+		   {
+			   return true;
+		   }
+	   	}
+	else if(s1.CGPA == s2.CGPA)
+		{
+			if(s1.applicationID < s2.applicationID)
+			{
+				return true;
+			}
+		}
+	else return false;
+}
 
 
 // void Student::deleteNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID)
