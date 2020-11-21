@@ -83,7 +83,7 @@ float round1f(float num){
 }
 
 
-
+//---------------------------------------------------------------------------------------------------------------------------------------------//
 
 
 //Constructors
@@ -189,17 +189,18 @@ void StudentList::insertNode(string firstName, string lastName, float CGPA, int 
     
         //else traverse till the last node
         while (here->link != nullptr){
-            if(here < new_node)
-				{	
-					here = here->link;
-				}
-			else
-				{
-					here->link = new_node;
-					break;
-				}
+            if(here < new_node) {	
+				prev = here;
+				here = here->link;
+			}
+			else {
+				
+				new_node->link = here;
+				prev->link = new_node;
+				break;
+			}
 			
-			} 
+		} 
     }
     catch(bad_alloc){
         cerr<<"bad_alloc in Student::insertNode.\n";
