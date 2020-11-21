@@ -336,15 +336,15 @@ int main(){
       cout << "\n\n(1) Sort by CGPA\n";
 			cout << "****************************************************************\n";
       
-      if(studentType == 1){
-        sortCGPA(domesticArr, 0, 99);
-        print(domesticArr);
-      }
-      else if(studentType == 2){
-        sortCGPA(internationalArr, 0, 99);
-        print(internationalArr);
-      }
-    }
+//       if(studentType == 1){
+//         sortCGPA(domesticArr, 0, 99);
+//         print(domesticArr);
+//       }
+//       else if(studentType == 2){
+//         sortCGPA(internationalArr, 0, 99);
+//         print(internationalArr);
+//       }
+//     }
     
     //sorting by research score
     else if (userInput == 2){

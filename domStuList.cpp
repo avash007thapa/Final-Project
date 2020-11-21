@@ -1,5 +1,5 @@
 using namespace std;
-#include "domesticStudent.hpp"
+#include "domStuList.hpp"
 #include <iostream>
 #include <string>
 
