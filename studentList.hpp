@@ -58,6 +58,10 @@ class StudentList{
 		//insert node
 		void insertNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID); //for now inserts at tail end
 
+		//overloading >/< operators
+		friend bool operator>(const StudentList::Student& s1, const StudentList::Student& s2);
+		friend bool operator<(const StudentList::Student& s1, const StudentList::Student& s2);
+
 		//void findNode
 
 		//delete node 
