@@ -3,9 +3,9 @@ using namespace std;
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
-#include "studentlist.hpp"
-#include "domStutList.hpp"
-//#include "internationalStudent.hpp"
+#include "student.hpp"
+#include "domesticStudent.hpp"
+#include "internationalStudent.hpp"
 
 using namespace std;
 
@@ -100,6 +100,13 @@ int main(){
     }
     
     //NUMBER 2
+
+    for(int i = 0; i < line.length();i++){ 
+      firstName[i] = toupper(firstName[i]);
+      lastName[i] = toupper(lastName[i]);
+      province[i] = toupper(province[i]);
+    }
+    
     
     //NUMBER 3 part B
     //TESTING FOR PROVINCE INPUT FROM FILE
@@ -208,18 +215,26 @@ int main(){
       exit(-1);
     }
 
+    //NUMBER 2
+    //SETTING ALL STRINGS TO UPPERCASE CHARACTERS
+    for(int i = 0; i < line.length();i++){ 
+      firstName[i] = toupper(firstName[i]);
+      lastName[i] = toupper(lastName[i]);
+      country[i] = toupper(country[i]);
+    }
+    
     //NUMBER 3 B
     //****TESTING FOR INVALID INPUTS FOR INTERNATIONAL STUDENT FILE
     for(int i =0; i<line.size();i++){
-        if(country =="Idian"){
+        if(country =="IDIAN"){
           cout<<"Idian is a typo, but this program can fix that to Indian"<<endl;
-          country = "India";
+          country = "INDIA";
           cout<<"International student "<<index<<" "<< firstName<<" "<<lastName<<" from "<<country<<" has a "<<CGPA;
           cout<<", has a research score of "<<researchScore<<" ,and a total toefl score of "<</*internationalArr[i].getToeflScore().getTotalScore()*/toeflScore<<endl;
         }           
     }
     
-    if(country != "Canada" && country != "China" && country !="India" && country != "Iran" && country !="India" && country != "Korea" )
+    if(country != "CANADA" && country != "CHINA" && country !="INDIA" && country != "IRAN" && country != "KOREA")
     {
       cout<<"ERROR: COUNTRY MUST BE EITHER CANADA,CHINA,INDIA,IRAN,KOREA"<<endl;
       cout<<"***EXITING PROGRAM***"<<endl;
@@ -243,6 +258,8 @@ int main(){
       cin >> menuChoice;
       cout << "\n\n";      
 	  
+    //PART 2
+    //NUMBER 4
     if(menuChoice > 3 || menuChoice < 0){
       cout << "Invalid selection.  Please enter 0, 1, 2 or 3" <<endl; //invalid selection change
       outputMenu();
@@ -336,15 +353,15 @@ int main(){
       cout << "\n\n(1) Sort by CGPA\n";
 			cout << "****************************************************************\n";
       
-//       if(studentType == 1){
-//         sortCGPA(domesticArr, 0, 99);
-//         print(domesticArr);
-//       }
-//       else if(studentType == 2){
-//         sortCGPA(internationalArr, 0, 99);
-//         print(internationalArr);
-//       }
-//     }
+      if(studentType == 1){
+        sortCGPA(domesticArr, 0, 99);
+        print(domesticArr);
+      }
+      else if(studentType == 2){
+        sortCGPA(internationalArr, 0, 99);
+        print(internationalArr);
+      }
+    }
     
     //sorting by research score
     else if (userInput == 2){
@@ -403,4 +420,3 @@ int main(){
     }
   }*/
 }
-
