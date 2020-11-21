@@ -3,9 +3,9 @@ using namespace std;
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
-#include "student.hpp"
-#include "domesticStudent.hpp"
-#include "internationalStudent.hpp"
+#include "studentlist.hpp"
+#include "domStutList.hpp"
+//#include "internationalStudent.hpp"
 
 using namespace std;
 
