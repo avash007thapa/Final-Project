@@ -3,13 +3,16 @@ using namespace std;
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
-#include "studentlist.hpp"
-#include "domStutList.hpp"
+#include "studentList.hpp"
+#include "domStuList.hpp"
 //#include "internationalStudent.hpp"
+
+
+
 
 using namespace std;
 
-void outputMenu() {
+void outputMenu(){
       cout<<"\n*************M E N U *************\n";
       cout << "Input one of the following";
       cout << "\n****************************************************************\n";
@@ -18,7 +21,8 @@ void outputMenu() {
       cout << " (2) - DELETE\n";
       cout << " (3) - MERGE\n";
       cout << "\n****************************************************************\n";    
-}
+} 
+
 
 int main(){
   
@@ -27,8 +31,12 @@ int main(){
   //Reading the domestic-stu.txt file and exit if failed
   DomesticStudent domesticArr[100];
   string firstName, lastName, province, s_CGPA, s_researchScore, line;
+  string provinceARR[13]= {"BC","NL","PE","NS","NB","QC","ON","MB","SK","AB","YT","NT","NU" };
+  string countryARR[5] = {"Canada","China","India","Iran","Korea"};
   float CGPA;
   int researchScore, index = 0;
+  
+  
 
   ifstream domesticFile("domestic-stu.txt");
   if(!domesticFile.is_open()) {
@@ -45,22 +53,37 @@ int main(){
   
   }
   
+  
   //inputing data into domesitcArr
   while(getline(domesticFile, line) ) {
 
     istringstream ss(line);
+    
+    
             
     //get firstName separated by comma
+    //PART 2 Number 2
+    //Iniatilizing the first Character of the string to Upper-case and the rest 
+    //of the string to lower-case
     getline(ss, firstName, ',');
+    firstName[0] = toupper(firstName[0]);
+    for(int i=1; i<firstName.length();i++){
+      firstName[i] = tolower(firstName[i]);
+    }   
     domesticArr[index].setFirstName(firstName);
 
     //get lastName separated by comma
     getline(ss, lastName, ',');
+    lastName[0] = toupper(lastName[0]);
+    for(int i=1; i<lastName.length();i++){
+      lastName[i] = tolower(lastName[i]);
+    }   
     domesticArr[index].setLastName(lastName);
 
     //get province separated by comma
     getline(ss, province, ',');   
     domesticArr[index].setProvince(province);
+    
     
     //get cpga separated by comma, and convert string to float
     getline(ss, s_CGPA, ',');
@@ -88,27 +111,26 @@ int main(){
 
     //NUMBER 1
     // ****TESTING FOR MISSING INPUT******
-    int count = 0;
-    for(int i = 0; i < line.size(); i++){
-      if(line[i] == ','){
-        count++;
-      } 
-    }
-    if(count < 4){
-      cout<<"Missing an input For Domestic Student, check your file again \n"<<endl;
+    if(firstName.empty() ||  lastName.empty() || province.empty() || s_CGPA.empty() || s_researchScore.empty() ){
+      cout<<"MISSING INPUTS FOR DOMESTIC STUDENT.\n";
       exit(-1);
     }
-    
-    //NUMBER 2
-    
+      
     //NUMBER 3 part B
     //TESTING FOR PROVINCE INPUT FROM FILE
-    //Province must be of the following:BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU   
-    if(province != "BC" && province != "NL" && province !="PE" && province != "NS" && province !="NB" && province != "QC" && province !="ON" && province !="MB" && province !="SK" && province !="AB" && province !="YT" && province !="NT" && province !="NU"){
-      cout<<"ERROR: PROVINCE MUST BE EITHER BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU"<<endl;
-      cout<<"***EXITING PROGRAM***"<<endl;
-      exit(-1);
+    //Province must be of the following:BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU
+    //MAKE AN ARRAY OF STRING AND USE A FOR LOOP TO CHECK     
+    int found =0;
+    for (int i = 0; i < 13; i++){
+       if(province == provinceARR[i]){    
+            found++;
+        } 
     }
+    if(found < 1){
+        cout<<"ERROR: PROVINCE MUST BE EITHER BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU"<<endl;
+        cout<<"***EXITING PROGRAM***"<<endl; 
+        exit(-1);
+      }       
   }
   //closing the file
   domesticFile.close();
@@ -135,18 +157,32 @@ int main(){
 
     istringstream ss(line);
 
-  
 
     //get firstName separated by comma
+    //PART 2 Number 2
+    //Iniatilizing the first Character of the string to Upper-case and the rest 
+    //of the string to lower-case
     getline(ss, firstName, ',');
+    firstName[0] = toupper(firstName[0]);
+    for(int i=1; i<firstName.length();i++){
+      firstName[i] = tolower(firstName[i]);
+    }   
     internationalArr[index].setFirstName(firstName);
 
     //get lastName separated by comma
     getline(ss, lastName, ',');
+    lastName[0] = toupper(lastName[0]);
+    for(int i=1; i<lastName.length();i++){
+      lastName[i] = tolower(lastName[i]);
+    }   
     internationalArr[index].setLastName(lastName);
 
     //get country separated by comma
     getline(ss, country, ',');
+    country[0] = toupper(country[0]);
+    for(int i=1; i<country.length();i++){
+      country[i] = tolower(country[i]);
+    }  
     internationalArr[index].setCountry(country);
 
     //get cpga separated by comma, and convert string to float
@@ -196,21 +232,16 @@ int main(){
 
     //NUMBER 1
     //****TESTING FOR MISSING INPUT******
-    int count = 0;
-    for(int i = 0; i < line.size(); i++){
-      if(line[i] == ','){
-        count++;
-      } 
-    }
-    
-    if(count < 4){
-      cout<<"Missing an input For International Student, check your file again \n"<<endl;
+    if(firstName.empty() ||  lastName.empty() || country.empty() || s_CGPA.empty() || s_researchScore.empty() ){
+      cout<<"MISSING INPUTS FOR INTERNATIONAL STUDENT.\n";
       exit(-1);
     }
 
     //NUMBER 3 B
     //****TESTING FOR INVALID INPUTS FOR INTERNATIONAL STUDENT FILE
-    for(int i =0; i<line.size();i++){
+    //UPDATE
+    
+    for(int i =0; i < line.length(); i++){
         if(country =="Idian"){
           cout<<"Idian is a typo, but this program can fix that to Indian"<<endl;
           country = "India";
@@ -218,13 +249,18 @@ int main(){
           cout<<", has a research score of "<<researchScore<<" ,and a total toefl score of "<</*internationalArr[i].getToeflScore().getTotalScore()*/toeflScore<<endl;
         }           
     }
-    
-    if(country != "Canada" && country != "China" && country !="India" && country != "Iran" && country !="India" && country != "Korea" )
-    {
-      cout<<"ERROR: COUNTRY MUST BE EITHER CANADA,CHINA,INDIA,IRAN,KOREA"<<endl;
-      cout<<"***EXITING PROGRAM***"<<endl;
-      exit(-1);
+    //UPDATE
+    int found =0;
+    for (int i = 0; i < 13; i++){
+       if(country == countryARR[i]){    
+            found++;
+        } 
     }
+    if(found < 1){
+        cout<<"ERROR: COUNTRY MUST BE EITHER Canada,India,Iran,Korea"<<endl;
+        cout<<"***EXITING PROGRAM***"<<endl; 
+        exit(-1);
+      }       
   }
   
   //closing file
@@ -243,6 +279,8 @@ int main(){
       cin >> menuChoice;
       cout << "\n\n";      
 	  
+    //PART 2
+    //NUMBER 4
     if(menuChoice > 3 || menuChoice < 0){
       cout << "Invalid selection.  Please enter 0, 1, 2 or 3" <<endl; //invalid selection change
       outputMenu();
@@ -336,15 +374,15 @@ int main(){
       cout << "\n\n(1) Sort by CGPA\n";
 			cout << "****************************************************************\n";
       
-//       if(studentType == 1){
-//         sortCGPA(domesticArr, 0, 99);
-//         print(domesticArr);
-//       }
-//       else if(studentType == 2){
-//         sortCGPA(internationalArr, 0, 99);
-//         print(internationalArr);
-//       }
-//     }
+      if(studentType == 1){
+        sortCGPA(domesticArr, 0, 99);
+        print(domesticArr);
+      }
+      else if(studentType == 2){
+        sortCGPA(internationalArr, 0, 99);
+        print(internationalArr);
+      }
+    }
     
     //sorting by research score
     else if (userInput == 2){
