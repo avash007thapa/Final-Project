@@ -3,13 +3,16 @@ using namespace std;
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
-#include "student.hpp"
-#include "domesticStudent.hpp"
-#include "internationalStudent.hpp"
+#include "studentList.hpp"
+#include "domStuList.hpp"
+//#include "internationalStudent.hpp"
+
+
+
 
 using namespace std;
 
-void outputMenu() {
+void outputMenu(){
       cout<<"\n*************M E N U *************\n";
       cout << "Input one of the following";
       cout << "\n****************************************************************\n";
@@ -18,7 +21,8 @@ void outputMenu() {
       cout << " (2) - DELETE\n";
       cout << " (3) - MERGE\n";
       cout << "\n****************************************************************\n";    
-}
+} 
+
 
 int main(){
   
@@ -27,8 +31,12 @@ int main(){
   //Reading the domestic-stu.txt file and exit if failed
   DomesticStudent domesticArr[100];
   string firstName, lastName, province, s_CGPA, s_researchScore, line;
+  string provinceARR[13]= {"BC","NL","PE","NS","NB","QC","ON","MB","SK","AB","YT","NT","NU" };
+  string countryARR[5] = {"Canada","China","India","Iran","Korea"};
   float CGPA;
   int researchScore, index = 0;
+  
+  
 
   ifstream domesticFile("domestic-stu.txt");
   if(!domesticFile.is_open()) {
@@ -45,10 +53,13 @@ int main(){
   
   }
   
+  
   //inputing data into domesitcArr
   while(getline(domesticFile, line) ) {
 
     istringstream ss(line);
+    
+    
             
     //get firstName separated by comma
     //PART 2 Number 2
@@ -70,12 +81,9 @@ int main(){
     domesticArr[index].setLastName(lastName);
 
     //get province separated by comma
-    getline(ss, province, ',');  
-    province[0] = toupper(province[0]);
-    for(int i=1; i<province.length();i++){
-      province[i] = tolower(province[i]);
-    }    
+    getline(ss, province, ',');   
     domesticArr[index].setProvince(province);
+    
     
     //get cpga separated by comma, and convert string to float
     getline(ss, s_CGPA, ',');
@@ -111,12 +119,18 @@ int main(){
     //NUMBER 3 part B
     //TESTING FOR PROVINCE INPUT FROM FILE
     //Province must be of the following:BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU
-    //MAKE AN ARRAY OF STRING AND USE A FOR LOOP TO CHECK   
-    if(province != "BC" && province != "NL" && province !="PE" && province != "NS" && province !="NB" && province != "QC" && province !="ON" && province !="MB" && province !="SK" && province !="AB" && province !="YT" && province !="NT" && province !="NU"){
-      cout<<"ERROR: PROVINCE MUST BE EITHER BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU"<<endl;
-      cout<<"***EXITING PROGRAM***"<<endl;
-      exit(-1);
+    //MAKE AN ARRAY OF STRING AND USE A FOR LOOP TO CHECK     
+    int found =0;
+    for (int i = 0; i < 13; i++){
+       if(province == provinceARR[i]){    
+            found++;
+        } 
     }
+    if(found < 1){
+        cout<<"ERROR: PROVINCE MUST BE EITHER BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU"<<endl;
+        cout<<"***EXITING PROGRAM***"<<endl; 
+        exit(-1);
+      }       
   }
   //closing the file
   domesticFile.close();
@@ -226,21 +240,27 @@ int main(){
     //NUMBER 3 B
     //****TESTING FOR INVALID INPUTS FOR INTERNATIONAL STUDENT FILE
     //UPDATE
-    for(int i =0; i<line.size();i++){
-        if(country =="IDIAN"){
+    
+    for(int i =0; i < line.length(); i++){
+        if(country =="Idian"){
           cout<<"Idian is a typo, but this program can fix that to Indian"<<endl;
-          country = "INDIA";
+          country = "India";
           cout<<"International student "<<index<<" "<< firstName<<" "<<lastName<<" from "<<country<<" has a "<<CGPA;
           cout<<", has a research score of "<<researchScore<<" ,and a total toefl score of "<</*internationalArr[i].getToeflScore().getTotalScore()*/toeflScore<<endl;
         }           
     }
     //UPDATE
-    if(country != "CANADA" && country != "CHINA" && country !="INDIA" && country != "IRAN" && country != "KOREA")
-    {
-      cout<<"ERROR: COUNTRY MUST BE EITHER CANADA,CHINA,INDIA,IRAN,KOREA"<<endl;
-      cout<<"***EXITING PROGRAM***"<<endl;
-      exit(-1);
+    int found =0;
+    for (int i = 0; i < 13; i++){
+       if(country == countryARR[i]){    
+            found++;
+        } 
     }
+    if(found < 1){
+        cout<<"ERROR: COUNTRY MUST BE EITHER Canada,India,Iran,Korea"<<endl;
+        cout<<"***EXITING PROGRAM***"<<endl; 
+        exit(-1);
+      }       
   }
   
   //closing file
