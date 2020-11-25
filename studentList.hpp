@@ -6,7 +6,6 @@
 using namespace std; 
 
 class StudentList{
-	
     protected:
 		//Student class definition
 		class Student{
@@ -59,13 +58,13 @@ class StudentList{
 		void insertNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID); //for now inserts at tail end
 
 		//overloading >/< operators
-		friend bool operator>(const StudentList::Student& s1, const StudentList::Student& s2);
-		friend bool operator<(const StudentList::Student& s1, const StudentList::Student& s2);
+		friend bool operator >(const StudentList::Student& s1, const StudentList::Student& s2);
+		friend bool operator <(const StudentList::Student& s1, const StudentList::Student& s2);
 
 		//void findNode
 
 		//delete node 
-		void deleteNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
+		void deleteNode(string firstName, string lastName);
 
 		//print()
 

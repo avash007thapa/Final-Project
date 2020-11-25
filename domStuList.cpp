@@ -42,7 +42,9 @@ DomesticStudentPtr DomStuList::deepCopyStudentList(StudentPtr student){
 
 //overloading assignment operator
 DomStuList& DomStuList::operator=(const DomStuList& rStudent){
-	head = replaceStudentList(head, rStudent.head);
+	StudentList::Student::operator=(rStudent);
+	
+	//head = replaceStudentList(head, rStudent.head);
     return *this;
 }
 DomesticStudentPtr DomStuList::replaceStudentList(DomesticStudentPtr lStudent, DomesticStudentPtr rStudent){

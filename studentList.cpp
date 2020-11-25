@@ -184,16 +184,16 @@ void StudentList::insertNode(string firstName, string lastName, float CGPA, int 
         if (head == nullptr){  
             head = new_node;  
             tail = new_node;
-            return;  
+            return;
         }  
     
         //else traverse till the last node
         while (here->link != nullptr){
-            if(here < new_node) {	
+            if(here < new_node){	
 				prev = here;
 				here = here->link;
 			}
-			else {
+			else{
 				
 				new_node->link = here;
 				prev->link = new_node;
@@ -206,86 +206,76 @@ void StudentList::insertNode(string firstName, string lastName, float CGPA, int 
         cerr<<"bad_alloc in Student::insertNode.\n";
         exit(1);
     }
-    
 } 
 
-bool operator>(const StudentList::Student& s1, const StudentList::Student& s2)
-{
-    if(s1.researchScore > s2.researchScore)
-		{
+bool operator >(const StudentList::Student& s1, const StudentList::Student& s2){
+    if(s1.researchScore > s2.researchScore){
+		return true;
+	}
+    else if(s1.researchScore == s2.researchScore){
+		if(s1.CGPA > s2.CGPA){
 			return true;
 		}
-    else if(s1.researchScore == s2.researchScore)
-	   	{
-		   if(s1.CGPA > s2.CGPA)
-		   {
-			   return true;
-		   }
-	   	}
-	else if(s1.CGPA == s2.CGPA)
-		{
-			if(s1.applicationID > s2.applicationID)
-			{
-				return true;
-			}
+	}
+	else if(s1.CGPA == s2.CGPA){
+		if(s1.applicationID > s2.applicationID){
+			return true;
 		}
-	else return false;
+	}
+	else{
+		return false;
+	}
 }
 
-bool operator<(const StudentList::Student& s1, const StudentList::Student& s2)
-{
-    if(s1.researchScore < s2.researchScore)
-		{
+bool operator <(const StudentList::Student& s1, const StudentList::Student& s2){
+    if(s1.researchScore < s2.researchScore){
+			return true;
+	}
+    else if(s1.researchScore == s2.researchScore){
+		if(s1.CGPA < s2.CGPA){
 			return true;
 		}
-    else if(s1.researchScore == s2.researchScore)
-	   	{
-		   if(s1.CGPA < s2.CGPA)
-		   {
-			   return true;
-		   }
-	   	}
-	else if(s1.CGPA == s2.CGPA)
-		{
-			if(s1.applicationID < s2.applicationID)
-			{
-				return true;
-			}
+	}
+	else if(s1.CGPA == s2.CGPA){
+		if(s1.applicationID < s2.applicationID){
+			return true;
 		}
-	else return false;
+	}
+	else{
+		return false;
+	}
 }
 
 
-// void Student::deleteNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID)
-// {
-// 	NodePtr temp = head; //assign contents of head to temp
-// 	NodePtr prev = nullptr; //since at head, there's nothing before it
+void Student::deleteNode(string firstName, string lastName){
+	NodePtr temp = head; //assign contents of head to temp
+	NodePtr prev = nullptr; //since at head, there's nothing before it
 
-// 	//if head node is the one we want to delete
-// 	if(temp != nullptr && temp->firstName == firstName && temp->lastName == lastName && temp->CGPA == CGPA && temp->researchScore == researchScore && temp->applicationID == applicationID)
-// 	{
-// 		head = temp->link; //assign the contents of the next node to head (becomes new head)
-// 		delete temp; // delete old head
-// 		return;
-// 	}
+	//if head node is the one we want to delete
+	if(temp != nullptr && temp->firstName == firstName && temp->lastName == lastName && temp->CGPA == CGPA && temp->researchScore == researchScore && temp->applicationID == applicationID)
+	{
+		head = temp->link; //assign the contents of the next node to head (becomes new head)
+		delete temp; // delete old head
+		return;
+	}
 
-// 	//otherwise search for the node we want to delete
-// 	while(temp != nullptr && temp->firstName != firstName && temp->lastName != lastName && temp->CGPA != CGPA && temp->researchScore != researchScore && temp->applicationID != applicationID)
-// 	{
-// 		//keep track of the previous node since we will be changing prev->link
-// 		prev = temp; 
-// 		temp = temp->link;
-// 	}
+	//otherwise search for the node we want to delete
+	while(temp != nullptr && temp->firstName != firstName && temp->lastName != lastName && temp->CGPA != CGPA && temp->researchScore != researchScore && temp->applicationID != applicationID)
+	{
+		//keep track of the previous node since we will be changing prev->link
+		prev = temp; 
+		temp = temp->link;
+	}
 
-// 	//if the desired node we want to delete is not found
-// 	if(temp == nullptr)
-// 	{
-// 		cout << "Node not found \n";
-// 		return;
-// 	}
+	//if the desired node we want to delete is not found
+	if(temp == nullptr)
+	{
+		cout << "Node not found \n";
+		return;
+	}
 
-// 	prev->link = temp->link; //unlinks the node from the list
+	prev->link = temp->link; //unlinks the node from the list
 
-// 	delete temp;
-// }
+	delete temp;
+}
 

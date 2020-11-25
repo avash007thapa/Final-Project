@@ -15,6 +15,11 @@ class DomStuList:public StudentList{
 				DomesticStudent();
 		};
 		typedef DomesticStudent* DomesticStudentPtr;
+
+		//Domestic Student private variables
+		DomesticStudentPtr head;
+		DomesticStudentPtr tail;
+
 	public:
 		//Constructors
 		DomStuList(string firstName, string lastName, float CGPA, int researchScore, int applicationID, string province);
