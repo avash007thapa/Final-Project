@@ -189,17 +189,16 @@ void StudentList::insertNode(string firstName, string lastName, float CGPA, int 
     
         //else traverse till the last node
         while (here->link != nullptr){
-            if(here < new_node)
-				{	
-					here = here->link;
-				}
-			else
-				{
-					here->link = new_node;
-					break;
-				}
-			
-			} 
+            if(here < new_node){	
+				prev = here;
+				here = here->link;
+			}
+			else{
+				new_node->link = here;
+				prev->link = new_node;
+				break;
+			}
+		} 
     }
     catch(bad_alloc){
         cerr<<"bad_alloc in Student::insertNode.\n";
@@ -255,36 +254,31 @@ bool operator<(const StudentList::Student& s1, const StudentList::Student& s2)
 }
 
 
-// void Student::deleteNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID)
-// {
-// 	NodePtr temp = head; //assign contents of head to temp
-// 	NodePtr prev = nullptr; //since at head, there's nothing before it
+void StudentList::deleteNode(string firstName, string lastName)
+{
+	StudentPtr prev = nullptr;
+	StudentPtr here;
 
-// 	//if head node is the one we want to delete
-// 	if(temp != nullptr && temp->firstName == firstName && temp->lastName == lastName && temp->CGPA == CGPA && temp->researchScore == researchScore && temp->applicationID == applicationID)
-// 	{
-// 		head = temp->link; //assign the contents of the next node to head (becomes new head)
-// 		delete temp; // delete old head
-// 		return;
-// 	}
+	if(head == nullptr)
+	{
+		cout << "Nothing in linked list. Nothing was deleted." << endl;
+	}
 
-// 	//otherwise search for the node we want to delete
-// 	while(temp != nullptr && temp->firstName != firstName && temp->lastName != lastName && temp->CGPA != CGPA && temp->researchScore != researchScore && temp->applicationID != applicationID)
-// 	{
-// 		//keep track of the previous node since we will be changing prev->link
-// 		prev = temp; 
-// 		temp = temp->link;
-// 	}
+	// if we want to delete the head node (index i = 1)
+	if(){
+		prev = head; // sets previous to be he original head
+		head = head->link;
+		delete prev; //delete original head
+	}
 
-// 	//if the desired node we want to delete is not found
-// 	if(temp == nullptr)
-// 	{
-// 		cout << "Node not found \n";
-// 		return;
-// 	}
-
-// 	prev->link = temp->link; //unlinks the node from the list
-
-// 	delete temp;
-// }
-
+	// deleting any other node in the list: index through the list until we find the node we want to delete, 
+	// have the previous node point to the node after desired node, then deallocate memory of the desired node
+	else{
+		for(int i = 0; i < index-1; i++){
+			prev = here;
+			here = here->link;
+		}
+		prev->link = here->link;
+		delete here;
+	}
+}

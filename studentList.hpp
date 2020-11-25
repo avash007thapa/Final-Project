@@ -65,16 +65,11 @@ class StudentList{
 		//void findNode
 
 		//delete node 
-		void deleteNode(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
+		void deleteNode(string firstName, string lastName);
 
 		//print()
 
 		//delete()
-
-		//print()
-
-		//delete()
-
 		//overloading Student's output operator
 		friend ostream& operator <<(ostream& outs, StudentList::Student& student);
 };
