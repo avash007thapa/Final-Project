@@ -69,11 +69,6 @@ class StudentList{
 		//print()
 
 		//delete()
-
-		//print()
-
-		//delete()
-
 		//overloading Student's output operator
 		friend ostream& operator <<(ostream& outs, StudentList::Student& student);
 };

@@ -194,12 +194,10 @@ void StudentList::insertNode(string firstName, string lastName, float CGPA, int 
 				here = here->link;
 			}
 			else{
-				
 				new_node->link = here;
 				prev->link = new_node;
 				break;
 			}
-			
 		} 
     }
     catch(bad_alloc){
@@ -246,36 +244,37 @@ bool operator <(const StudentList::Student& s1, const StudentList::Student& s2){
 	}
 }
 
+void StudentList::deleteNode(string firstName, string lastName){
+	StudentPtr prev = nullptr;
+	StudentPtr here = head;
 
-void Student::deleteNode(string firstName, string lastName){
-	NodePtr temp = head; //assign contents of head to temp
-	NodePtr prev = nullptr; //since at head, there's nothing before it
-
-	//if head node is the one we want to delete
-	if(temp != nullptr && temp->firstName == firstName && temp->lastName == lastName && temp->CGPA == CGPA && temp->researchScore == researchScore && temp->applicationID == applicationID)
-	{
-		head = temp->link; //assign the contents of the next node to head (becomes new head)
-		delete temp; // delete old head
-		return;
+	if(head == nullptr){
+		cout << "Nothing in linked list. Nothing was deleted." << endl;
 	}
-
-	//otherwise search for the node we want to delete
-	while(temp != nullptr && temp->firstName != firstName && temp->lastName != lastName && temp->CGPA != CGPA && temp->researchScore != researchScore && temp->applicationID != applicationID)
-	{
-		//keep track of the previous node since we will be changing prev->link
-		prev = temp; 
-		temp = temp->link;
+	else{
+		while(here->link != nullptr){
+			if((here->firstName.compare(firstName) == 1) && (here->lastName.compare(lastName) == 1)){
+				if(here == head){
+					prev = head; // sets previous to be the original head
+					head = head->link;
+					delete prev; //delete original head
+					prev->link = nullptr;
+				}
+				else if(here == tail){
+					delete here; //delete original head
+					here->link = nullptr;
+					tail = prev;
+					prev->link = nullptr;
+				}
+				else{
+					prev->link = here->link;
+					delete here;
+					here->link = nullptr;
+				}
+				break;
+			}
+			prev = here;
+			here = here->link;
+		}
 	}
-
-	//if the desired node we want to delete is not found
-	if(temp == nullptr)
-	{
-		cout << "Node not found \n";
-		return;
-	}
-
-	prev->link = temp->link; //unlinks the node from the list
-
-	delete temp;
 }
-
