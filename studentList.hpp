@@ -26,7 +26,6 @@ class StudentList{
 				int compareResearchScore(Student student);
 				int compareFirstName(Student student);
 				int compareLastName(Student student);
-				
 		};
         typedef Student* StudentPtr;
        
@@ -61,14 +60,15 @@ class StudentList{
 		friend bool operator >(const StudentList::Student& s1, const StudentList::Student& s2);
 		friend bool operator <(const StudentList::Student& s1, const StudentList::Student& s2);
 
-		//void findNode
-
 		//delete node 
 		void deleteNode(string firstName, string lastName);
 
-		//print()
+		//print() //all students that have the exact same CGPA and researchScore and applicationID
+		void print(float CGPA, int researchScore, int applicationID);
 
-		//delete()
+		//delete() //deletes head and tail pointers
+		friend ostream& operator <<(ostream& outs, StudentList student);
+
 		//overloading Student's output operator
 		friend ostream& operator <<(ostream& outs, StudentList::Student& student);
 };
