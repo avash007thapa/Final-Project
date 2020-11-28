@@ -22,19 +22,9 @@ class InternationalStudent:public Student{
 		void setToeflScore(Toefl toeflScore);
 
 		//friend functions
-		friend int copmareCountry(InternationalStudent student1, InternationalStudent student2);
-		friend void swap(InternationalStudent* a, InternationalStudent* b);
-		friend int partitionResearch(InternationalStudent stuArr[], int low, int high);
-		friend int partitionCGPA(InternationalStudent stuArr[], int low, int high);
-		friend int partitionOverall(InternationalStudent stuArr[], int low, int high);
-		friend void sortResearchScore(InternationalStudent stuArr[], int low, int high);
-		friend void sortCGPA(InternationalStudent stuArr[], int low, int high);
-		friend void sortFirstName(InternationalStudent stuArr[], int low, int high);
-		friend void sortLastName(InternationalStudent stuArr[], int low, int high);
-		friend void sortOverall(InternationalStudent stuArr[], int low, int high);
+		friend int compareCountry(InternationalStudent& student1, InternationalStudent& student2);
+		friend int compareOverall(InternationalStudent& student1, InternationalStudent& student2);
 		friend ostream& operator<<(ostream& outs, InternationalStudent& student);
-		friend void print(InternationalStudent stuArr[]);
-		friend void printValidStudents(InternationalStudent stuArr[]);
 };
 typedef InternationalStudent* InternationalStudentPtr;
 

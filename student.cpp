@@ -88,9 +88,9 @@ void Student::setApplicationID(int applicationID){
 	}
 }
 
-//Friend functions
+//friend functions
 //comparing the CGPA between two students
-int compareCGPA(Student student1, Student student2){
+int compareCGPA(Student& student1, Student& student2){
 	if(student1.CGPA < student2.CGPA){
 		return -1;
 	}else if(student1.CGPA == student2.CGPA){
@@ -98,9 +98,8 @@ int compareCGPA(Student student1, Student student2){
 	}
 	return 1;
 }
-
 //comparing the research score between two students
-int compareResearchScore(Student student1, Student student2){
+int compareResearchScore(Student& student1, Student& student2){
 	if(student1.researchScore < student2.researchScore){
 		return -1;
 	}else if(student1.researchScore == student2.researchScore){
@@ -108,17 +107,26 @@ int compareResearchScore(Student student1, Student student2){
 	}
 	return 1;
 }
-
 //comparing the first names between two students
-int compareFirstName(Student student1, Student student2){
+int compareFirstName(Student& student1, Student& student2){
 	return student1.firstName.compare(student2.firstName);
 }
-
 //comparing the last names between two students
-int compareLastName(Student student1, Student student2){
+int compareLastName(Student& student1, Student& student2){
 	return student1.lastName.compare(student2.lastName);
 }
-
+//comparing the overall score between two students
+int compareOverall(Student& student1, Student& student2){
+	if(compareResearchScore(student1,student2) == -1){
+		return 1;
+	}
+	else if(compareResearchScore(student1,student2) == 0){
+		if(compareCGPA(student1,student2) == -1){
+			return 1;
+		}
+	}
+	return 0;
+}
 //overloading the output operator
 ostream& operator<<(ostream& outs, Student& student){
 	outs<<student.firstName<<" "<<student.lastName<<endl;
@@ -133,7 +141,6 @@ ostream& operator<<(ostream& outs, Student& student){
 	outs<<"Application ID: "<<student.applicationID<<endl;
 	return outs;
 }
-
 
 //round function to the first decimal. Used to round the CGPA 
 float round1f(float num){

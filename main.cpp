@@ -1,9 +1,10 @@
-//#include "linkedList.cpp"
+#include "linkedList.cpp"
 #include "linkedList.hpp"
 #include "student.hpp"
 #include "domesticStudent.hpp"
 #include "internationalStudent.hpp"
 #include <iostream>
+
 
 int main(){
     //LinkedList<Student> test();
@@ -17,11 +18,11 @@ int main(){
     // cout<<student;
     // cout<<dom;
 
-    LinkedList<Student> students;
-    LinkedList<DomesticStudent> domesticStudents;
-    LinkedList<InternationalStudent> internationalStudents;
+    //LinkedList<Student> students;
+    //LinkedList<DomesticStudent> domesticStudents;
+    //LinkedList<InternationalStudent> internationalStudents;
     
-    students = merge(domesticStudents,internationalStudents);
+    //students = merge(domesticStudents,internationalStudents);
 
 }
 

@@ -29,10 +29,11 @@ class Student{
 		void setApplicationID(int applicationID);
 
 		//Friend functions
-		friend int compareCGPA(Student student1, Student student2);
-		friend int compareResearchScore(Student student1, Student student2);
-		friend int compareFirstName(Student student1, Student student2);
-		friend int compareLastName(Student student1, Student student2);
+		friend int compareCGPA(Student& student1, Student& student2);
+		friend int compareResearchScore(Student& student1, Student& student2);
+		friend int compareFirstName(Student& student1, Student& student2);
+		friend int compareLastName(Student& student1, Student& student2);
+		friend int compareOverall(Student& student1, Student& student2);
 		friend ostream& operator <<(ostream& outs, Student& student);
 };
 typedef Student* StudentPtr;
