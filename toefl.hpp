@@ -29,8 +29,6 @@ class Toefl{
 		void setTotalScore(int totalScore);
 		bool passed();
 		
-		//MAKE TOEFL.EMPTY()
-		
 		//friend function
 		friend ostream& operator <<(ostream& outs, Toefl& toefl);
 };
