@@ -278,3 +278,22 @@ void StudentList::deleteNode(string firstName, string lastName){
 		}
 	}
 }
+
+
+void StudentList::delete_head_tail(){
+	
+	if(head == nullptr){
+		cerr << "Nothing in linked list. Nothing was deleted." << endl;
+	}
+	
+	delete head;
+	delete tail;
+
+	head = nullptr;
+	tail = head;
+
+}
+
+void printNames(string firstName, string lastName){
+	
+}

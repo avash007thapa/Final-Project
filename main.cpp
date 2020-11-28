@@ -13,14 +13,14 @@ using namespace std;
 using namespace std;
 
 void outputMenu(){
-      cout<<"\n*************M E N U *************\n";
-      cout << "Input one of the following";
-      cout << "\n****************************************************************\n";
-      cout << " (0) - EXIT\n";
-      cout << " (1) - INSERT\n";
-      cout << " (2) - DELETE\n";
-      cout << " (3) - MERGE\n";
-      cout << "\n****************************************************************\n";    
+  cout<<"\n*************M E N U *************\n";
+  cout << "Input one of the following";
+  cout << "\n****************************************************************\n";
+  cout << " (0) - EXIT\n";
+  cout << " (1) - INSERT\n";
+  cout << " (2) - DELETE\n";
+  cout << " (3) - MERGE\n";
+  cout << "\n****************************************************************\n";    
 } 
 
 

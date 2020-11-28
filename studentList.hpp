@@ -63,8 +63,17 @@ class StudentList{
 		//delete node 
 		void deleteNode(string firstName, string lastName);
 
-		//print() //all students that have the exact same CGPA and researchScore and applicationID
-		void print(float CGPA, int researchScore, int applicationID);
+		//delete head and tail
+		void delete_head_tail();
+
+		//printNames() //all students that have the exact same name
+		void printNames(string firstName, string lastName);
+
+		// //print() //all students that have the exact same CGPA and researchScore and applicationID
+		// void print(float CGPA, int researchScore, int applicationID);
+
+		// helper function that prints out the data in the object from the linked list
+		void printObject();
 
 		//delete() //deletes head and tail pointers
 		friend ostream& operator <<(ostream& outs, StudentList student);
