@@ -6,7 +6,10 @@ using namespace std;
 #include "student.hpp"
 #include "toefl.hpp"
 
+template <class T> class LinkedList;
+
 class InternationalStudent:public Student{
+	friend class LinkedList<InternationalStudent>;
 	private:
 		string country;
 		Toefl toeflScore;

@@ -173,7 +173,7 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
         return;
 	}
     while(here != nullptr){
-        if((here->student.getFirstName().compare(firstName) == 0) && (here->student.getLastName().compare(lastName) == 0)){
+        if((here->student.FirstName.compare(firstName) == 0) && (here->student.LastName.compare(lastName) == 0)){
             std::cout<<"DELETED\n"<<here->student<<"\n\n";
             if(here == head){
                 prev = head;
@@ -205,50 +205,61 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
 template <class T>
 void LinkedList<T>::searchApplicationID(int applicationID){
     NodePtr here = head;
+    bool flag = false;
     while(here != nullptr){
-        if(here.student.applicationID == applicationID){
-            std::cout<<here.student<<std::endl;
-        }
-        else if(here.student.applicationID < applicationID){
-            break;
+        if(here->student.applicationID == applicationID){
+            std::cout<<here->student<<std::endl;
+            flag = true;
         }
         here = here->link;
+    }
+    if(flag == false){
+        std::cout<<"Students with (ApplicationID = "<<applicationID<<") is not in this list.\n";
     }
 }
 template <class T>
 void LinkedList<T>::searchCGPA(float CGPA){
     NodePtr here = head;
+    bool flag = false;
     while(here != nullptr){
-        if(here.student.CGPA == CGPA){
-            std::cout<<here.student<<std::endl;
-        }
-        else if(here.student.CGPA < CGPA){
-            break;
+        if(here->student.CGPA == CGPA){
+            std::cout<<here->student<<std::endl;
+            flag = true;
         }
         here = here->link;
+    }
+    if(flag == false){
+        std::cout<<"Students with (CGPA = "<<CGPA<<") is not in this list.\n";
     }
 }
 template <class T>
 void LinkedList<T>::searchResearchScore(int researchScore){
     NodePtr here = head;
+    bool flag = false;
     while(here != nullptr){
-        if(here.student.researchScore == researchScore){
-            std::cout<<here.student<<std::endl;
-        }
-        else if(here.student.researchScore < researchScore){
-            break;
+        if(here->student.researchScore == researchScore){
+            std::cout<<here->student<<std::endl;
+            flag = true;
         }
         here = here->link;
+    }
+    if(flag == false){
+        std::cout<<"Students with (reseach score = "<<researchScore<<") is not in this list.\n";
     }
 }
 template <class T>
 void LinkedList<T>::searchName(std::string firstName, std::string lastName){
     NodePtr here = head;
+    bool flag = false;
     while(here != nullptr){
-        if((here.student.firstName.compare(firstName) == 0) && (here.student.lastName.compare(lastName) == 0)){
-            std::cout<<here.student<<std::endl;
+        if((here->student.firstName.compare(firstName) == 0) && (here->student.lastName.compare(lastName) == 0)){
+            std::cout<<here->student<<std::endl;
+            flag = true;
         }
         here = here->link;
+    }
+    if(flag == false){
+        std::cout<<"Students with (name = "<<firstName<<" "<<lastName<<") is not in this list.\n";
     }
 }
 
@@ -273,10 +284,10 @@ LinkedList<Student> merge(LinkedList<DomesticStudent>& domesticList, LinkedList<
     typename LinkedList<T>::NodePtr here = internationalList.head;
 
     while(here != nullptr){
-        if(!here.student.getToeflScore().passed()){
+        if(!here->student.getToeflScore().passed()){
             here = here->link;
         }
-        returnList.insertNode(here.student);
+        returnList.insertNode(here->student);
     }
 
     return returnList;

@@ -73,12 +73,6 @@ int main(){
     getline(ss, s_researchScore, ',');
     researchScore = atoi(s_researchScore.c_str());
 
-    //inserting student to domesticStudentList
-    DomesticStudent domesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + index),province);
-    domesticStudentList.insertNode(domesticStudent);
-    
-    index++;
-
     //testing for missing inputs from file
     if(firstName.empty() ||  lastName.empty() || province.empty() || s_CGPA.empty() || s_researchScore.empty() ){
       cout<<"MISSING INPUTS FOR DOMESTIC STUDENT.\n";
@@ -96,7 +90,13 @@ int main(){
         cout<<"ERROR: PROVINCE MUST BE EITHER BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU"<<endl;
         cout<<"***EXITING PROGRAM***"<<endl; 
         exit(-1);
-      }       
+    }      
+
+    //inserting student to domesticStudentList
+    DomesticStudent domesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + index),province);
+    domesticStudentList.insertNode(domesticStudent);
+    
+    index++; 
   }
   //closing the file
   domesticFile.close();
@@ -165,14 +165,6 @@ int main(){
     //setting toefl scores
     Toefl toeflScore(reading,listening,speaking,writing);
 
-    //creating international student
-    InternationalStudent internationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + index),country,toeflScore);
-    internationalStudentList.insertNode(internationalStudent);
-    index++;
-
-    //PART 2
-
-    //NUMBER 1
     //****TESTING FOR MISSING INPUT******
     if(firstName.empty() ||  lastName.empty() || country.empty() || s_CGPA.empty() || s_researchScore.empty() ){
       cout<<"MISSING INPUTS FOR INTERNATIONAL STUDENT.\n";
@@ -190,7 +182,7 @@ int main(){
         }           
     }
     //UPDATE
-    int found =0;
+    int found = 0;
     for (int i = 0; i < 13; i++){
        if(country == countryARR[i]){    
             found++;
@@ -200,7 +192,12 @@ int main(){
         cout<<"ERROR: COUNTRY MUST BE EITHER Canada,India,Iran,Korea"<<endl;
         cout<<"***EXITING PROGRAM***"<<endl; 
         exit(-1);
-      }       
+    }       
+
+    //creating international student
+    InternationalStudent internationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + index),country,toeflScore);
+    internationalStudentList.insertNode(internationalStudent);
+    index++;
   }
   
   //closing file
@@ -213,7 +210,8 @@ int main(){
   // M E N U 
   
   cout<<"TESTING\n\n\n"<<endl;
-  
+  internationalStudentList.searchName("Bryan","Wong");
+  domesticStudentList.searchName("Jayden","Wood");
 
   
   // int menuChoice;

@@ -5,7 +5,10 @@ using namespace std;
 #include <string>
 #include "student.hpp"
 
+template <class T> class LinkedList;
+
 class DomesticStudent:public Student{
+	friend class LinkedList<DomesticStudent>;
 	private:
 		string province;
 	public:

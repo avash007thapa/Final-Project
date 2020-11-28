@@ -4,7 +4,10 @@
 using namespace std; 
 #include <string> 
 
+template <class T> class LinkedList;
+
 class Student{
+	friend class LinkedList<Student>;
 	protected:
 		string firstName;
 		string lastName;
