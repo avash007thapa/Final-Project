@@ -75,6 +75,8 @@ class StudentList{
 		// helper function that prints out the data in the object from the linked list
 		void printObject();
 
+		void printNames(string firstName, string lastName);
+
 		//delete() //deletes head and tail pointers
 		friend ostream& operator <<(ostream& outs, StudentList student);
 
