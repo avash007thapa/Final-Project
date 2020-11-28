@@ -3,6 +3,11 @@
 
 #include "linkedList.hpp"
 #include <string>
+#include "student.hpp"
+#include "domesticStudent.hpp"
+#include "internationalStudent.hpp"
+#include <typeinfo>
+using namespace std;
 
 //Node Class implementation
 template <class T>
@@ -106,27 +111,45 @@ void LinkedList<T>::insertNode(T student){
 		NodePtr prev = nullptr;
         NodePtr here = head; 
         NodePtr newNode = new Node(student);
-    
-        while (here->link != nullptr){
-            if(compareOverall(this->student,newNode->student) == 1){
+        
+        //if list is empty
+        if(head == nullptr){
+            head = newNode;
+            tail = head;
+            return;
+        }
+
+        // cout<<"head "<<head<<endl;
+        // cout<<"here "<<here<<endl;
+        // cout<<"newNode "<<newNode<<endl;
+        // cout<<"prev "<<prev<<endl<<endl;
+
+        while (here != nullptr){
+            if(compareOverall(here->student,newNode->student) == 1){
                 //if at head
-                if(prev != nullptr){
+                //cout<<"it got in\n\n";
+                if(prev == nullptr){
+                    //cout<<"test\n";
                     newNode->link = here;
                     head = newNode;
+                    //cout<<"test\n";
                 }
                 else{
+                    //cout<<"awdad\n";
                     prev->link = newNode;
+                    //cout<<"awdad\n";
                     newNode->link = here;
+                    //cout<<"awdad\n";
                 }
                 break;
             }
-
             //if end of list insert at tail
-            if(here->link == nullptr){
+            else if(here->link == nullptr){
                 here->link = newNode;
                 tail = newNode;
+                break;
             }
-
+            
             //itterating through linked list
             prev = here;
             here = here->link;
@@ -147,35 +170,34 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
 
 	if(head == nullptr){
 		std::cerr << "Error(deleteNode): List is already empty\n";
+        return;
 	}
-	else{
-		while(here->link != nullptr){
-			if((here->student->firstName.compare(firstName) == 1) && (here->lastName.compare(lastName) == 1)){
-				std::cout<<"Deleted"<<here->student<<std::endl;
-                if(here == head){
-					prev = head;
-					head = head->link;
+    while(here != nullptr){
+        if((here->student->firstName.compare(firstName) == 1) && (here->lastName.compare(lastName) == 1)){
+            std::cout<<"Deleted"<<here->student<<std::endl;
+            if(here == head){
+                prev = head;
+                head = head->link;
 
-					delete prev;
-					prev->link = nullptr;
-				}
-				else if(here == tail){
-					delete here;
-					here->link = nullptr;
+                delete prev;
+                prev->link = nullptr;
+            }
+            else if(here == tail){
+                delete here;
+                here->link = nullptr;
 
-					tail = prev;
-					prev->link = nullptr;
-				}
-				else{
-					prev->link = here->link;
-					delete here;
-					here->link = nullptr;
-				}
-			}
-			prev = here;
-			here = here->link;
-		}
-	}
+                tail = prev;
+                prev->link = nullptr;
+            }
+            else{
+                prev->link = here->link;
+                delete here;
+                here->link = nullptr;
+            }
+        }
+        prev = here;
+        here = here->link;
+    }
 }
 
 
@@ -183,7 +205,7 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
 template <class T>
 void LinkedList<T>::searchApplicationID(int applicationID){
     NodePtr here = head;
-    while(here->link != nullptr){
+    while(here != nullptr){
         if(here.student.applicationID == applicationID){
             std::cout<<here.student<<std::endl;
         }
@@ -196,7 +218,7 @@ void LinkedList<T>::searchApplicationID(int applicationID){
 template <class T>
 void LinkedList<T>::searchCGPA(float CGPA){
     NodePtr here = head;
-    while(here->link != nullptr){
+    while(here != nullptr){
         if(here.student.CGPA == CGPA){
             std::cout<<here.student<<std::endl;
         }
@@ -209,7 +231,7 @@ void LinkedList<T>::searchCGPA(float CGPA){
 template <class T>
 void LinkedList<T>::searchResearchScore(int researchScore){
     NodePtr here = head;
-    while(here->link != nullptr){
+    while(here != nullptr){
         if(here.student.researchScore == researchScore){
             std::cout<<here.student<<std::endl;
         }
@@ -222,7 +244,7 @@ void LinkedList<T>::searchResearchScore(int researchScore){
 template <class T>
 void LinkedList<T>::searchName(std::string firstName, std::string lastName){
     NodePtr here = head;
-    while(here->link != nullptr){
+    while(here != nullptr){
         if((here.student.firstName.compare(firstName) == 0) && (here.student.lastName.compare(lastName) == 0)){
             std::cout<<here.student<<std::endl;
         }
@@ -250,7 +272,7 @@ LinkedList<Student> merge(LinkedList<DomesticStudent>& domesticList, LinkedList<
 
     typename LinkedList<T>::NodePtr here = internationalList.head;
 
-    while(here->link != nullptr){
+    while(here != nullptr){
         if(!here.student.getToeflScore().passed()){
             here = here->link;
         }
@@ -264,6 +286,13 @@ LinkedList<Student> merge(LinkedList<DomesticStudent>& domesticList, LinkedList<
 //overload output operators
 template <class T>
 std::ostream& operator<<(std::ostream& outs, LinkedList<T>& linkedList){
+    typename LinkedList<T>::NodePtr here = linkedList.head;
+    int counter = 1;
+    while(here != nullptr){
+        outs<<counter<<" "<<here->student<<std::endl;
+        here = here->link;
+        counter++;
+    }
     return outs;
 }
 

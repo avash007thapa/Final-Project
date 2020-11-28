@@ -29,6 +29,7 @@ int compareProvince(DomesticStudent student1, DomesticStudent student2){
 }
 //comparing the overall score between two students
 int compareOverall(DomesticStudent& student1, DomesticStudent& student2){	
+	//cout<<"ITS CALLING THE RIGHT ONE\n";
 	if(compareResearchScore(student1,student2) == -1){
 		return 1;
 	}
@@ -46,6 +47,7 @@ int compareOverall(DomesticStudent& student1, DomesticStudent& student2){
 }
 //comparing overall between a domestic student and an international student
 int compareOverall(DomesticStudent& student1, InternationalStudent& student2){
+	cout<<"ITS CALLING THE RIGHT ONE\n";
 	//upcasting student1 and student 2
 	StudentPtr stu1 = &student1;
 	StudentPtr stu2 = &student2;
