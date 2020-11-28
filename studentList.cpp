@@ -278,3 +278,29 @@ void StudentList::deleteNode(string firstName, string lastName){
 		}
 	}
 }
+
+void StudentList::printNames(string firstName, string lastName){
+	StudentPtr prev = nullptr;
+	StudentPtr here = head;
+
+	if (head == nullptr){
+		cout << "Nothing in linked list. \n";
+	}
+
+	while(here->link != nullptr){
+		if(firstName.compare(firstName) == 1){
+				
+		}
+		else{
+			cout << "first name was not found. \n";
+		}
+
+		if(lastName.compare(lastName) == 1){
+
+		}
+		else{
+			cout << "Last name was not found. \n";
+		}
+
+	}
+}

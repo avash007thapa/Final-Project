@@ -66,6 +66,8 @@ class StudentList{
 		//print() //all students that have the exact same CGPA and researchScore and applicationID
 		void print(float CGPA, int researchScore, int applicationID);
 
+		void printNames(string firstName, string lastName);
+
 		//delete() //deletes head and tail pointers
 		friend ostream& operator <<(ostream& outs, StudentList student);
 
