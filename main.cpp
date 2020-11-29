@@ -11,6 +11,8 @@ using namespace std;
 #include "domesticStudent.hpp"
 #include "helper.hpp"
 
+//keeping track of number of students
+int studentNum = 0;
 
 int main(){
 
@@ -57,17 +59,38 @@ int main(){
         int inputNum = atoi(userInput.c_str());
         switch(inputNum){
             case 1 :
-                cout<<"(1) Exiting Program\n"<<endl; 
+                cout<<"Exiting Program\n"<<endl; 
                 return 0;
             case 2 :
-                cout<<"(2) Insert Node"<<endl;
+                cout<<"Insert Node"<<endl;
                 cout<<"****************************************************************\n";
-                cout<<"(1) Create a new domestic student\n";
-                cout<<"(2) Create a new international student\n";
-                
+                cout<<"(1) - Create a new domestic student\n";
+                cout<<"(2) - Create a new international student\n";
+                cout<<"Enter input: ";
+                cin>>userInput;
+                cout<<"\n\n";
 
+                switch(inputNum){
+                    case 1 :
+                        insertDomesticStudent(domesticStudentList,studentNum);
+                    case 2 :
+                        insertInternationalStudent(internationalStudentList,studentNum);
+                }
             case 3 :
-                cout << "DELETE SELECTED" << endl;
+                cout<<"Insert Node"<<endl;
+                cout<<"****************************************************************\n";
+                cout<<"(1) - Delete a domestic student\n";
+                cout<<"(2) - Delete a international student\n";
+                cout<<"Enter input: ";
+                cin>>userInput;
+                cout<<"\n\n";
+
+                switch(inputNum){
+                    case 1 :
+                        insertDomesticStudent(domesticStudentList,studentNum);
+                    case 2 :
+                        insertInternationalStudent(internationalStudentList,studentNum);
+                }
                 
             case 4 :
                 cout << "MERGE SELECTED" << endl;

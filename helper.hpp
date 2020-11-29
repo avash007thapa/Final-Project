@@ -18,4 +18,8 @@ void countryIsValid(string& country);
 
 bool inputIsValid(string input);
 
+void insertDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList,int& studentNum);
+
+void insertInternationalStudent(LinkedList<InternationalStudent>& internationalStudentList, int& studentNum);
+
 #endif
