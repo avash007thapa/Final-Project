@@ -66,6 +66,6 @@ ostream& operator<<(ostream& outs, InternationalStudent& student){
 	return outs;
 }
 
-void print(){
-	cout<<*this;
+void InternationalStudent::print(){
+	cout<<"yoyoyoyo";
 }

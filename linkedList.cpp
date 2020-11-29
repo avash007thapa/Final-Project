@@ -11,7 +11,7 @@ using namespace std;
 
 //Node Class implementation
 template <class T>
-LinkedList<T>::Node::Node(T student):student(student),link(nullptr){
+LinkedList<T>::Node::Node(T* student):student(student),link(nullptr){
 }
 template <class T> 
 LinkedList<T>::Node::Node():student(),link(nullptr){
@@ -21,7 +21,7 @@ LinkedList<T>::Node::Node():student(),link(nullptr){
 //LinkedList class implementation
 //constructors
 template <class T>
-LinkedList<T>::LinkedList(T student){
+LinkedList<T>::LinkedList(T* student){
     try{
 		head = new Node(student);
 		tail = head;
@@ -105,12 +105,13 @@ void LinkedList<T>::deleteLinkedList(NodePtr node){
 
 //insertNode
 template <class T>
-void LinkedList<T>::insertNode(T student){
+void LinkedList<T>::insertNode(T* student){
     try{
 		NodePtr prev = nullptr;
         NodePtr here = head; 
         NodePtr newNode = new Node(student);
-        
+        //cout<<typeid(student).name()<<endl;
+
         //if list is empty
         if(head == nullptr){
             head = newNode;
@@ -256,6 +257,16 @@ void LinkedList<T>::delete_head_tail(){
     delete tail;
     head = nullptr;
     tail = nullptr;
+}
+
+template <class T>
+void LinkedList<T>::print(){
+    auto here = head;
+    while(here != nullptr){
+        cout<<typeid(here->student).name()<<endl;
+        here->student.print();
+        here = here->link;
+    }
 }
 
 

@@ -24,11 +24,11 @@ void DomesticStudent::setProvince(string province){
 
 //friend functions
 //comparing the province between two students
-int compareProvince(DomesticStudent student1, DomesticStudent student2){
-	return student1.province.compare(student2.province);
+int compareProvince(DomesticStudentPtr student1, DomesticStudentPtr student2){
+	return student1->province.compare(student2->province);
 }
 //comparing the overall score between two students
-int compareOverall(DomesticStudent& student1, DomesticStudent& student2){	
+int compareOverall(DomesticStudentPtr student1, DomesticStudentPtr student2){	
 	//cout<<"ITS CALLING THE RIGHT ONE\n";
 	if(compareResearchScore(student1,student2) == -1){
 		return 1;
@@ -78,6 +78,6 @@ ostream& operator<<(ostream& outs, DomesticStudent& student){
 	return outs;
 }
 
-void print(){
-	cout<<*this;
+void DomesticStudent::print(){
+	cout<<"yoyoyoyo";
 }

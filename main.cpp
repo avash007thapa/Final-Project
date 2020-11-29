@@ -11,6 +11,51 @@ using namespace std;
 
 using namespace std;
 
+
+// void insertDomestic(DomesticStudent student, LinkedList<Student>& linkedList){
+//     try{
+// 		    auto prev = linkedList.head;
+//         auto here = linkedList.head; 
+//         //cout<<typeid(student).name()<<endl;
+//         auto newNode = new typename LinkedList<DomesticStudent>::Node(student);
+     
+//         //if list is empty
+//         if(linkedList.head == nullptr){
+//             linkedList.head = newNode;
+//             linkedList.tail = LinkedList.head;
+//             return;
+//         }
+//         while (here != nullptr){
+//             if(compareOverall(here->student,newNode->student) == 1){
+//                 if(prev == linkedList.head){
+//                     newNode->link = here;
+//                     linkedList.head = newNode;
+//                 }
+//                 else{
+//                     prev->link = newNode;
+//                     newNode->link = here;
+//                 }
+//                 break;
+//             }
+//             //if end of list insert at tail
+//             else if(here->link == nullptr){
+//                 here->link = newNode;
+//                 linkedList.tail = newNode;
+//                 break;
+//             }
+            
+//             //itterating through linked list
+//             prev = here;
+//             here = here->link;
+// 		    } 
+//     }
+//     catch(bad_alloc){
+//         std::cerr<<"Error(insertNode): bad_alloc\n";
+//         std::exit(1);
+//     }
+// }
+
+
 void outputMenu(){
   cout<<"\n*************M E N U *************\n";
   cout << "Input one of the following";
@@ -28,15 +73,15 @@ void mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<Internation
     
     auto dHere = domesticList.head;
     while(dHere != nullptr){
+        //cout<<typeid(dHere->student).name()<<endl;
         studentList.insertNode(dHere->student);
         dHere = dHere->link;
-
     }
 
     auto iHere = internationalList.head;
     
     while(iHere != nullptr){
-        if(!iHere->student.getToeflScore().passed()){
+        if(!iHere->student->getToeflScore().passed()){
             iHere = iHere->link;
         }
         studentList.insertNode(iHere->student);
@@ -119,7 +164,7 @@ int main(){
 
     //inserting student to domesticStudentList
     DomesticStudent domesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + index),province);
-    domesticStudentList.insertNode(domesticStudent);
+    domesticStudentList.insertNode(&domesticStudent);
     
     index++; 
   }
@@ -221,7 +266,7 @@ int main(){
 
     //creating international student
     InternationalStudent internationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + index),country,toeflScore);
-    internationalStudentList.insertNode(internationalStudent);
+    internationalStudentList.insertNode(&internationalStudent);
     index++;
   }
   
@@ -237,6 +282,8 @@ int main(){
   cout<<"TESTING\n\n\n"<<endl;
   mergeList(domesticStudentList,internationalStudentList,studentList);
   cout<<studentList<<endl;
+  //studentList.print();
+
   //DomesticStudentPtr a = dynamic_cast<DomesticStudentPtr>(student);
 
   // studentList.insertNode(*student);

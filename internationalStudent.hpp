@@ -28,6 +28,7 @@ class InternationalStudent:public Student{
 		friend int compareCountry(InternationalStudent& student1, InternationalStudent& student2);
 		friend int compareOverall(InternationalStudent& student1, InternationalStudent& student2);
 		friend ostream& operator<<(ostream& outs, InternationalStudent& student);
+		virtual void print();
 };
 typedef InternationalStudent* InternationalStudentPtr;
 
