@@ -97,7 +97,7 @@ template <class T>
 void LinkedList<T>::deleteLinkedList(NodePtr node){
     if(node != nullptr){
 		deleteLinkedList(node->link);
-        delete node->student;
+        //delete node->student;
 		delete node;
 		node = nullptr;
 	}

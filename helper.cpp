@@ -431,18 +431,18 @@ LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedL
     
     auto dHere = domesticList.head;
     while(dHere != nullptr){
-        //cout<<typeid(dHere->student).name()<<endl;
-        returnList.insertNode(dHere->student);
+        DomesticStudentPtr domesticStudent = new DomesticStudent(*(dHere->student));
+        returnList.insertNode(domesticStudent);
         dHere = dHere->link;
     }
 
     auto iHere = internationalList.head;
     
     while(iHere != nullptr){
-        if(!iHere->student->getToeflScore().passed()){
-            iHere = iHere->link;
+        if(iHere->student->getToeflScore().passed()){
+            InternationalStudentPtr internationalStudent = new InternationalStudent(*(iHere->student));
+            returnList.insertNode(iHere->student);
         }
-        returnList.insertNode(iHere->student);
         iHere = iHere->link;
     }
     return returnList;
