@@ -18,15 +18,15 @@ void outputMenu(){
     cout << "\n****************************************************************\n";
     cout << " (1) - Exit the program\n";
     cout << " (2) - Create new student\n";
-    cout << " (3) - Delete a student from the list\n";
+    cout << " (3) - Delete a student\n";
     cout << " (4) - Merge the domestic student list and international student list";
     cout << "\n****************************************************************\n";    
 } 
 
-void domFile2DomList(LinkedList<DomesticStudent>& domesticStudentList){
+void domFile2DomList(LinkedList<DomesticStudent>& domesticStudentList, int& studentNum){
     string firstName, lastName, province, s_CGPA, s_researchScore, line;
     float CGPA;
-    int researchScore, index = 0;
+    int researchScore;
     
     //opens domestic-stu.txt file
     ifstream domesticFile("domestic-stu.txt");
@@ -73,19 +73,19 @@ void domFile2DomList(LinkedList<DomesticStudent>& domesticStudentList){
         }
 
         //inserting domestic student to domesticStudentList
-        DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + index),province);
+        DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
         domesticStudentList.insertNode(domesticStudent);
         
-        index++; 
+        studentNum++; 
     }
     //closing the file
     domesticFile.close();
 }
 
-void intFile2IntList(LinkedList<InternationalStudent>& internationalStudentList){
+void intFile2IntList(LinkedList<InternationalStudent>& internationalStudentList, int& studentNum){
     string firstName, lastName, s_CGPA, s_researchScore, country, s_reading, s_listening, s_speaking, s_writing, line;
     float CGPA;
-    int reading, listening, speaking, writing,researchScore, index = 99;
+    int reading, listening, speaking, writing,researchScore;
     
     //opens international-stu.txt file
     ifstream internationalFile("international-stu.txt");
@@ -145,10 +145,10 @@ void intFile2IntList(LinkedList<InternationalStudent>& internationalStudentList)
 
         //inserting international student to internationalStudentList
         Toefl toeflScore(reading,listening,speaking,writing);
-        InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + index),country,toeflScore);
+        InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
         internationalStudentList.insertNode(internationalStudent);
 
-        index++;
+        studentNum++;
   }
   //closing file
   internationalFile.close();
@@ -203,16 +203,94 @@ bool inputIsValid(string input){
     return true;
 }
 
-void insertDomesticStudent(){
-    string firstName;
-    cout<<"First name: ";
-    cin>>input
+void insertDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList,int& studentNum){
+    string firstName, lastName, province, s_CGPA, s_researchScore, line;
+    float CGPA;
+    int researchScore;
+
+    //getting inputs
+    cout<<"First Name: ";
+    cin>>firstName;
+    formatString(firstName);
+
+    cout<<"\nLast Name: ";
+    cin>>lastName;
+    formatString(lastName);
+
+    cout<<"\nProvince: ";
+    cin>>province;
+    provinceIsValid(province);
+
+    cout<<"\nCGPA: ";
+    cin>>s_CGPA;
+    CGPA = atof(s_CGPA.c_str());
+
+    cout<<"\nResearch Score: ";
+    cin>>s_researchScore;
+    researchScore = atoi(s_researchScore.c_str());
+
+    //inserting domestic student to domesticStudentList
+    DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
+    domesticStudentList.insertNode(domesticStudent);
+
+    studentNum++;
 }
 
-void insertDomesticStudent(){
+void insertInternationalStudent(LinkedList<InternationalStudent>& internationalStudentList, int& studentNum){
+    string firstName, lastName, s_CGPA, s_researchScore, country, s_reading, s_listening, s_speaking, s_writing, line;
+    float CGPA;
+    int reading, listening, speaking, writing,researchScore;
+    
+    //getting inputs
+    cout<<"First Name: ";
+    cin>>firstName;
+    formatString(firstName);
 
+    cout<<"\nLast Name: ";
+    cin>>lastName;
+    formatString(lastName);
+
+    cout<<"\nCountry: ";
+    cin>>country;
+    formatString(country);
+    countryIsValid(country);
+
+    cout<<"\nCGPA: ";
+    cin>>CGPA;
+    CGPA = atof(s_CGPA.c_str());
+
+    cout<<"\nResearch Score: ";
+    cin>>researchScore;
+    researchScore = atoi(s_researchScore.c_str());
+
+    cout<<"\nToefl Reading Score: ";
+    cin>>s_reading;
+    reading = atoi(s_reading.c_str());
+
+    cout<<"\nToefl Listening Score: ";
+    cin>>s_listening;
+    listening = atoi(s_listening.c_str());
+
+    cout<<"\nToefl Speaking Score: ";
+    cin>>s_speaking;
+    speaking = atoi(s_speaking.c_str());
+
+    cout<<"\nToefl Writing Score: ";
+    cin>>s_writing;
+    writing = atoi(s_writing.c_str());
+
+    //inserting international student to internationalStudentList
+    Toefl toeflScore(reading,listening,speaking,writing);
+    InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
+    internationalStudentList.insertNode(internationalStudent);
+
+    studentNum++;
 }
 
+deleteDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList){
+    string firstName, lastName;
+    
+}
 
 
 

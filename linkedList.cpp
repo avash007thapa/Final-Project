@@ -278,7 +278,7 @@ void LinkedList<T>::delete_head_tail(){
     
     //delete tail
     here = head;
-    while(here->link != nullptr){        
+    while(here->link != nullptr){
         if(here->link->link == nullptr){
             tail = here;
             delete here->link;

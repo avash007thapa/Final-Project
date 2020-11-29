@@ -11,6 +11,8 @@ using namespace std;
 #include "domesticStudent.hpp"
 #include "helper.hpp"
 
+//keeping track of number of students
+int studentNum = 0;
 
 int main(){
 
