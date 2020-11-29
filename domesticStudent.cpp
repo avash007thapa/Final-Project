@@ -27,6 +27,9 @@ void DomesticStudent::print(){
 	cout<<*this;
 }
 
+void DomesticStudent::deleteThis(){
+	delete this;
+}
 
 //comparing the province between two students
 int compareProvince(DomesticStudent student1, DomesticStudent student2){

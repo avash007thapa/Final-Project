@@ -34,6 +34,8 @@ class Student{
 		//virtual function
 		virtual void print();
 
+		virtual void deleteThis();
+
 		//compare functions
 		friend int compareCGPA(Student student1, Student student2);
 		friend int compareResearchScore(Student student1, Student student2);

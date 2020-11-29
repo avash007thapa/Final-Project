@@ -94,6 +94,10 @@ void Student::print(){
 	cout<<*this;
 }
 
+void Student::deleteThis(){
+	delete this;
+}
+
 
 //comparing the CGPA between two students
 int compareCGPA(Student student1, Student student2){
@@ -145,7 +149,7 @@ ostream& operator<<(ostream& outs, Student& student){
 	if(nameLength < 16){
 		outs<<"\t";
 	}
-	
+	outs<<"Research Score: "<<student.researchScore<<"\t";
 	//ie. if CGPA is 4, print out 4.0
 	if((student.CGPA - floor(student.CGPA)) == 0){
 		outs<<"CGPA: "<<student.CGPA<<".0"<<"\t";
@@ -153,7 +157,6 @@ ostream& operator<<(ostream& outs, Student& student){
 	else{
 		outs<<"CGPA: "<<student.CGPA<<"\t";
 	}
-	outs<<"Research Score: "<<student.researchScore<<"\t";
 	outs<<"Application ID: "<<student.applicationID<<endl;
 	return outs;
 }

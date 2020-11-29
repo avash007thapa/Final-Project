@@ -60,7 +60,7 @@ class LinkedList{
         void print();
 
         //merges a domestic and international linked list
-        friend LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList);
+        friend void mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList, LinkedList<Student>& studentList);
 
         //overloaded output operator
         template <class Y>
