@@ -1,6 +1,7 @@
 #ifndef LINKEDLIST_HPP
 #define LINKEDLIST_HPP
 
+using namespace std;
 #include <iostream>
 #include <string>
 #include "student.hpp"
@@ -45,7 +46,7 @@ class LinkedList{
         //deleteNode
         void deleteNode(string firstName, string lastName);
 
-        //print (all sutdents with same CGPA & researchScore)
+        //print (all sutdents with same ApplicationID/CGPA/researchScore/Name)
         void searchApplicationID(int applicationID);
         void searchCGPA(float CGPA);
         void searchResearchScore(int researchScore);
@@ -54,14 +55,16 @@ class LinkedList{
         //delete (deletes head and tail ptrs)
         void delete_head_tail();
         
+        //prints out entire linked list
         void print();
 
-        friend void mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList, LinkedList<Student>& studentList);
+        //merges a domestic and international linked list
+        friend LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList);
 
+        //overloaded output operator
         template <class Y>
         friend std::ostream& operator<<(std::ostream& outs, LinkedList<Y>& linkedList);
 };
-
 
 
 #endif

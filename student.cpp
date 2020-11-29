@@ -1,12 +1,12 @@
-//student.cpp to implement your classes
+
 using namespace std;
 #include "student.hpp"
 #include <stdlib.h> //exit
 #include <iostream> //cout
-#include <string> //strings, compare()
+#include <string> //strings, compare
 #include <cmath>
 
-//Constructors
+//constructors
 Student::Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID){
 	//error checking CGPA, researchScore, applicationID
 	if(CGPA < 0 || round1f(CGPA) > (float)4.3){
@@ -30,13 +30,15 @@ Student::Student(string firstName, string lastName, float CGPA, int researchScor
 	else{
 		this->applicationID = applicationID;
 	}
+	//setting first name and last name 
 	this->firstName = firstName;
 	this->lastName = lastName;
 }
 Student::Student():firstName(""),lastName(""),CGPA(0),researchScore(0),applicationID(0){
 }
 
-//Get functions
+
+//get/set functions
 string Student::getFirstName(){
 	return firstName;
 }
@@ -52,8 +54,6 @@ int Student::getResearchScore(){
 int Student::getApplicationID(){
 	return applicationID;
 }
-
-//Set functions
 void Student::setFirstName(string firstName){
 	this->firstName = firstName;
 }
@@ -88,7 +88,22 @@ void Student::setApplicationID(int applicationID){
 	}
 }
 
-//friend functions
+
+//prints out class information
+void Student::print(){
+	cout<<firstName<<" "<<lastName<<endl;
+	cout<<"Research Score: "<<researchScore<<endl;
+	//ie. if CGPA is 4, print out 4.0
+	if((CGPA - floor(CGPA)) == 0){
+		cout<<"CGPA: "<<CGPA<<".0"<<endl;
+	}
+	else{
+		cout<<"CGPA: "<<CGPA<<endl;
+	}
+	cout<<"Application ID: "<<applicationID<<endl<<endl;
+}
+
+
 //comparing the CGPA between two students
 int compareCGPA(Student& student1, Student& student2){
 	if(student1.CGPA < student2.CGPA){
@@ -127,6 +142,8 @@ int compareOverall(Student& student1, Student& student2){
 	}
 	return 0;
 }
+
+
 //overloading the output operator
 ostream& operator<<(ostream& outs, Student& student){
 	outs<<student.firstName<<" "<<student.lastName<<endl;
@@ -142,18 +159,6 @@ ostream& operator<<(ostream& outs, Student& student){
 	return outs;
 }
 
-void Student::print(){
-	cout<<firstName<<" "<<lastName<<endl;
-	//ie. if CGPA is 4, print out 4.0
-	if((CGPA - floor(CGPA)) == 0){
-		cout<<"CGPA: "<<CGPA<<".0"<<endl;
-	}
-	else{
-		cout<<"CGPA: "<<CGPA<<endl;
-	}
-	cout<<"Research Score: "<<researchScore<<endl;
-	cout<<"Application ID: "<<applicationID<<endl<<endl;
-}
 
 //round function to the first decimal. Used to round the CGPA 
 float round1f(float num){
