@@ -15,8 +15,7 @@ using namespace std;
 
 //constructors 
 template <class T>
-LinkedList<T>::Node::Node(T* student):link(nullptr){
-    new T(student);
+LinkedList<T>::Node::Node(T* student):student(student),link(nullptr){
 }
 template <class T> 
 LinkedList<T>::Node::Node():student(nullptr),link(nullptr){
@@ -96,15 +95,11 @@ LinkedList<T>::~LinkedList(){
 }
 template <class T>
 void LinkedList<T>::deleteLinkedList(NodePtr node){
-    //cout<<*this<<endl;
     if(node != nullptr){
 		deleteLinkedList(node->link);
-        cout<<typeid(node->student).name()<<endl;
-        node->student->print();
-        cout<<endl;
-
-        delete node->student;
-        delete node;	
+        //delete node->student;
+		delete node;
+		node = nullptr;
 	}
 	else{
 		head = nullptr;
@@ -317,9 +312,7 @@ void LinkedList<T>::delete_head_tail(){
     
     //delete head
     head = head->link;
-    cout<<"----DELETED HEAD----\n";
-    here->student->print();
-    cout<<endl<<endl;
+    cout<<"----DELETED HEAD----\n"<<*(here->student)<<endl<<endl;
     delete here;
     
     //delete tail
@@ -327,9 +320,7 @@ void LinkedList<T>::delete_head_tail(){
     while(here->link != nullptr){
         if(here->link->link == nullptr){
             tail = here;
-            cout<<"----DELETED TAIL----\n";
-            here->link->student->print();
-            cout<<endl<<endl;
+            cout<<"----DELETED TAIL----\n"<<*(here->link->student)<<endl<<endl;
             delete here->link;
             tail->link = nullptr;
             break;

@@ -83,18 +83,12 @@ void domFile2DomList(LinkedList<DomesticStudent>& domesticStudentList, int& stud
             cout<<"Error(domFile2DomList): Missing inputs from file\n";
             exit(-1);
         }
+
+        //inserting domestic student to domesticStudentList
+        DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
+        domesticStudentList.insertNode(domesticStudent);
         
-        try{
-            //inserting domestic student to domesticStudentList
-            DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
-            domesticStudentList.insertNode(domesticStudent);
-            
-            studentNum++; 
-        }
-        catch(bad_alloc){
-            cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
-            exit(1);
-        }
+        studentNum++; 
     }
     //closing the file
     domesticFile.close();
@@ -158,18 +152,12 @@ void intFile2IntList(LinkedList<InternationalStudent>& internationalStudentList,
             exit(-1);
         }
 
-        try{
-            //inserting international student to internationalStudentList
-            Toefl toeflScore(reading,listening,speaking,writing);
-            InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
-            internationalStudentList.insertNode(internationalStudent);
+        //inserting international student to internationalStudentList
+        Toefl toeflScore(reading,listening,speaking,writing);
+        InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
+        internationalStudentList.insertNode(internationalStudent);
 
-            studentNum++;
-        }
-        catch(bad_alloc){
-            cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
-            exit(1);
-        }
+        studentNum++;
   }
   //closing file
   internationalFile.close();
@@ -247,17 +235,11 @@ void insertDomesticStudent(LinkedList<DomesticStudent>& linkedList,int& studentN
     researchScore = atoi(s_researchScore.c_str());
 
     //inserting domestic student to domesticStudentList
-    try{
-        DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
-        linkedList.insertNode(domesticStudent);
-        cout<<"\n\n----INSERTED----\n"<<*domesticStudent<<endl;
-        studentNum++;
-    }
-    catch(bad_alloc){
-        cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
-        exit(1);
-    }
-    
+    DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
+    linkedList.insertNode(domesticStudent);
+
+    cout<<"\n\n----INSERTED----\n"<<*domesticStudent<<endl;
+    studentNum++;
 }
 
 void insertDomesticStudent(LinkedList<Student>& linkedList,int& studentNum){
@@ -287,17 +269,11 @@ void insertDomesticStudent(LinkedList<Student>& linkedList,int& studentNum){
     researchScore = atoi(s_researchScore.c_str());
 
     //inserting domestic student to domesticStudentList
-    try{
-        DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
-        linkedList.insertNode(domesticStudent);
+    DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
+    linkedList.insertNode(domesticStudent);
 
-        cout<<"\n\n----INSERTED----\n"<<*domesticStudent<<endl;
-        studentNum++;
-    }
-    catch(bad_alloc){
-        cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
-        exit(1);       
-    }
+    cout<<"\n\n----INSERTED----\n"<<*domesticStudent<<endl;
+    studentNum++;
 }
 
 void insertInternationalStudent(LinkedList<InternationalStudent>& linkedList, int& studentNum){
@@ -343,19 +319,13 @@ void insertInternationalStudent(LinkedList<InternationalStudent>& linkedList, in
     cin>>s_writing;
     writing = atoi(s_writing.c_str());
 
-    try{
-        //inserting international student to internationalStudentList
-        Toefl toeflScore(reading,listening,speaking,writing);
-        InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
-        linkedList.insertNode(internationalStudent);
+    //inserting international student to internationalStudentList
+    Toefl toeflScore(reading,listening,speaking,writing);
+    InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
+    linkedList.insertNode(internationalStudent);
 
-        cout<<"\n\n----INSERTED----\n"<<*internationalStudent<<endl;
-        studentNum++;
-    }
-    catch(bad_alloc){
-        cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
-        exit(1);
-    }
+    cout<<"\n\n----INSERTED----\n"<<*internationalStudent<<endl;
+    studentNum++;
 }
 
 void insertInternationalStudent(LinkedList<Student>& linkedList, int& studentNum){
@@ -401,19 +371,13 @@ void insertInternationalStudent(LinkedList<Student>& linkedList, int& studentNum
     cin>>s_writing;
     writing = atoi(s_writing.c_str());
 
-    try{
-        //inserting international student to internationalStudentList
-        Toefl toeflScore(reading,listening,speaking,writing);
-        InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
-        linkedList.insertNode(internationalStudent);
+    //inserting international student to internationalStudentList
+    Toefl toeflScore(reading,listening,speaking,writing);
+    InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
+    linkedList.insertNode(internationalStudent);
 
-        cout<<"\n\n----INSERTED----\n"<<*internationalStudent<<endl;
-        studentNum++;
-    }
-    catch(bad_alloc){
-        cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
-        exit(1);
-    }
+    cout<<"\n\n----INSERTED----\n"<<*internationalStudent<<endl;
+    studentNum++;
 }
 
 void deleteDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList){
@@ -462,30 +426,24 @@ float round1f(float num){
 
 
 //Merge (merges a domestic list and an international list into a student list)
-void mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList, LinkedList<Student>& studentList){
-    try{
-        auto dHere = domesticList.head;
-        while(dHere != nullptr){
-            DomesticStudentPtr domesticStudent = new DomesticStudent(*(dHere->student));
-            studentList.insertNode(domesticStudent);
-            dHere = dHere->link;
-            // studentList.insertNode(dHere->student);
-            // dHere = dHere->link;
-        }
+LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList){
+    LinkedList<Student> returnList;
+    
+    auto dHere = domesticList.head;
+    while(dHere != nullptr){
+        DomesticStudentPtr domesticStudent = new DomesticStudent(*(dHere->student));
+        returnList.insertNode(domesticStudent);
+        dHere = dHere->link;
+    }
 
-        auto iHere = internationalList.head;
-        
-        while(iHere != nullptr){
-            if(iHere->student->getToeflScore().passed()){
-                InternationalStudentPtr internationalStudent = new InternationalStudent(*(iHere->student));
-                studentList.insertNode(internationalStudent);
-                // studentList.insertNode(iHere->student);
-            }
-            iHere = iHere->link;
+    auto iHere = internationalList.head;
+    
+    while(iHere != nullptr){
+        if(iHere->student->getToeflScore().passed()){
+            InternationalStudentPtr internationalStudent = new InternationalStudent(*(iHere->student));
+            returnList.insertNode(iHere->student);
         }
+        iHere = iHere->link;
     }
-    catch(bad_alloc){
-        cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
-        exit(1);
-    }
+    return returnList;
 }
