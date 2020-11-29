@@ -36,18 +36,23 @@ int main(){
     
     //interface
     string userInput;
-    while(true){
+    // while(true){
 
-        outputMenu();
+        // outputMenu();
 
-        cout<<"Enter input: ";
-        cin>>userInput;
-        cout<<"\n\n";      
+        // cout<<"Enter input: ";
+        // cin>>userInput;
+        // cout<<"\n\n";      
       
-        //error checking
-        while(!inputIsValid(userInput)){
+        // //error checking
+        // while(!inputIsValid(userInput)){
             
-            outputMenu();
+        //     outputMenu();
+
+
+
+
+
 
      // *********************************************************  UNIT TEST *******************************************************
 
@@ -161,7 +166,7 @@ int main(){
     // cout<<domesticStudentList<<endl;
 
 
-    cout << "\n************************************************************* Deleting international students by first name, last name basis  *************************************************************\n";
+    // cout << "\n************************************************************* Deleting international students by first name, last name basis  *************************************************************\n";
     
     // Toefl toefl5(20,20,20,20);
     // InternationalStudent intStu5("Tingting","Zhao",(float)3.40,83,20201107,"Korea",toefl5);
@@ -179,7 +184,11 @@ int main(){
 
   // ***********************************************************  PART 5 ********************************************************
 
+    cout << "\n************************************************************* Deleting domestic students' linked list head and tail *************************************************************\n";
     
+    
+    domesticStudentList.delete_head_tail();
+    cout<<domesticStudentList<<endl;
   // ***********************************************************  PART 6 ********************************************************
 
   // ***********************************************************  PART 7 ********************************************************
@@ -210,28 +219,33 @@ int main(){
   //cout<<studentList<<endl;
   //studentList = mergeList(domesticStudentList,internationalStudentList);
   
-            cout<<"Enter input: ";
-            cin>>userInput;
-            cout<<"\n\n";
-        }
 
-        int inputNum = atoi(userInput.c_str());
-        switch(inputNum){
-            case 1 :
-                cout<<"(1) Exiting Program\n"<<endl; 
-                return 0;
-            case 2 :
-                cout<<"(2) Insert Node"<<endl;
-                cout<<"****************************************************************\n";
-                cout<<"(1) Create a new domestic student\n";
-                cout<<"(2) Create a new international student\n";
-                
 
-            case 3 :
-                cout << "DELETE SELECTED" << endl;
-                
-            case 4 :
-                cout << "MERGE SELECTED" << endl;
-        }        
-    }
+
+
+
+        //     cout<<"Enter input: ";
+        //     cin>>userInput;
+        //     cout<<"\n\n";
+        // }
+
+    int inputNum = atoi(userInput.c_str());
+    switch(inputNum){
+        case 1 :
+            cout<<"(1) Exiting Program\n"<<endl; 
+            return 0;
+        case 2 :
+            cout<<"(2) Insert Node"<<endl;
+            cout<<"****************************************************************\n";
+            cout<<"(1) Create a new domestic student\n";
+            cout<<"(2) Create a new international student\n";
+            
+
+        case 3 :
+            cout << "DELETE SELECTED" << endl;
+            
+        case 4 :
+            cout << "MERGE SELECTED" << endl;
+    }        
+
 }

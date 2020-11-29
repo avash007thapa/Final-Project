@@ -271,16 +271,22 @@ void LinkedList<T>::searchName(std::string firstName, std::string lastName){
 template <class T>
 void LinkedList<T>::delete_head_tail(){
     NodePtr here = head;
+    
+    //delete head
     head = head->link;
     delete here;
     
+    //delete tail
     here = head;
-
-    while(here != nullptr){
-
+    while(here->link != nullptr){        
+        if(here->link->link == nullptr){
+            tail = here;
+            delete here->link;
+            tail->link = nullptr;
+        }
+        here = here->link;
     }
-    head = nullptr;
-    tail = nullptr;
+    cout<<"out\n"; return;
 }
 
 
