@@ -1,6 +1,6 @@
-
 using namespace std;
 #include "student.hpp"
+#include "helper.hpp"
 #include <stdlib.h> //exit
 #include <iostream> //cout
 #include <string> //strings, compare
@@ -145,6 +145,7 @@ ostream& operator<<(ostream& outs, Student& student){
 	if(nameLength < 16){
 		outs<<"\t";
 	}
+	
 	//ie. if CGPA is 4, print out 4.0
 	if((student.CGPA - floor(student.CGPA)) == 0){
 		outs<<"CGPA: "<<student.CGPA<<".0"<<"\t";
@@ -155,10 +156,4 @@ ostream& operator<<(ostream& outs, Student& student){
 	outs<<"Research Score: "<<student.researchScore<<"\t";
 	outs<<"Application ID: "<<student.applicationID<<endl;
 	return outs;
-}
-
-
-//round function to the first decimal. Used to round the CGPA 
-float round1f(float num){
-	return roundf(num * 10)/10;
 }

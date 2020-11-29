@@ -50,10 +50,10 @@ int compareOverall(DomesticStudent student1, DomesticStudent student2){
 	return 0;
 }
 
+
 //overloading the output operator for DomesticStudent objects
 ostream& operator<<(ostream& outs, DomesticStudent& student){
 	int nameLength = student.firstName.length() + student.lastName.length() + 1;
-	
 	outs<<student.firstName<<" "<<student.lastName<<"\t";
 	if(nameLength < 8){
 		outs<<"\t";

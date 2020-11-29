@@ -1,4 +1,3 @@
-
 using namespace std;
 #include "internationalStudent.hpp"
 #include "toefl.hpp"
@@ -37,7 +36,7 @@ void InternationalStudent::print(){
 
 
 //comparing countries between students
-int compareCountry(InternationalStudent& student1, InternationalStudent& student2){
+int compareCountry(InternationalStudent student1, InternationalStudent student2){
 	return student1.country.compare(student2.country);
 }
 //comparing the overall score between two students

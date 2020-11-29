@@ -97,12 +97,8 @@ template <class T>
 void LinkedList<T>::deleteLinkedList(NodePtr node){
     if(node != nullptr){
 		deleteLinkedList(node->link);
-<<<<<<< HEAD
-		delete node->student;
-        delete node;
-=======
+        delete node->student;
 		delete node;
->>>>>>> parent of 4e9b469... Final final base code (w/o test bed)
 		node = nullptr;
 	}
 	else{
@@ -171,18 +167,16 @@ void LinkedList<T>::deleteNode(string firstName, string lastName){
         return;
 	}
     while(here != nullptr){
-        cout << here->student->firstName << " " << here->student->lastName << endl;
-        cout << ((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)) <<endl;
-
         //if name in the linked list matches the input name
         if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
             cout<<"----DELETED----\n"<<*(here->student)<<"\n";
+            counter++;
             //delete at head
             if(here == head){
                 prev = head;
                 head = head->link;
                 delete prev;
-                prev->link = nullptr;
+                here = head;
             }
             //delete at tail
             else if(here == tail){
@@ -190,20 +184,21 @@ void LinkedList<T>::deleteNode(string firstName, string lastName){
                 here->link = nullptr;
                 tail = prev;
                 prev->link = nullptr;
+                break;
             }
             //delete in list
             else{
                 prev->link = here->link;
                 delete here;
-                here->link = nullptr;
+                here = prev;
             }
         }   
         prev = here;
         here = here->link;
     }
-    cout<< counter;
+    //if student isn't in list
     if(counter == 0){
-        cout << "\nThe student with name " << firstName << " " << lastName << " was not found!\n\n\n"; 
+        cout <<"Students with (name = "<<firstName<<" "<<lastName<<") are not in this list.\n\n"; 
     }
 }
 
@@ -215,17 +210,16 @@ void LinkedList<T>::searchApplicationID(int applicationID){
     int counter = 0;
     while(here != nullptr){
         if(here->student->applicationID == applicationID){
-            counter++;
             cout<<*(here->student)<<endl;
-            flag = true;
+            counter++;
         }
         here = here->link;
     }
     if(counter == 0){
-        cout<<"Students with (ApplicationID = "<<applicationID<<") are not in this list.\n";
+        cout<<"Students with (ApplicationID = "<<applicationID<<") are not in this list.\n\n";
     }
     else{
-        cout<<"There are "<<counter"<< students 
+        cout<<"Found "<<counter<<" students\n\n";
     }
 }
 
@@ -233,16 +227,19 @@ void LinkedList<T>::searchApplicationID(int applicationID){
 template <class T>
 void LinkedList<T>::searchCGPA(float CGPA){
     NodePtr here = head;
-    bool flag = false;
+    int counter = 0;
     while(here != nullptr){
         if(here->student->CGPA == CGPA){
             cout<<*(here->student)<<endl;
-            flag = true;
+            counter++;
         }
         here = here->link;
     }
-    if(flag == false){
-        cout<<"Students with (CGPA = "<<CGPA<<") are not in this list.\n";
+    if(counter == 0){
+        cout<<"Students with (CGPA = "<<CGPA<<") are not in this list.\n\n";
+    }
+    else{
+        cout<<"Found "<<counter<<" students\n\n";
     }
 }
 
@@ -250,16 +247,19 @@ void LinkedList<T>::searchCGPA(float CGPA){
 template <class T>
 void LinkedList<T>::searchResearchScore(int researchScore){
     NodePtr here = head;
-    bool flag = false;
+    int counter = 0;
     while(here != nullptr){
         if(here->student->researchScore == researchScore){
             cout<<*(here->student)<<endl;
-            flag = true;
+            counter++;
         }
         here = here->link;
     }
-    if(flag == false){
-        cout<<"Students with (reseach score = "<<researchScore<<") are not in this list.\n";
+    if(counter == 0){
+        cout<<"Students with (reseach score = "<<researchScore<<") are not in this list.\n\n";
+    }
+    else{
+        cout<<"Found "<<counter<<" students\n\n";
     }
 }
 
@@ -267,35 +267,40 @@ void LinkedList<T>::searchResearchScore(int researchScore){
 template <class T>
 void LinkedList<T>::searchName(string firstName, string lastName){
     NodePtr here = head;
-    bool flag = false;
+    int counter = 0;
     while(here != nullptr){
         if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
             cout<<*(here->student)<<endl;
-            flag = true;
+            counter++;
         }
         here = here->link;
     }
-    if(flag == false){
-        cout<<"Students with (name = "<<firstName<<" "<<lastName<<") are not in this list.\n";
+    if(counter == 0){
+        cout<<"Students with (name = "<<firstName<<" "<<lastName<<") are not in this list.\n\n";
+    }
+    else{
+        cout<<"Found "<<counter<<" students\n\n";
     }
 }
 
 
-//prints all students above teh CGPA and research score threshold
+//prints all students above the CGPA and research score threshold
 template <class T>
 void LinkedList<T>::searchThreshold(float CGPAThreshold, int researchScoreThreshold){
-    bool flag;
     NodePtr here = head;
-
+    int counter = 0;
     while(here != nullptr){
         if((here->student->CGPA >= CGPAThreshold) && (here->student->researchScore >= researchScoreThreshold)){
             cout<<*(here->student)<<endl;
-            flag = true;
+            counter++;
         }
         here = here->link;
     }
-    if(flag == false){
-        cout<<"No students with (CGPA = "<<CGPAThreshold<<" research score"<<researchScoreThreshold<<") in this list.\n";
+    if(counter == 0){
+        cout<<"No students with (CGPA = "<<CGPAThreshold<<" research score"<<researchScoreThreshold<<") in this list.\n\n";
+    }
+    else{
+        cout<<"Found "<<counter<<" students\n\n";
     }
 }
 
@@ -307,6 +312,7 @@ void LinkedList<T>::delete_head_tail(){
     
     //delete head
     head = head->link;
+    cout<<"----DELETED HEAD----\n"<<*(here->student)<<endl<<endl;
     delete here;
     
     //delete tail
@@ -314,12 +320,13 @@ void LinkedList<T>::delete_head_tail(){
     while(here->link != nullptr){
         if(here->link->link == nullptr){
             tail = here;
+            cout<<"----DELETED TAIL----\n"<<*(here->link->student)<<endl<<endl;
             delete here->link;
             tail->link = nullptr;
+            break;
         }
         here = here->link;
     }
-    cout<<"out\n"; return;
 }
 
 
