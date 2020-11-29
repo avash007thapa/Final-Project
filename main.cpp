@@ -5,6 +5,9 @@ using namespace std;
 #include <cstdlib> //atof and atoi
 #include "linkedList.cpp"
 #include "linkedList.hpp"
+#include "student.hpp"
+#include "internationalStudent.hpp"
+#include "domesticStudent.hpp"
 
 using namespace std;
 
@@ -19,7 +22,22 @@ void outputMenu(){
   cout << "\n****************************************************************\n";    
 } 
 
+//Merge (merges a domestic list and an international list into a student list)
+LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList){
+    LinkedList<Student> returnList;
+    LinkedList<DomesticStudent> CopyOfDomesticList;
+    CopyOfDomesticList.head = (domesticList.deepCopyLinkedList(domesticList.head));
 
+
+    typename LinkedList<InternationalStudent>::NodePtr here = internationalList.head;
+    while(here != nullptr){
+        if(!here->student.getToeflScore().passed()){
+            here = here->link;
+        }
+        returnList.insertNode(here->student);
+    }
+    return returnList;
+}
 
 int main(){
   
@@ -211,10 +229,9 @@ int main(){
   // M E N U 
   
   cout<<"TESTING\n\n\n"<<endl;
-  LinkedList<Student> students1;
-  LinkedList<Student> students2;
-  studentList = merge(students1,students2);
+  studentList = mergeList(domesticStudentList,internationalStudentList);
   
+
   // int menuChoice;
   
   // while(true){

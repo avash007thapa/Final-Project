@@ -20,10 +20,11 @@ class LinkedList{
                 Node();
         };
         typedef Node* NodePtr;
-
+        
         NodePtr head;
         NodePtr tail;
     public:
+        
         //constructors
         LinkedList(T student);
         LinkedList();
@@ -51,13 +52,11 @@ class LinkedList{
         void searchResearchScore(int researchScore);
         void searchName(std::string firstName, std::string lastName);
         
-
         //delete (deletes head and tail ptrs)
         void delete_head_tail();
-
-        //merge
-        friend LinkedList<Student> merge(LinkedList<Student>& domesticList, LinkedList<Student>& internationalList);
-
+        
+        friend LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList);
+        
         template <class Y>
         friend std::ostream& operator<<(std::ostream& outs, LinkedList<Y>& linkedList);
 };
