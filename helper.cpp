@@ -4,6 +4,7 @@ using namespace std;
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
+#include <cmath>
 #include "linkedList.cpp"
 #include "linkedList.hpp"
 #include "student.hpp"
@@ -13,7 +14,7 @@ using namespace std;
 
 
 //outputs the main menu
-void outputMenu(){
+void outputMenu(bool merged){
     cout << "Input one of the following";
     cout << "\n****************************************************************\n";
     cout << " (1) - Exit the program\n";
@@ -21,9 +22,11 @@ void outputMenu(){
     cout << " (3) - Print a list\n";
     cout << " (4) - Create new student\n";
     cout << " (5) - Delete a student\n";
-    cout << " (6) - Delete head and tail nodes of domestic and international student list\n";
-    cout << " (7) - Merge the domestic and international student list";
-    cout << "\n****************************************************************\n";    
+    cout << " (6) - Delete head and tail nodes of a list\n";
+    if(merged == false){
+        cout << " (7) - Merge the domestic and international student list\n";
+    }
+    cout << "****************************************************************\n";    
 } 
 
 bool inputIsValid(string input, int numOfInputs){
@@ -48,14 +51,11 @@ void domFile2DomList(LinkedList<DomesticStudent>& domesticStudentList, int& stud
         exit(-1);
     }
 
-    //prints file format
     getline(domesticFile, line);
-    cout << "File format: " << line << endl;
 
     //checks if domestic file is open
     if (domesticFile.is_open()){   
-        cout<<endl<<"The "<<"domestic-stu.txt"<<" file was opened successfully!\n";
-        cout<<"\nFile processing has now begun...\n\n";
+        cout<<endl<<"\nThe "<<"domestic-stu.txt"<<" file was opened successfully!\n";
     }
     
 
@@ -107,14 +107,11 @@ void intFile2IntList(LinkedList<InternationalStudent>& internationalStudentList,
         exit(-1);
     }
 
-    //prints file format
     getline(internationalFile, line);
-    cout << "File format: " << line << endl;
 
     //checks if internatinal file is open
     if (internationalFile.is_open()){   
-        cout<<endl<<"The "<<"international-stu.txt"<<" file was opened successfully!\n";
-        cout<<"\nFile processing has now begun...\n\n";
+        cout<<endl<<"The "<<"international-stu.txt"<<" file was opened successfully!\n\n";
     }
 
     //gets inputs from text file and inputs into lined list
@@ -212,7 +209,6 @@ void countryIsValid(string& country){
     exit(-1);  
 }
 
-
 void insertDomesticStudent(LinkedList<DomesticStudent>& linkedList,int& studentNum){
     string firstName, lastName, province, s_CGPA, s_researchScore, line;
     float CGPA;
@@ -243,7 +239,7 @@ void insertDomesticStudent(LinkedList<DomesticStudent>& linkedList,int& studentN
     DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
     linkedList.insertNode(domesticStudent);
 
-    cout<<"\n\nInserted:\n"<<*domesticStudent<<endl;
+    cout<<"\n\n----INSERTED----\n"<<*domesticStudent<<endl;
     studentNum++;
 }
 
@@ -301,11 +297,11 @@ void insertInternationalStudent(LinkedList<InternationalStudent>& linkedList, in
     countryIsValid(country);
 
     cout<<"\nCGPA: ";
-    cin>>CGPA;
+    cin>>s_CGPA;
     CGPA = atof(s_CGPA.c_str());
 
     cout<<"\nResearch Score: ";
-    cin>>researchScore;
+    cin>>s_researchScore;
     researchScore = atoi(s_researchScore.c_str());
 
     cout<<"\nToefl Reading Score: ";
@@ -329,6 +325,7 @@ void insertInternationalStudent(LinkedList<InternationalStudent>& linkedList, in
     InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
     linkedList.insertNode(internationalStudent);
 
+    cout<<"\n\nInserted:\n"<<*internationalStudent<<endl;
     studentNum++;
 }
 
@@ -352,11 +349,11 @@ void insertInternationalStudent(LinkedList<Student>& linkedList, int& studentNum
     countryIsValid(country);
 
     cout<<"\nCGPA: ";
-    cin>>CGPA;
+    cin>>s_CGPA;
     CGPA = atof(s_CGPA.c_str());
 
     cout<<"\nResearch Score: ";
-    cin>>researchScore;
+    cin>>s_researchScore;
     researchScore = atoi(s_researchScore.c_str());
 
     cout<<"\nToefl Reading Score: ";
@@ -380,6 +377,7 @@ void insertInternationalStudent(LinkedList<Student>& linkedList, int& studentNum
     InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
     linkedList.insertNode(internationalStudent);
 
+    cout<<"\n\n---Inserted---\n"<<*internationalStudent<<endl;
     studentNum++;
 }
 
@@ -389,7 +387,7 @@ void deleteDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList){
     cin>>firstName;
     formatString(firstName);
 
-    cout<<"\nLast Name: ";
+    cout<<"Last Name: ";
     cin>>lastName;
     formatString(lastName);
 
@@ -402,7 +400,7 @@ void deleteInternationalStudent(LinkedList<InternationalStudent>& internationalS
     cin>>firstName;
     formatString(firstName);
 
-    cout<<"\nLast Name: ";
+    cout<<"Last Name: ";
     cin>>lastName;
     formatString(lastName);
 
@@ -415,17 +413,17 @@ void deleteStudent(LinkedList<Student>& studentList){
     cin>>firstName;
     formatString(firstName);
 
-    cout<<"\nLast Name: ";
+    cout<<"Last Name: ";
     cin>>lastName;
     formatString(lastName);
 
     studentList.deleteNode(firstName,lastName);
 }
 
-
-
-
-
+//round function to the first decimal. Used to round the CGPA 
+float round1f(float num){
+	return roundf(num * 10)/10;
+}
 
 
 //Merge (merges a domestic list and an international list into a student list)
