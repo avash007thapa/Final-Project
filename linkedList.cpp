@@ -305,7 +305,6 @@ void LinkedList<T>::print(){
 }
 
 
-
 //overload output operators
 template <class T>
 std::ostream& operator<<(std::ostream& outs, LinkedList<T>& linkedList){
