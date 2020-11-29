@@ -159,6 +159,7 @@ template <class T>
 void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
     NodePtr prev = nullptr;
 	NodePtr here = head;
+    int counter = 0;
     
     //if head is nullptr, list is empty
 	if(head == nullptr){
@@ -166,6 +167,8 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
         return;
 	}
     while(here != nullptr){
+        cout << here->student->firstName << " " << here->student->lastName << endl;
+        cout << ((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)) <<endl;
 
         //if name in the linked list matches the input name
         if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
@@ -174,7 +177,6 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
             if(here == head){
                 prev = head;
                 head = head->link;
-
                 delete prev;
                 prev->link = nullptr;
             }
@@ -182,7 +184,6 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
             else if(here == tail){
                 delete here;
                 here->link = nullptr;
-
                 tail = prev;
                 prev->link = nullptr;
             }
@@ -192,9 +193,13 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
                 delete here;
                 here->link = nullptr;
             }
-        }
+        }   
         prev = here;
         here = here->link;
+    }
+    cout<< counter;
+    if(counter == 0){
+        cout << "\nThe student with name " << firstName << " " << lastName << " was not found!\n\n\n"; 
     }
 }
 
@@ -279,7 +284,9 @@ void LinkedList<T>::delete_head_tail(){
             delete here->link;
             tail->link = nullptr;
         }
+        here = here->link;
     }
+    cout<<"out\n"; return;
 }
 
 
