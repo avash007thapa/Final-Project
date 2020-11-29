@@ -97,8 +97,12 @@ template <class T>
 void LinkedList<T>::deleteLinkedList(NodePtr node){
     if(node != nullptr){
 		deleteLinkedList(node->link);
+<<<<<<< HEAD
 		delete node->student;
         delete node;
+=======
+		delete node;
+>>>>>>> parent of 4e9b469... Final final base code (w/o test bed)
 		node = nullptr;
 	}
 	else{
