@@ -13,55 +13,37 @@ DomesticStudent::DomesticStudent():Student(),province(""){
 }
 
 
-//set functoins
+//get/set functoins
 string DomesticStudent::getProvince(){
 	return province;
 }
 void DomesticStudent::setProvince(string province){
 	this->province = province;
 }
-	
 
-//friend functions
+
+//prints out class information
+void DomesticStudent::print(){
+	cout<<firstName<<" "<<lastName<<endl;
+	cout<<"Research Score: "<<researchScore<<endl;
+	//ie. if CGPA is 4, print out 4.0
+	if((CGPA - floor(CGPA)) == 0){
+		cout<<"CGPA: "<<CGPA<<".0"<<endl;
+	}
+	else{
+		cout<<"CGPA: "<<CGPA<<endl;
+	}
+	cout<<"Province: "<<province<<endl;
+	cout<<"Application ID: "<<applicationID<<endl;
+}
+
+
 //comparing the province between two students
 int compareProvince(DomesticStudent student1, DomesticStudent student2){
 	return student1.province.compare(student2.province);
 }
-//comparing the overall score between two students
-int compareOverall(DomesticStudent& student1, DomesticStudent& student2){	
-	//cout<<"ITS CALLING THE RIGHT ONE\n";
-	if(compareResearchScore(student1,student2) == -1){
-		return 1;
-	}
-	else if(compareResearchScore(student1,student2) == 0){
-		if(compareCGPA(student1,student2) == -1){
-			return 1;
-		}
-		else if(compareCGPA(student1,student2) == 0){
-			if(compareProvince(student1,student2) == -1){
-				return 1;
-			}
-		}
-	}
-	return 0;
-}
-//comparing overall between a domestic student and an international student
-int compareOverall(DomesticStudent& student1, InternationalStudent& student2){
-	cout<<"ITS CALLING THE RIGHT ONE\n";
-	//upcasting student1 and student 2
-	StudentPtr stu1 = &student1;
-	StudentPtr stu2 = &student2;
-	
-	if(compareResearchScore(*stu1,*stu2) == -1){
-		return 1;
-	}
-	else if(compareResearchScore(*stu1,*stu2) == 0){
-		if(compareCGPA(*stu1,*stu2) == -1){
-			return 1;
-		}
-	}
-	return 0;
-}
+
+
 //overloading the output operator for DomesticStudent objects
 ostream& operator<<(ostream& outs, DomesticStudent& student){
 	outs<<student.firstName<<" "<<student.lastName<<endl;
@@ -76,18 +58,4 @@ ostream& operator<<(ostream& outs, DomesticStudent& student){
 	outs<<"Province: "<<student.province<<endl;
 	outs<<"Application ID: "<<student.applicationID<<endl;
 	return outs;
-}
-
-void DomesticStudent::print(){
-	cout<<firstName<<" "<<lastName<<endl;
-	cout<<"Research Score: "<<researchScore<<endl;
-	//ie. if CGPA is 4, print out 4.0
-	if((CGPA - floor(CGPA)) == 0){
-		cout<<"CGPA: "<<CGPA<<".0"<<endl;
-	}
-	else{
-		cout<<"CGPA: "<<CGPA<<endl;
-	}
-	cout<<"Province: "<<province<<endl;
-	cout<<"Application ID: "<<applicationID<<endl;
 }

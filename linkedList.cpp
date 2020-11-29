@@ -1,15 +1,19 @@
 #ifndef LINKEDLIST_CPP
 #define LINEDLIST_CPP
 
+using namespace std;
 #include "linkedList.hpp"
 #include "student.hpp"
 #include "domesticStudent.hpp"
 #include "internationalStudent.hpp"
+#include "helper.hpp"
 #include <string>
 #include <typeinfo>
-using namespace std;
 
-//Node Class implementation
+
+//Node class implementation -------------------------------------------------------------------/
+
+//constructors 
 template <class T>
 LinkedList<T>::Node::Node(T* student):student(student),link(nullptr){
 }
@@ -18,7 +22,8 @@ LinkedList<T>::Node::Node():student(nullptr),link(nullptr){
 }
 
 
-//LinkedList class implementation
+//Linked List implementation -------------------------------------------------------------------/
+
 //constructors
 template <class T>
 LinkedList<T>::LinkedList(T* student){
@@ -72,7 +77,7 @@ typename LinkedList<T>::NodePtr LinkedList<T>::deepCopyLinkedList(NodePtr node){
 }
 
 
-//overloading assignment operator
+//overloaded assignment operator
 template <class T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& linkedList){
     if(head != linkedList.head){
@@ -103,7 +108,7 @@ void LinkedList<T>::deleteLinkedList(NodePtr node){
 
 
 
-//insertNode
+//inserts node in a sorted order in the linked list
 template <class T>
 void LinkedList<T>::insertNode(T* student){
     try{
@@ -149,12 +154,14 @@ void LinkedList<T>::insertNode(T* student){
 }
 
 
-//deleteNode
+//deletes all nodes that have the same first name and last name
 template <class T>
 void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
     NodePtr prev = nullptr;
 	NodePtr here = head;
     int counter = 0;
+    
+    //if head is nullptr, list is empty
 	if(head == nullptr){
 		std::cerr << "Error(deleteNode): List is already empty\n";
         return;
@@ -162,6 +169,8 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
     while(here != nullptr){
         cout << here->student->firstName << " " << here->student->lastName << endl;
         cout << ((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)) <<endl;
+
+        //if name in the linked list matches the input name
         if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
             counter++;
             std::cout<<"DELETED\n"<<*(here->student)<<"\n\n";
@@ -171,12 +180,14 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
                 delete prev;
                 prev->link = nullptr;
             }
+            //delete at tail
             else if(here == tail){
                 delete here;
                 here->link = nullptr;
                 tail = prev;
                 prev->link = nullptr;
             }
+            //delete in list
             else{
                 prev->link = here->link;
                 delete here;
@@ -193,7 +204,7 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
 }
 
 
-//print (all sutdents with same applicationID/CGPA/researchScore/name)
+//print all sutdents with same applicationID/CGPA/researchScore/name
 template <class T>
 void LinkedList<T>::searchApplicationID(int applicationID){
     NodePtr here = head;
@@ -255,15 +266,25 @@ void LinkedList<T>::searchName(std::string firstName, std::string lastName){
     }
 }
 
-//delete (deletes head and tail ptrs)
+
+//deletes head both the head and tail nodes from the linked list
 template <class T>
 void LinkedList<T>::delete_head_tail(){
-    delete head;
-    delete tail;
+    NodePtr here = head;
+    head = head->link;
+    delete here;
+    
+    here = head;
+
+    while(here != nullptr){
+
+    }
     head = nullptr;
     tail = nullptr;
 }
 
+
+//prints all student info in the linked list
 template <class T>
 void LinkedList<T>::print(){
     auto here = head;

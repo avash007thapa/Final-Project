@@ -18,17 +18,21 @@ class InternationalStudent:public Student{
 		InternationalStudent(string firstName, string lastName, float CGPA, int researchScore, int applicationID, string country, Toefl toeflScore);
 		InternationalStudent();
 				
-		//Member functions
+		//get/set functions
 		string getCountry();
 		Toefl getToeflScore();
 		void setCountry(string country);
 		void setToeflScore(Toefl toeflScore);
-
-		//friend functions
-		friend int compareCountry(InternationalStudent& student1, InternationalStudent& student2);
-		friend int compareOverall(InternationalStudent& student1, InternationalStudent& student2);
-		friend ostream& operator<<(ostream& outs, InternationalStudent& student);
+		
+		//virtual function
 		virtual void print();
+
+		//compare function
+		friend int compareCountry(InternationalStudent& student1, InternationalStudent& student2);
+		
+		//overloaded output operator
+		friend ostream& operator<<(ostream& outs, InternationalStudent& student);
+		
 };
 typedef InternationalStudent* InternationalStudentPtr;
 

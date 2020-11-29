@@ -12,20 +12,23 @@ class DomesticStudent:public Student{
 	private:
 		string province;
 	public:
-		//Constructors
+		//constructors
 		DomesticStudent(string firstName, string lastName, float CGPA, int researchScore, int applicationID, string province);
 		DomesticStudent();
 		
-		//Member functions
+		//get/set functions
 		string getProvince();
 		void setProvince(string province);
 
-		//friend functions
-		friend int compareProvince(DomesticStudent student1, DomesticStudent student2);
-		friend int compareOverall(Student& student1, Student& student2);
-		
-		friend ostream& operator <<(ostream& outs, DomesticStudent& student);
+		//virtual function
 		virtual void print();
+
+		//compare function
+		friend int compareProvince(DomesticStudent student1, DomesticStudent student2);
+		
+		//overloaded output operator
+		friend ostream& operator <<(ostream& outs, DomesticStudent& student);
+		
 };
 typedef DomesticStudent* DomesticStudentPtr;
 

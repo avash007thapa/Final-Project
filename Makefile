@@ -6,12 +6,16 @@ run: main
 	./main
 
 #link main.o and student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o to executable main
-main: main.o student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o
-	g++ -g -o main main.o student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o
+main: main.o helper.o student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o
+	g++ -g -o main main.o helper.o student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o
 
 #compile the main.cpp to main.o
 main.o: main.cpp
 	g++ -g -c main.cpp -std=c++11
+
+#compile the helper.cpp to helper.o
+helper.o: helper.cpp
+	g++ -g -c helper.cpp -std=c++11
 
 #compile the linkedList.cpp to linkedList.o
 linkedList.o: linkedList.cpp
@@ -35,4 +39,4 @@ toefl.o: toefl.cpp
 
 #remove built files
 clean:
-	del main.exe main.o student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o main.exe *~
+	del main.exe main.o helper.o student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o main.exe *~

@@ -15,11 +15,11 @@ class Student{
 		int researchScore;
 		int applicationID;
 	public:
-		//Constructors
+		//constructors
 		Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
 		Student();
 
-		//Member functions
+		//get/set functions
 		string getFirstName();
 		string getLastName();
 		float  getCGPA();
@@ -30,14 +30,18 @@ class Student{
 		void setCGPA(float CGPA);
 		void setResearchScore(int researchScore);
 		void setApplicationID(int applicationID);
+		
+		//virtual function
 		virtual void print();
 
-		//Friend functions
+		//compare functions
 		friend int compareCGPA(Student& student1, Student& student2);
 		friend int compareResearchScore(Student& student1, Student& student2);
 		friend int compareFirstName(Student& student1, Student& student2);
 		friend int compareLastName(Student& student1, Student& student2);
 		friend int compareOverall(Student& student1, Student& student2);
+
+		//overloaded output operator
 		friend ostream& operator <<(ostream& outs, Student& student);
 };
 typedef Student* StudentPtr;
