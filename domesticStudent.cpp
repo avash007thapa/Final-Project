@@ -32,7 +32,23 @@ void DomesticStudent::print(){
 int compareProvince(DomesticStudent student1, DomesticStudent student2){
 	return student1.province.compare(student2.province);
 }
-
+//comparing the overall score between two students
+int compareOverall(DomesticStudent student1, DomesticStudent student2){
+	if(compareResearchScore(student1,student2) == -1){
+		return 1;
+	}
+	else if(compareResearchScore(student1,student2) == 0){
+		if(compareCGPA(student1,student2) == -1){
+			return 1;
+		}
+		else if(compareCGPA(student1,student2) == 0){
+			if(compareProvince(student1,student2) == 1){
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
 
 //overloading the output operator for DomesticStudent objects
 ostream& operator<<(ostream& outs, DomesticStudent& student){

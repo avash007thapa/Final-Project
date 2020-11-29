@@ -474,11 +474,11 @@ int main(){
     
     DomesticStudent dstu1;
     InternationalStudent istu1;
-    dstu1.head = NULL;
-    istu1.head = NULL;
+    //dstu1.head = NULL;
+    //istu1.head = NULL;
     studentList = mergeList(domesticStudentList, internationalStudentList); // Regular case
     // Boundary case ?
-    studentList = mergeList(dstu1, istu1);// Error case ? (merging two empty lists)
+    //studentList = mergeList(dstu1, istu1);// Error case ? (merging two empty lists)
     cout<<studentList<<endl;
 
   //***********************************************************  PART 7 ********************************************************

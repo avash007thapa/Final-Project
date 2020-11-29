@@ -243,7 +243,7 @@ void insertDomesticStudent(LinkedList<DomesticStudent>& linkedList,int& studentN
     DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
     linkedList.insertNode(domesticStudent);
 
-    cout<<"\n\nInserted:\n"<<*domesticStudent<<endl;
+    cout<<"\n\n----INSERTED----\n"<<*domesticStudent<<endl;
     studentNum++;
 }
 
@@ -277,7 +277,7 @@ void insertDomesticStudent(LinkedList<Student>& linkedList,int& studentNum){
     DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
     linkedList.insertNode(domesticStudent);
 
-    cout<<"\n\nInserted:\n"<<*domesticStudent<<endl;
+    cout<<"\n\n----INSERTED----\n"<<*domesticStudent<<endl;
     studentNum++;
 }
 
@@ -329,7 +329,7 @@ void insertInternationalStudent(LinkedList<InternationalStudent>& linkedList, in
     InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
     linkedList.insertNode(internationalStudent);
 
-    cout<<"\n\nInserted:\n"<<*internationalStudent<<endl;
+    cout<<"\n\n----INSERTED----\n"<<*internationalStudent<<endl;
     studentNum++;
 }
 
@@ -381,7 +381,7 @@ void insertInternationalStudent(LinkedList<Student>& linkedList, int& studentNum
     InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
     linkedList.insertNode(internationalStudent);
 
-    cout<<"\n\n---Inserted---\n"<<*internationalStudent<<endl;
+    cout<<"\n\n----INSERTED----\n"<<*internationalStudent<<endl;
     studentNum++;
 }
 

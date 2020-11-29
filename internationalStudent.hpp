@@ -29,6 +29,7 @@ class InternationalStudent:public Student{
 
 		//compare function
 		friend int compareCountry(InternationalStudent& student1, InternationalStudent& student2);
+		int compareOverall(InternationalStudent student1, InternationalStudent student2);
 		
 		//overloaded output operator
 		friend ostream& operator<<(ostream& outs, InternationalStudent& student);

@@ -96,7 +96,7 @@ void Student::print(){
 
 
 //comparing the CGPA between two students
-int compareCGPA(Student& student1, Student& student2){
+int compareCGPA(Student student1, Student student2){
 	if(student1.CGPA < student2.CGPA){
 		return -1;
 	}else if(student1.CGPA == student2.CGPA){
@@ -105,7 +105,7 @@ int compareCGPA(Student& student1, Student& student2){
 	return 1;
 }
 //comparing the research score between two students
-int compareResearchScore(Student& student1, Student& student2){
+int compareResearchScore(Student student1, Student student2){
 	if(student1.researchScore < student2.researchScore){
 		return -1;
 	}else if(student1.researchScore == student2.researchScore){
@@ -114,15 +114,15 @@ int compareResearchScore(Student& student1, Student& student2){
 	return 1;
 }
 //comparing the first names between two students
-int compareFirstName(Student& student1, Student& student2){
+int compareFirstName(Student student1, Student student2){
 	return student1.firstName.compare(student2.firstName);
 }
 //comparing the last names between two students
-int compareLastName(Student& student1, Student& student2){
+int compareLastName(Student student1, Student student2){
 	return student1.lastName.compare(student2.lastName);
 }
 //comparing the overall score between two students
-int compareOverall(Student& student1, Student& student2){
+int compareOverall(Student student1, Student student2){
 	if(compareResearchScore(student1,student2) == -1){
 		return 1;
 	}
@@ -137,7 +137,14 @@ int compareOverall(Student& student1, Student& student2){
 
 //overloading the output operator
 ostream& operator<<(ostream& outs, Student& student){
+	int nameLength = student.firstName.length() + student.lastName.length() + 1;
 	outs<<student.firstName<<" "<<student.lastName<<"\t";
+	if(nameLength < 8){
+		outs<<"\t";
+	}
+	if(nameLength < 16){
+		outs<<"\t";
+	}
 	//ie. if CGPA is 4, print out 4.0
 	if((student.CGPA - floor(student.CGPA)) == 0){
 		outs<<"CGPA: "<<student.CGPA<<".0"<<"\t";

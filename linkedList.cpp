@@ -97,7 +97,8 @@ template <class T>
 void LinkedList<T>::deleteLinkedList(NodePtr node){
     if(node != nullptr){
 		deleteLinkedList(node->link);
-		delete node;
+		delete node->student;
+        delete node;
 		node = nullptr;
 	}
 	else{
@@ -115,7 +116,6 @@ void LinkedList<T>::insertNode(T* student){
 		NodePtr prev = nullptr;
         NodePtr here = head; 
         NodePtr newNode = new Node(student);
-        //cout<<typeid(student).name()<<endl;
 
         //if list is empty
         if(head == nullptr){
@@ -208,16 +208,20 @@ void LinkedList<T>::deleteNode(string firstName, string lastName){
 template <class T>
 void LinkedList<T>::searchApplicationID(int applicationID){
     NodePtr here = head;
-    bool flag = false;
+    int counter = 0;
     while(here != nullptr){
         if(here->student->applicationID == applicationID){
+            counter++;
             cout<<*(here->student)<<endl;
             flag = true;
         }
         here = here->link;
     }
-    if(flag == false){
+    if(counter == 0){
         cout<<"Students with (ApplicationID = "<<applicationID<<") are not in this list.\n";
+    }
+    else{
+        cout<<"There are "<<counter"<< students 
     }
 }
 
