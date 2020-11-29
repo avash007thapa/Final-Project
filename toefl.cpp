@@ -3,7 +3,7 @@ using namespace std;
 #include "toefl.hpp"
 #include <iostream>
 
-//constructors
+//constructors 
 Toefl::Toefl(int reading, int listening, int speaking, int writing){
     this->reading = reading;
     this->listening = listening;

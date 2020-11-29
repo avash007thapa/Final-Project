@@ -6,7 +6,7 @@
 using namespace std;
 
 
-//constructors
+//constructors 
 StudentList::Student::Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID){
     //error checking CGPA
 	if(CGPA < 0 || round1f(CGPA) > (float)4.3){

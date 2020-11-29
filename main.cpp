@@ -433,7 +433,7 @@ int main(){
       if(studentType == 1){
         sortOverall(domesticArr, 0, 99);
         print(domesticArr);
-      }
+      } 
       else if(studentType == 2){
         sortOverall(internationalArr, 0, 99);
         printValidStudents(internationalArr);

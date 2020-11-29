@@ -38,7 +38,7 @@ Student::Student():firstName(""),lastName(""),CGPA(0),researchScore(0),applicati
 }
 
 
-//get/set functions
+//get/set functions 
 string Student::getFirstName(){
 	return firstName;
 }

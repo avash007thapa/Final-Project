@@ -48,7 +48,7 @@ int compareOverall(DomesticStudent student1, DomesticStudent student2){
 		else if(compareCGPA(student1,student2) == 0){
 			if(compareProvince(student1,student2) == 1){
 				return 1;
-			}
+			} 
 		}
 	}
 	return 0;

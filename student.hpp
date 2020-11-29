@@ -15,7 +15,7 @@ class Student{
 		int researchScore;
 		int applicationID;
 	public:
-		//constructors
+		//constructors 
 		Student(string firstName, string lastName, float CGPA, int researchScore, int applicationID);
 		Student();
 

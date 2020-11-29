@@ -61,7 +61,7 @@ int compareOverall(InternationalStudent student1, InternationalStudent student2)
 	return 0;
 }
 
-//overloading the output operator for InternationalStdents
+//overloading the output operator for InternationalStdents 
 ostream& operator<<(ostream& outs, InternationalStudent& student){
 	int nameLength = student.firstName.length() + student.lastName.length() + 1;
 	

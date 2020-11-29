@@ -7,7 +7,7 @@ using namespace std;
 
 class StudentList{
     protected:
-		//Student class definition
+		//Student class definition 
 		class Student{
 			public:
 				//data

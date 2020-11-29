@@ -7,7 +7,7 @@ using namespace std;
 
 template <class T> class LinkedList;
 
-class DomesticStudent:public Student{
+class DomesticStudent:public Student{ 
 	friend class LinkedList<DomesticStudent>;
 	private:
 		string province;

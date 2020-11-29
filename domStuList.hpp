@@ -3,7 +3,7 @@
 
 using namespace std;
 #include <string>
-#include "studentList.hpp"
+#include "studentList.hpp" 
 
 class DomStuList:public StudentList{
 	private:

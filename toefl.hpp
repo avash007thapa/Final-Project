@@ -12,7 +12,7 @@ class Toefl{
 		int writing;
 		int totalScore;
 	public:
-		//Constructors
+		//Constructors 
 		Toefl(int reading, int listening, int speaking, int writing);
 		Toefl();
 		

@@ -310,7 +310,7 @@ void LinkedList<T>::searchThreshold(float CGPAThreshold, int researchScoreThresh
 }
 
 
-//deletes head both the head and tail nodes from the linked list
+//deletes head both the head and tail nodes from the linked list 
 template <class T>
 void LinkedList<T>::delete_head_tail(){
     NodePtr here = head;

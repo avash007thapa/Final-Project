@@ -14,7 +14,7 @@ class InternationalStudent:public Student{
 		string country;
 		Toefl toeflScore;
 	public:
-		//Constructors
+		//Constructors 
 		InternationalStudent(string firstName, string lastName, float CGPA, int researchScore, int applicationID, string country, Toefl toeflScore);
 		InternationalStudent();
 				

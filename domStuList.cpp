@@ -1,7 +1,7 @@
 using namespace std;
 #include "domStuList.hpp"
 #include <iostream>
-#include <string>
+#include <string> 
 
 //constructors for DomesticStudent
 DomStuList::DomesticStudent::DomesticStudent(string firstName, string lastName, float CGPA, int researchScore, int applicationID, string province):Student(firstName,lastName,CGPA,researchScore,applicationID){
