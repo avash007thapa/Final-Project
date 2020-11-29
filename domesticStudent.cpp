@@ -36,10 +36,13 @@ int compareProvince(DomesticStudent student1, DomesticStudent student2){
 
 //overloading the output operator for DomesticStudent objects
 ostream& operator<<(ostream& outs, DomesticStudent& student){
-	int nameLength = student.firstName.length() + student.lastName.length();
+	int nameLength = student.firstName.length() + student.lastName.length() + 1;
 	
 	outs<<student.firstName<<" "<<student.lastName<<"\t";
-	if(nameLength < 20){
+	if(nameLength < 8){
+		outs<<"\t";
+	}
+	if(nameLength < 16){
 		outs<<"\t";
 	}
 	outs<<"Research Score: "<<student.researchScore<<"\t";

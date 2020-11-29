@@ -44,12 +44,16 @@ int compareCountry(InternationalStudent& student1, InternationalStudent& student
 
 //overloading the output operator for InternationalStdents
 ostream& operator<<(ostream& outs, InternationalStudent& student){
-	int nameLength = student.firstName.length() + student.lastName.length();
+	int nameLength = student.firstName.length() + student.lastName.length() + 1;
 	
 	outs<<student.firstName<<" "<<student.lastName<<"\t";
-	if(nameLength < 20){
+	if(nameLength < 8){
 		outs<<"\t";
 	}
+	if(nameLength < 16){
+		outs<<"\t";
+	}
+	
 	outs<<"Research Score: "<<student.researchScore<<"\t";
 	//ie. if CGPA is 4, print out 4.0
   	if((student.CGPA - floor(student.CGPA)) == 0){
@@ -59,7 +63,7 @@ ostream& operator<<(ostream& outs, InternationalStudent& student){
 		outs<<"CGPA: "<<student.CGPA<<"\t";
 	}
 	outs<<"Country: "<<student.country<<"\t";
-	outs<<"Total Toefl Score: "<<student.getToeflScore().getTotalScore()<<"\t";
-	outs<<"Application ID: "<<student.applicationID<<endl;
+	outs<<"Application ID: "<<student.applicationID<<"\t";
+	outs<<"Total Toefl Score: "<<student.getToeflScore().getTotalScore()<<endl;
 	return outs;
 }

@@ -17,9 +17,10 @@ void outputMenu(){
     cout << "Input one of the following";
     cout << "\n****************************************************************\n";
     cout << " (1) - Exit the program\n";
-    cout << " (2) - Create new student\n";
-    cout << " (3) - Delete a student\n";
-    cout << " (4) - Merge the domestic student list and international student list";
+    cout << " (2) - Print a list\n";
+    cout << " (3) - Create new student\n";
+    cout << " (4) - Delete a student\n";
+    cout << " (5) - Merge the domestic student list and international student list";
     cout << "\n****************************************************************\n";    
 } 
 
@@ -201,7 +202,7 @@ void countryIsValid(string& country){
 
 bool inputIsValid(string input){
     int num = atoi(input.c_str());
-    if(num == NULL || num < 1 || num > 4){
+    if(num == NULL || num < 1 || num > 5){
         cout<<"Error: \""<<input<<"\" is an invalid input\n\n";
         return false;
     }

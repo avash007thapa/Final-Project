@@ -61,13 +61,36 @@ int main(){
             case 1 :
                 cout<<"Exiting Program\n"<<endl; 
                 return 0;
-            case 2 :
+            case 2:
+                cout<<"Print a list"<<endl;
+                cout<<"****************************************************************\n";
+                cout<<"(1) - Print domestic student list\n";
+                cout<<"(2) - Print international student list\n";
+                cout<<"(3) - Print student list\n";
+                cout<<"Enter input: ";
+                cin>>inputNum;
+                cout<<"\n\n";
+                
+                switch(inputNum){
+                    case 1 :
+                        domesticStudentList.print();
+                        break;
+                    case 2 :
+                        internationalStudentList.print();
+                        break;
+                    case 3 :
+                        studentList.print();
+                        break;
+                }
+                break;
+            case 3 :
                 cout<<"Insert Node"<<endl;
                 cout<<"****************************************************************\n";
                 cout<<"(1) - Create a new domestic student\n";
                 cout<<"(2) - Create a new international student\n";
                 cout<<"Enter input: ";
                 cin>>inputNum;
+                cout<<"\n\n";
 
                 switch(inputNum){
                     case 1 :
@@ -78,14 +101,14 @@ int main(){
                         break;
                 }
                 break;
-            case 3 :
+            case 4 :
                 cout<<"Delete Node"<<endl;
                 cout<<"****************************************************************\n";
                 cout<<"(1) - Delete a domestic student\n";
                 cout<<"(2) - Delete a international student\n";
                 cout<<"Enter input: ";
                 cin>>inputNum;
-                cout<<inputNum<<"\n\n";
+                cout<<"\n\n";
 
                 switch(inputNum){
                     case 1 :
@@ -94,7 +117,7 @@ int main(){
                         deleteInternationalStudent(internationalStudentList);
                 }
                 break;
-            case 4 :
+            case 5 :
                 cout<<"Delete Node"<<endl;
                 cout<<"****************************************************************\n";
                 studentList = mergeList(domesticStudentList,internationalStudentList);

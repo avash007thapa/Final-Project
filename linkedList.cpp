@@ -294,14 +294,20 @@ void LinkedList<T>::delete_head_tail(){
 template <class T>
 void LinkedList<T>::print(){
     auto here = head;
-    int counter = 1;
-    while(here != nullptr){
-        std::cout<<counter<<" ";
-        here->student->print();
-        std::cout<<"\n";
-        here = here->link;
-        counter++;
+    int counter = 0;
+
+    if(head == nullptr){
+        cout<<"\nList is empty\n";
     }
+    else{
+        while(here != nullptr){
+            here->student->print();
+            std::cout<<"\n";
+            here = here->link;
+            counter++;
+        }
+    }
+    cout<<"Total Students: "<<counter<<endl<<endl;
 }
 
 
