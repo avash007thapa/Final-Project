@@ -28,7 +28,6 @@ LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedL
     LinkedList<DomesticStudent> CopyOfDomesticList;
     CopyOfDomesticList.head = (domesticList.deepCopyLinkedList(domesticList.head));
 
-
     typename LinkedList<InternationalStudent>::NodePtr here = internationalList.head;
     while(here != nullptr){
         if(!here->student.getToeflScore().passed()){
