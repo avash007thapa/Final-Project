@@ -91,16 +91,7 @@ void Student::setApplicationID(int applicationID){
 
 //prints out class information
 void Student::print(){
-	cout<<firstName<<" "<<lastName<<endl;
-	cout<<"Research Score: "<<researchScore<<endl;
-	//ie. if CGPA is 4, print out 4.0
-	if((CGPA - floor(CGPA)) == 0){
-		cout<<"CGPA: "<<CGPA<<".0"<<endl;
-	}
-	else{
-		cout<<"CGPA: "<<CGPA<<endl;
-	}
-	cout<<"Application ID: "<<applicationID<<endl<<endl;
+	cout<<*this;
 }
 
 
@@ -146,15 +137,15 @@ int compareOverall(Student& student1, Student& student2){
 
 //overloading the output operator
 ostream& operator<<(ostream& outs, Student& student){
-	outs<<student.firstName<<" "<<student.lastName<<endl;
+	outs<<student.firstName<<" "<<student.lastName<<"\t";
 	//ie. if CGPA is 4, print out 4.0
 	if((student.CGPA - floor(student.CGPA)) == 0){
-		outs<<"CGPA: "<<student.CGPA<<".0"<<endl;
+		outs<<"CGPA: "<<student.CGPA<<".0"<<"\t";
 	}
 	else{
-		outs<<"CGPA: "<<student.CGPA<<endl;
+		outs<<"CGPA: "<<student.CGPA<<"\t";
 	}
-	outs<<"Research Score: "<<student.researchScore<<endl;
+	outs<<"Research Score: "<<student.researchScore<<"\t";
 	outs<<"Application ID: "<<student.applicationID<<endl;
 	return outs;
 }

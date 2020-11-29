@@ -95,11 +95,11 @@ bool Toefl::passed(){
 
 //overloading the output operator for Toefl
 ostream& operator<<(ostream& outs, Toefl& toefl){
-	outs<<"Total Score: "<<toefl.totalScore<<endl;
-    outs<<"Reading Score: "<<toefl.reading<<endl;
-    outs<<"Listening Score: "<<toefl.listening<<endl;
-    outs<<"Speaking Score: "<<toefl.speaking<<endl;
-    outs<<"Writing Score: "<<toefl.writing<<endl;
+	outs<<"Total Score: "<<toefl.totalScore<<"\t";
+    outs<<"Reading Score: "<<toefl.reading<<"\t";
+    outs<<"Listening Score: "<<toefl.listening<<"\t";
+    outs<<"Speaking Score: "<<toefl.speaking<<"\t";
+    outs<<"Writing Score: "<<toefl.writing<<"\t";
     return outs;
 }
 

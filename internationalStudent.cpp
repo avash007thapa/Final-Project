@@ -32,17 +32,7 @@ void InternationalStudent::setToeflScore(Toefl toeflScore){
 
 //prints out class information
 void InternationalStudent::print(){
-	cout<<firstName<<" "<<lastName<<endl;
-	cout<<"Research Score: "<<researchScore<<endl;
-	//ie. if CGPA is 4, print out 4.0
-	if((CGPA - floor(CGPA)) == 0){
-		cout<<"CGPA: "<<CGPA<<".0"<<endl;
-	}
-	else{
-		cout<<"CGPA: "<<CGPA<<endl;
-	}
-	cout<<"Country: "<<country<<endl;
-	cout<<"Application ID: "<<applicationID<<endl;
+	cout<<*this;
 }
 
 
@@ -54,17 +44,22 @@ int compareCountry(InternationalStudent& student1, InternationalStudent& student
 
 //overloading the output operator for InternationalStdents
 ostream& operator<<(ostream& outs, InternationalStudent& student){
-	outs<<student.firstName<<" "<<student.lastName<<endl;
-	outs<<"Research Score: "<<student.researchScore<<endl;
+	int nameLength = student.firstName.length() + student.lastName.length();
+	
+	outs<<student.firstName<<" "<<student.lastName<<"\t";
+	if(nameLength < 20){
+		outs<<"\t";
+	}
+	outs<<"Research Score: "<<student.researchScore<<"\t";
 	//ie. if CGPA is 4, print out 4.0
   	if((student.CGPA - floor(student.CGPA)) == 0){
-		outs<<"CGPA: "<<student.CGPA<<".0"<<endl;
+		outs<<"CGPA: "<<student.CGPA<<".0"<<"\t";
 	}
 	else{
-		outs<<"CGPA: "<<student.CGPA<<endl;
+		outs<<"CGPA: "<<student.CGPA<<"\t";
 	}
-	outs<<"Country: "<<student.country<<endl;
-	outs<<"Total Toefl Score: "<<student.getToeflScore().getTotalScore()<<endl;
+	outs<<"Country: "<<student.country<<"\t";
+	outs<<"Total Toefl Score: "<<student.getToeflScore().getTotalScore()<<"\t";
 	outs<<"Application ID: "<<student.applicationID<<endl;
 	return outs;
 }

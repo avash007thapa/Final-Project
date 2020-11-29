@@ -168,7 +168,7 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
     while(here != nullptr){
 
         //if name in the linked list matches the input name
-        if((here->student->FirstName.compare(firstName) == 0) && (here->student->LastName.compare(lastName) == 0)){
+        if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
             std::cout<<"----DELETED----\n"<<*(here->student)<<"\n";
             //delete at head
             if(here == head){

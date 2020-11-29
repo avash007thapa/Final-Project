@@ -22,10 +22,10 @@ int main(){
     LinkedList<InternationalStudent> internationalStudentList;
     
     //getting inputs from domestic-stu.txt and putting it into domesticStudentList
-    domFile2DomList(domesticStudentList);
+    domFile2DomList(domesticStudentList,studentNum);
 
     //getting inputs from international-stu.txt and putting it into internationalStudentList
-    intFile2IntList(internationalStudentList);
+    intFile2IntList(internationalStudentList,studentNum);
 
   
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,33 +67,39 @@ int main(){
                 cout<<"(1) - Create a new domestic student\n";
                 cout<<"(2) - Create a new international student\n";
                 cout<<"Enter input: ";
-                cin>>userInput;
-                cout<<"\n\n";
+                cin>>inputNum;
 
                 switch(inputNum){
                     case 1 :
                         insertDomesticStudent(domesticStudentList,studentNum);
+                        break;
                     case 2 :
                         insertInternationalStudent(internationalStudentList,studentNum);
+                        break;
                 }
+                break;
             case 3 :
-                cout<<"Insert Node"<<endl;
+                cout<<"Delete Node"<<endl;
                 cout<<"****************************************************************\n";
                 cout<<"(1) - Delete a domestic student\n";
                 cout<<"(2) - Delete a international student\n";
                 cout<<"Enter input: ";
-                cin>>userInput;
-                cout<<"\n\n";
+                cin>>inputNum;
+                cout<<inputNum<<"\n\n";
 
                 switch(inputNum){
                     case 1 :
-                        insertDomesticStudent(domesticStudentList,studentNum);
+                        deleteDomesticStudent(domesticStudentList);
                     case 2 :
-                        insertInternationalStudent(internationalStudentList,studentNum);
+                        deleteInternationalStudent(internationalStudentList);
                 }
-                
+                break;
             case 4 :
-                cout << "MERGE SELECTED" << endl;
+                cout<<"Delete Node"<<endl;
+                cout<<"****************************************************************\n";
+                studentList = mergeList(domesticStudentList,internationalStudentList);
+                studentList.print(); 
+                break;
         }        
     }
 }

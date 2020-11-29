@@ -161,8 +161,13 @@ void formatString(string& input){
     } 
 }
 
-void provinceIsValid(string province){
+void provinceIsValid(string& province){
     string provinces[13]= {"BC","NL","PE","NS","NB","QC","ON","MB","SK","AB","YT","NT","NU"};
+    
+    //formatting province
+    province[0] = toupper(province[0]); 
+    province[1] = toupper(province[1]); 
+    
     //checking if province exist
     for (int i = 0; i < 13; i++){
         if(province == provinces[i]){    
@@ -233,6 +238,7 @@ void insertDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList,int&
     DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
     domesticStudentList.insertNode(domesticStudent);
 
+    cout<<"\n\nInserted:\n"<<*domesticStudent<<endl;
     studentNum++;
 }
 
@@ -287,11 +293,31 @@ void insertInternationalStudent(LinkedList<InternationalStudent>& internationalS
     studentNum++;
 }
 
-deleteDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList){
+void deleteDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList){
     string firstName, lastName;
-    
+    cout<<"First Name: ";
+    cin>>firstName;
+    formatString(firstName);
+
+    cout<<"\nLast Name: ";
+    cin>>lastName;
+    formatString(lastName);
+
+    domesticStudentList.deleteNode(firstName,lastName);
 }
 
+void deleteInternationalStudent(LinkedList<InternationalStudent>& internationalStudentList){
+    string firstName, lastName;
+    cout<<"First Name: ";
+    cin>>firstName;
+    formatString(firstName);
+
+    cout<<"\nLast Name: ";
+    cin>>lastName;
+    formatString(lastName);
+
+    internationalStudentList.deleteNode(firstName,lastName);
+}
 
 
 
