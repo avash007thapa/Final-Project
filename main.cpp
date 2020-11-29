@@ -163,8 +163,8 @@ int main(){
     }      
 
     //inserting student to domesticStudentList
-    DomesticStudent domesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + index),province);
-    domesticStudentList.insertNode(&domesticStudent);
+    DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + index),province);
+    domesticStudentList.insertNode(domesticStudent);
     
     index++; 
   }
@@ -265,8 +265,8 @@ int main(){
     }       
 
     //creating international student
-    InternationalStudent internationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + index),country,toeflScore);
-    internationalStudentList.insertNode(&internationalStudent);
+    InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + index),country,toeflScore);
+    internationalStudentList.insertNode(internationalStudent);
     index++;
   }
   
@@ -281,8 +281,8 @@ int main(){
   
   cout<<"TESTING\n\n\n"<<endl;
   mergeList(domesticStudentList,internationalStudentList,studentList);
-  cout<<studentList<<endl;
-  //studentList.print();
+  //cout<<studentList<<endl;
+  studentList.print();
 
   //DomesticStudentPtr a = dynamic_cast<DomesticStudentPtr>(student);
 
