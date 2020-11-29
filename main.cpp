@@ -3,8 +3,9 @@ using namespace std;
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
-#include "linkedList.hpp"
 #include "linkedList.cpp"
+#include "linkedList.hpp"
+
 
 using namespace std;
 
@@ -210,9 +211,9 @@ int main(){
   // M E N U 
   
   cout<<"TESTING\n\n\n"<<endl;
-  internationalStudentList.searchName("Bryan","Wong");
-  domesticStudentList.searchName("Jayden","Wood");
-
+  LinkedList<Student> students1;
+  LinkedList<Student> students2;
+  studentList = merge(students1,students2);
   
   // int menuChoice;
   

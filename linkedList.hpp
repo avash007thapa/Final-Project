@@ -7,7 +7,6 @@
 #include "domesticStudent.hpp"
 #include "internationalStudent.hpp"
 
-
 template <class T>
 class LinkedList{
     private:
@@ -57,7 +56,7 @@ class LinkedList{
         void delete_head_tail();
 
         //merge
-        friend LinkedList<Student> merge(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList);
+        friend LinkedList<Student> merge(LinkedList<Student>& domesticList, LinkedList<Student>& internationalList);
 
         //overload output operators
         template <class Y>

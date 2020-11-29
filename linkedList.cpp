@@ -277,20 +277,26 @@ void LinkedList<T>::delete_head_tail(){
 
 //Merge (merges a domestic list and an international list into a student list)
 template <class T>
-LinkedList<Student> merge(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList){
-    LinkedList<Student> returnList;
-    returnList.head = domesticList.deepCopyLinkedList(domesticList.head);
-
-    typename LinkedList<T>::NodePtr here = internationalList.head;
-
-    while(here != nullptr){
-        if(!here->student.getToeflScore().passed()){
-            here = here->link;
-        }
-        returnList.insertNode(here->student);
-    }
-
-    return returnList;
+LinkedList<Student> merge(LinkedList<Student>& domesticList, LinkedList<Student>& internationalList){
+    // cout<<"1\n";
+    // LinkedList<Student> returnList;
+    // cout<<"2\n";
+    // returnList.head = domesticList.deepCopyLinkedList(domesticList.head);
+    // cout<<"3\n";
+    // typename LinkedList<T>::NodePtr here = internationalList.head;
+    // cout<<"4\n";
+    // while(here != nullptr){
+    //     cout<<"5\n";
+    //     if(!here->student.getToeflScore().passed()){
+    //         cout<<"6\n";
+    //         here = here->link;
+    //     }
+    //     cout<<"7\n";
+    //     returnList.insertNode(here->student);
+    //     cout<<"8\n";
+    // }
+    // cout<<"9\n";
+    // return returnList;
 }
 
 
