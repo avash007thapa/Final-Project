@@ -23,19 +23,26 @@ void outputMenu(){
 } 
 
 //Merge (merges a domestic list and an international list into a student list)
-LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList){
-    LinkedList<Student> returnList;
-    LinkedList<DomesticStudent> CopyOfDomesticList;
-    CopyOfDomesticList.head = (domesticList.deepCopyLinkedList(domesticList.head));
+void mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList, LinkedList<Student>& studentList){
+    //LinkedList<Student> returnList;
+    
+    auto dHere = domesticList.head;
+    while(dHere != nullptr){
+        studentList.insertNode(dHere->student);
+        dHere = dHere->link;
 
-    typename LinkedList<InternationalStudent>::NodePtr here = internationalList.head;
-    while(here != nullptr){
-        if(!here->student.getToeflScore().passed()){
-            here = here->link;
-        }
-        returnList.insertNode(here->student);
     }
-    return returnList;
+
+    auto iHere = internationalList.head;
+    
+    while(iHere != nullptr){
+        if(!iHere->student.getToeflScore().passed()){
+            iHere = iHere->link;
+        }
+        studentList.insertNode(iHere->student);
+        iHere = iHere->link;
+    }
+    //return returnList;
 }
 
 int main(){
@@ -228,7 +235,15 @@ int main(){
   // M E N U 
   
   cout<<"TESTING\n\n\n"<<endl;
-  studentList = mergeList(domesticStudentList,internationalStudentList);
+  mergeList(domesticStudentList,internationalStudentList,studentList);
+  cout<<studentList<<endl;
+  //DomesticStudentPtr a = dynamic_cast<DomesticStudentPtr>(student);
+
+  // studentList.insertNode(*student);
+  // cout<<studentList<<endl;
+  //studentList.head->student.getProvince();
+  //cout<<studentList<<endl;
+  //studentList = mergeList(domesticStudentList,internationalStudentList);
   
 
   // int menuChoice;

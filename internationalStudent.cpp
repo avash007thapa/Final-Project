@@ -65,3 +65,7 @@ ostream& operator<<(ostream& outs, InternationalStudent& student){
 	outs<<"Application ID: "<<student.applicationID<<endl;
 	return outs;
 }
+
+void print(){
+	cout<<*this;
+}

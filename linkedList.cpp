@@ -117,28 +117,15 @@ void LinkedList<T>::insertNode(T student){
             tail = head;
             return;
         }
-
-        // cout<<"head "<<head<<endl;
-        // cout<<"here "<<here<<endl;
-        // cout<<"newNode "<<newNode<<endl;
-        // cout<<"prev "<<prev<<endl<<endl;
-
         while (here != nullptr){
             if(compareOverall(here->student,newNode->student) == 1){
-                //if at head
-                //cout<<"it got in\n\n";
                 if(prev == nullptr){
-                    //cout<<"test\n";
                     newNode->link = here;
                     head = newNode;
-                    //cout<<"test\n";
                 }
                 else{
-                    //cout<<"awdad\n";
                     prev->link = newNode;
-                    //cout<<"awdad\n";
                     newNode->link = here;
-                    //cout<<"awdad\n";
                 }
                 break;
             }
