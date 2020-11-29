@@ -35,11 +35,11 @@ class Student{
 		virtual void print();
 
 		//compare functions
-		friend int compareCGPA(Student& student1, Student& student2);
-		friend int compareResearchScore(Student& student1, Student& student2);
-		friend int compareFirstName(Student& student1, Student& student2);
-		friend int compareLastName(Student& student1, Student& student2);
-		friend int compareOverall(Student& student1, Student& student2);
+		friend int compareCGPA(Student student1, Student student2);
+		friend int compareResearchScore(Student student1, Student student2);
+		friend int compareFirstName(Student student1, Student student2);
+		friend int compareLastName(Student student1, Student student2);
+		friend int compareOverall(Student student1, Student student2);
 
 		//overloaded output operator
 		friend ostream& operator <<(ostream& outs, Student& student);

@@ -31,16 +31,17 @@ int main(){
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //title card
-    std::cout<<"**********************************************************************\n";
+    std::cout<<"\n\n\n*******************************************************************************\n";
     std::cout<<"G R A D U A T E   A D M I S S I O N   S Y S T E M\n";
-    std::cout<<"**********************************************************************\n";
+    std::cout<<"*******************************************************************************\n";
     std::cout<<"\n";
     
     //interface
     string userInput;
+    bool merged = false;
     while(true){
 
-        outputMenu();
+        outputMenu(merged);
 
         cout<<"Enter input: ";
         cin>>userInput;
@@ -49,7 +50,7 @@ int main(){
         //error checking input
         while(!inputIsValid(userInput,7)){
             
-            outputMenu();
+            outputMenu(merged);
 
             cout<<"Enter input: ";
             cin>>userInput;
@@ -61,19 +62,16 @@ int main(){
         string sInput1;
         string sInput2;
         string sInput3;
-        string sInput4;
         string firstName;
         string lastName;
-        bool merged = false;
         switch(atoi(userInput.c_str())){
             case 1 :
                 cout<<"Exiting Program\n"<<endl; 
                 return 0;
             case 2 :
-                
+                cout<<"Search for a student(s)\n";
+                cout<<"****************************************************************\n";
                 if(merged == false){
-                    cout<<"Search for a student(s)\n";
-                    cout<<"****************************************************************\n";
                     cout<<"(1) - Search in domestic student list\n";
                     cout<<"(2) - Search in international student list\n";
                     cout<<"Enter input: ";
@@ -81,8 +79,6 @@ int main(){
                     cout<<"\n\n";
                     //error checking input
                     while(!inputIsValid(sInput1,2)){
-                        cout<<"Search for a student(s)\n";
-                        cout<<"****************************************************************\n";
                         cout<<"(1) - Search in domestic student list\n";
                         cout<<"(2) - Search in international student list\n";
                         cout<<"Enter input: ";
@@ -94,23 +90,22 @@ int main(){
                     sInput1 = "3";
                 }
                 
-                
-                cout<<"(1) - Search by applicationID\n";
-                cout<<"(2) - Search by CGPA\n";
-                cout<<"(3) - Search by research score\n";
-                cout<<"(4) - Search by full name\n";
-                cout<<"(5) - Search by CGPA and research score threshold\n\n";
-                cout<<"Enter input: ";
+                cout<<"| (1) - Search by applicationID\n";
+                cout<<"| (2) - Search by CGPA\n";
+                cout<<"| (3) - Search by research score\n";
+                cout<<"| (4) - Search by full name\n";
+                cout<<"| (5) - Search by CGPA and research score threshold\n\n";
+                cout<<"| Enter input: ";
                 cin>>sInput2;
                 cout<<"\n\n";
                 //error checking input
                 while(!inputIsValid(sInput2,5)){
-                    cout<<"(1) - Search by applicationID\n";
-                    cout<<"(2) - Search by CGPA\n";
-                    cout<<"(3) - Search by research score\n";
-                    cout<<"(4) - Search by full name\n";
-                    cout<<"(5) - Search by CGPA and research score threshold\n\n";
-                    cout<<"Enter input: ";
+                    cout<<"| (1) - Search by applicationID\n";
+                    cout<<"| (2) - Search by CGPA\n";
+                    cout<<"| (3) - Search by research score\n";
+                    cout<<"| (4) - Search by full name\n";
+                    cout<<"| (5) - Search by CGPA and research score threshold\n\n";
+                    cout<<"| Enter input: ";
                     cin>>sInput2;
                     cout<<"\n\n";
                 }
@@ -134,6 +129,7 @@ int main(){
                     case 2 :
                         cout<<"Input CGPA: ";
                         cin>>fInput;
+                        fInput = round1f(fInput);
                         if(merged == false){
                             if(atoi(sInput1.c_str()) == 1){
                                 domesticStudentList.searchCGPA(fInput);
@@ -183,6 +179,7 @@ int main(){
                     case 5 :
                         cout<<"Input CGPA threshold: ";
                         cin>>fInput;
+                        fInput = round1f(fInput);
                         cout<<"Input research score threshold: ";
                         cin>>sInput3;
                         if(merged == false){
@@ -202,23 +199,25 @@ int main(){
             case 3:
                 cout<<"Print a list"<<endl;
                 cout<<"****************************************************************\n";
-                cout<<"(1) - Print domestic student list\n";
-                cout<<"(2) - Print international student list\n";
-                cout<<"(3) - Print student list\n\n";
-                cout<<"Enter input: ";
-                cin>>sInput2;
-                cout<<"\n\n";
-                //error checking input
-                while(!inputIsValid(sInput2,3)){
+                if(merged == false){
                     cout<<"(1) - Print domestic student list\n";
                     cout<<"(2) - Print international student list\n";
-                    cout<<"(3) - Print student list\n\n";
                     cout<<"Enter input: ";
-                    cin>>sInput2;
+                    cin>>sInput1;
                     cout<<"\n\n";
+                    //error checking input
+                    while(!inputIsValid(sInput1,3)){
+                        cout<<"(1) - Print domestic student list\n";
+                        cout<<"(2) - Print international student list\n";
+                        cout<<"Enter input: ";
+                        cin>>sInput1;
+                        cout<<"\n\n";
+                    }
                 }
-
-                switch(atoi(sInput2.c_str())){
+                else{
+                    sInput1 = "3";
+                }
+                switch(atoi(sInput1.c_str())){
                     case 1 :
                         domesticStudentList.print();
                         break;
@@ -236,18 +235,18 @@ int main(){
                 cout<<"(1) - Create a new domestic student\n";
                 cout<<"(2) - Create a new international student\n\n";
                 cout<<"Enter input: ";
-                cin>>sInput2;
+                cin>>sInput1;
                 cout<<"\n\n";
                 //error checking inputs
-                while(!inputIsValid(sInput2,2)){
+                while(!inputIsValid(sInput1,2)){
                     cout<<"(1) - Create a new domestic student\n";
                     cout<<"(2) - Create a new international student\n\n";
                     cout<<"Enter input: ";
-                    cin>>sInput2;
+                    cin>>sInput1;
                     cout<<"\n\n";
                 }
 
-                switch(atoi(sInput2.c_str())){
+                switch(atoi(sInput1.c_str())){
                     case 1 :
                         if(merged == false){
                             insertDomesticStudent(domesticStudentList,studentNum);
@@ -273,17 +272,17 @@ int main(){
                     cout<<"(1) - Delete a domestic student\n";
                     cout<<"(2) - Delete a international student\n\n";
                     cout<<"Enter input: ";
-                    cin>>sInput2;
+                    cin>>sInput1;
                     cout<<"\n\n";
                     //error checking inputs
-                    while(!inputIsValid(sInput2,2)){
+                    while(!inputIsValid(sInput1,2)){
                         cout<<"(1) - Delete a domestic student\n";
                         cout<<"(2) - Delete a international student\n\n";
                         cout<<"Enter input: ";
-                        cin>>sInput2;
+                        cin>>sInput1;
                         cout<<"\n\n";
                     }
-                    switch(atoi(sInput2.c_str())){
+                    switch(atoi(sInput1.c_str())){
                     case 1 :
                         deleteDomesticStudent(domesticStudentList);
                     case 2 :
@@ -295,27 +294,27 @@ int main(){
                 }
                 break;
             case 6 :
-                cout<<"Delete head and tail nodes of domestic and international student list\n";
+                cout<<"Delete head and tail nodes of a list\n";
                 cout<<"****************************************************************\n";
                 if(merged == false){
                     cout<<"(1) - Delete head and tail of domestic student\n";
                     cout<<"(2) - Delete head and tail of international student\n\n";
                     cout<<"Enter input: ";
-                    cin>>sInput2;
+                    cin>>sInput1;
                     cout<<"\n\n";
                     //error checking inputs
-                    while(!inputIsValid(sInput2,2)){
+                    while(!inputIsValid(sInput1,2)){
                         cout<<"(1) - Delete head and tail of domestic student\n";
                         cout<<"(2) - Delete head and tail of international student\n\n";
                         cout<<"Enter input: ";
-                        cin>>sInput2;
+                        cin>>sInput1;
                         cout<<"\n\n";
                     }
-                    switch(atoi(sInput2.c_str())){
-                    case 1 :
-                        domesticStudentList.delete_head_tail();
-                    case 2 :
-                        internationalStudentList.delete_head_tail();
+                    switch(atoi(sInput1.c_str())){
+                        case 1 :
+                            domesticStudentList.delete_head_tail();
+                        case 2 :
+                            internationalStudentList.delete_head_tail();
                     }
                 }
                 else{
@@ -327,6 +326,7 @@ int main(){
                 cout<<"****************************************************************\n";
                 studentList = mergeList(domesticStudentList,internationalStudentList);
                 studentList.print(); 
+                merged = true;
                 break;
         }        
     }
