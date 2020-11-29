@@ -31,7 +31,7 @@ void outputMenu(bool merged){
 
 bool inputIsValid(string input, int numOfInputs){
     int num = atoi(input.c_str());
-    if(num == NULL || num < 1 || num > numOfInputs){
+    if(num == 0 || num < 1 || num > numOfInputs){
         cout<<"Error: \""<<input<<"\" is an invalid input\n\n";
         return false;
     }
@@ -273,7 +273,7 @@ void insertDomesticStudent(LinkedList<Student>& linkedList,int& studentNum){
     DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
     linkedList.insertNode(domesticStudent);
 
-    cout<<"\n\nInserted:\n"<<*domesticStudent<<endl;
+    cout<<"\n\n----INSERTED----\n"<<*domesticStudent<<endl;
     studentNum++;
 }
 
@@ -325,7 +325,7 @@ void insertInternationalStudent(LinkedList<InternationalStudent>& linkedList, in
     InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
     linkedList.insertNode(internationalStudent);
 
-    cout<<"\n\nInserted:\n"<<*internationalStudent<<endl;
+    cout<<"\n\n----INSERTED----\n"<<*internationalStudent<<endl;
     studentNum++;
 }
 
@@ -377,7 +377,7 @@ void insertInternationalStudent(LinkedList<Student>& linkedList, int& studentNum
     InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
     linkedList.insertNode(internationalStudent);
 
-    cout<<"\n\n---Inserted---\n"<<*internationalStudent<<endl;
+    cout<<"\n\n----INSERTED----\n"<<*internationalStudent<<endl;
     studentNum++;
 }
 
