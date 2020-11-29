@@ -78,6 +78,6 @@ ostream& operator<<(ostream& outs, DomesticStudent& student){
 	return outs;
 }
 
-void print(){
-	cout<<*this;
-}
+// void print(){
+// 	cout<<*this;
+// }

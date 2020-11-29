@@ -112,7 +112,7 @@ int main(){
         } 
     }
     if(found < 1){
-        cout<<"ERROR: PROVINCE MUST BE EITHER BC,NL,PE,NS,NB,QC,ON,MB.SK,AB,YT,NT,NU"<<endl;
+        cout<<"ERROR: PROVINCE MUST BE EITHER BC,NL,PE,NS,NB,QC,ON,MB,SK,AB,YT,NT,NU"<<endl;
         cout<<"***EXITING PROGRAM***"<<endl; 
         exit(-1);
     }      
@@ -125,7 +125,7 @@ int main(){
   }
   //closing the file
   domesticFile.close();
-  cout<<domesticStudentList<<endl;
+ // cout<<domesticStudentList<<endl;
 
 
 
@@ -227,16 +227,106 @@ int main(){
   
   //closing file
   internationalFile.close();
-  cout<<"Printign international student list\n";
-  cout<<internationalStudentList<<endl;
+  cout<<"Printing international student list\n";
+  //cout<<internationalStudentList<<endl;
 
 
   
   // M E N U 
   
   cout<<"TESTING\n\n\n"<<endl;
-  mergeList(domesticStudentList,internationalStudentList,studentList);
+  // mergeList(domesticStudentList,internationalStudentList,studentList);
   cout<<studentList<<endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // *********************************************************  UNIT TEST *******************************************************
+
+  // ***********************************************************  PART 1 ********************************************************
+    
+
+    // CHECK FOR SAME APPLICATION ID
+
+
+
+    DomesticStudent domStu1("nAtAsHa","Brown",(float)3.80,91,20201000,"AB");
+    domesticStudentList.insertNode(domStu1);                                  // Normal case
+
+    DomesticStudent domStu2("JADEN","HILL",(float)0.01,1,20201001,"YT");
+    domesticStudentList.insertNode(domStu2);                                  // Boundary case
+
+    DomesticStudent domStu3("Gurleen","Sidhu",(float)2.20,-93,20201002,"AB");
+    domesticStudentList.insertNode(domStu3);                                  // Error case
+
+    domesticStudentList.insertNode(domStu1);
+
+    cout<<domesticStudentList<<endl;
+
+    Toefl toefl1(24,26,28,23);
+    InternationalStudent intStu1("Bingyu","Lu",(float)3.80,91,20201100,"China",toefl1);
+    internationalStudentList.insertNode(intStu1);                                  // Normal case
+
+    Toefl toefl2(20,20,20,20);
+    InternationalStudent intStu2("BOBBY","Lobby",(float)3.40,83,20201101,"India",toefl2);
+    internationalStudentList.insertNode(intStu2);                             // Boundary case
+
+    Toefl toefl3(11,13,28,23);
+    InternationalStudent intStu3("Tom","Lad",(float)0.0,83,20201103,"Korea",toefl3);
+    internationalStudentList.insertNode(intStu3);                             // Error case
+
+
+  // ***********************************************************  PART 2 ********************************************************
+
+
+  // ***********************************************************  PART 3 ********************************************************
+
+  // ***********************************************************  PART 4 ********************************************************
+
+  // ***********************************************************  PART 5 ********************************************************
+
+  // ***********************************************************  PART 6 ********************************************************
+
+  // ***********************************************************  PART 7 ********************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   //DomesticStudentPtr a = dynamic_cast<DomesticStudentPtr>(student);
 
   // studentList.insertNode(*student);

@@ -30,7 +30,7 @@ class Student{
 		void setCGPA(float CGPA);
 		void setResearchScore(int researchScore);
 		void setApplicationID(int applicationID);
-		virtual void print();
+		//virtual void print();
 
 		//Friend functions
 		friend int compareCGPA(Student& student1, Student& student2);

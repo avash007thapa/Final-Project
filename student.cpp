@@ -142,18 +142,18 @@ ostream& operator<<(ostream& outs, Student& student){
 	return outs;
 }
 
-void Student::print(){
-	cout<<firstName<<" "<<lastName<<endl;
-	//ie. if CGPA is 4, print out 4.0
-	if((CGPA - floor(CGPA)) == 0){
-		cout<<"CGPA: "<<CGPA<<".0"<<endl;
-	}
-	else{
-		cout<<"CGPA: "<<CGPA<<endl;
-	}
-	cout<<"Research Score: "<<researchScore<<endl;
-	cout<<"Application ID: "<<applicationID<<endl;
-}
+// void Student::print(){
+// 	cout<<firstName<<" "<<lastName<<endl;
+// 	//ie. if CGPA is 4, print out 4.0
+// 	if((CGPA - floor(CGPA)) == 0){
+// 		cout<<"CGPA: "<<CGPA<<".0"<<endl;
+// 	}
+// 	else{
+// 		cout<<"CGPA: "<<CGPA<<endl;
+// 	}
+// 	cout<<"Research Score: "<<researchScore<<endl;
+// 	cout<<"Application ID: "<<applicationID<<endl;
+// }
 
 //round function to the first decimal. Used to round the CGPA 
 float round1f(float num){
