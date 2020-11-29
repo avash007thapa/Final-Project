@@ -71,8 +71,8 @@ typename LinkedList<T>::NodePtr LinkedList<T>::deepCopyLinkedList(NodePtr node){
         return newNode;
     }
     catch(bad_alloc){
-        std::cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
-        std::exit(1);
+        cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
+        exit(1);
     }
 }
 
@@ -148,22 +148,22 @@ void LinkedList<T>::insertNode(T* student){
 		} 
     }
     catch(bad_alloc){
-        std::cerr<<"Error(insertNode): bad_alloc\n";
-        std::exit(1);
+        cerr<<"Error(insertNode): bad_alloc\n";
+        exit(1);
     }
 }
 
 
 //deletes all nodes that have the same first name and last name
 template <class T>
-void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
+void LinkedList<T>::deleteNode(string firstName, string lastName){
     NodePtr prev = nullptr;
 	NodePtr here = head;
     int counter = 0;
     
     //if head is nullptr, list is empty
 	if(head == nullptr){
-		std::cerr << "Error(deleteNode): List is already empty\n";
+		cerr << "Error(deleteNode): List is already empty\n";
         return;
 	}
     while(here != nullptr){
@@ -172,7 +172,7 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
 
         //if name in the linked list matches the input name
         if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
-            std::cout<<"----DELETED----\n"<<*(here->student)<<"\n";
+            cout<<"----DELETED----\n"<<*(here->student)<<"\n";
             //delete at head
             if(here == head){
                 prev = head;
@@ -204,65 +204,90 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
 }
 
 
-//print all sutdents with same applicationID/CGPA/researchScore/name
+//print all students with same applicationID
 template <class T>
 void LinkedList<T>::searchApplicationID(int applicationID){
     NodePtr here = head;
     bool flag = false;
     while(here != nullptr){
         if(here->student->applicationID == applicationID){
-            std::cout<<*(here->student)<<std::endl;
+            cout<<*(here->student)<<endl;
             flag = true;
         }
         here = here->link;
     }
     if(flag == false){
-        std::cout<<"Students with (ApplicationID = "<<applicationID<<") is not in this list.\n";
+        cout<<"Students with (ApplicationID = "<<applicationID<<") are not in this list.\n";
     }
 }
+
+//print all students with same CGPA
 template <class T>
 void LinkedList<T>::searchCGPA(float CGPA){
     NodePtr here = head;
     bool flag = false;
     while(here != nullptr){
         if(here->student->CGPA == CGPA){
-            std::cout<<*(here->student)<<std::endl;
+            cout<<*(here->student)<<endl;
             flag = true;
         }
         here = here->link;
     }
     if(flag == false){
-        std::cout<<"Students with (CGPA = "<<CGPA<<") is not in this list.\n";
+        cout<<"Students with (CGPA = "<<CGPA<<") are not in this list.\n";
     }
 }
+
+//print all students with same research score
 template <class T>
 void LinkedList<T>::searchResearchScore(int researchScore){
     NodePtr here = head;
     bool flag = false;
     while(here != nullptr){
         if(here->student->researchScore == researchScore){
-            std::cout<<*(here->student)<<std::endl;
+            cout<<*(here->student)<<endl;
             flag = true;
         }
         here = here->link;
     }
     if(flag == false){
-        std::cout<<"Students with (reseach score = "<<researchScore<<") is not in this list.\n";
+        cout<<"Students with (reseach score = "<<researchScore<<") are not in this list.\n";
     }
 }
+
+//print all students with same full name
 template <class T>
-void LinkedList<T>::searchName(std::string firstName, std::string lastName){
+void LinkedList<T>::searchName(string firstName, string lastName){
     NodePtr here = head;
     bool flag = false;
     while(here != nullptr){
         if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
-            std::cout<<*(here->student)<<std::endl;
+            cout<<*(here->student)<<endl;
             flag = true;
         }
         here = here->link;
     }
     if(flag == false){
-        std::cout<<"Students with (name = "<<firstName<<" "<<lastName<<") is not in this list.\n";
+        cout<<"Students with (name = "<<firstName<<" "<<lastName<<") are not in this list.\n";
+    }
+}
+
+
+//prints all students above teh CGPA and research score threshold
+template <class T>
+void LinkedList<T>::searchThreshold(float CGPAThreshold, int researchScoreThreshold){
+    bool flag;
+    NodePtr here = head;
+
+    while(here != nullptr){
+        if((here->student->CGPA >= CGPAThreshold) && (here->student->researchScore >= researchScoreThreshold)){
+            cout<<*(here->student)<<endl;
+            flag = true;
+        }
+        here = here->link;
+    }
+    if(flag == false){
+        cout<<"No students with (CGPA = "<<CGPAThreshold<<" research score"<<researchScoreThreshold<<") in this list.\n";
     }
 }
 
@@ -302,7 +327,7 @@ void LinkedList<T>::print(){
     else{
         while(here != nullptr){
             here->student->print();
-            std::cout<<"\n";
+            cout<<"\n";
             here = here->link;
             counter++;
         }
@@ -313,11 +338,11 @@ void LinkedList<T>::print(){
 
 //overload output operators
 template <class T>
-std::ostream& operator<<(std::ostream& outs, LinkedList<T>& linkedList){
+ostream& operator<<(ostream& outs, LinkedList<T>& linkedList){
     typename LinkedList<T>::NodePtr here = linkedList.head;
     int counter = 1;
     while(here != nullptr){
-        outs<<counter<<" "<<*(here->student)<<std::endl;
+        outs<<counter<<" "<<*(here->student)<<endl;
         here = here->link;
         counter++;
     }

@@ -17,12 +17,24 @@ void outputMenu(){
     cout << "Input one of the following";
     cout << "\n****************************************************************\n";
     cout << " (1) - Exit the program\n";
-    cout << " (2) - Print a list\n";
-    cout << " (3) - Create new student\n";
-    cout << " (4) - Delete a student\n";
-    cout << " (5) - Merge the domestic student list and international student list";
+    cout << " (2) - Search for a student(s)\n";
+    cout << " (3) - Print a list\n";
+    cout << " (4) - Create new student\n";
+    cout << " (5) - Delete a student\n";
+    cout << " (6) - Delete head and tail nodes of domestic and international student list\n";
+    cout << " (7) - Merge the domestic and international student list";
     cout << "\n****************************************************************\n";    
 } 
+
+bool inputIsValid(string input, int numOfInputs){
+    int num = atoi(input.c_str());
+    if(num == NULL || num < 1 || num > numOfInputs){
+        cout<<"Error: \""<<input<<"\" is an invalid input\n\n";
+        return false;
+    }
+    return true;
+}
+
 
 void domFile2DomList(LinkedList<DomesticStudent>& domesticStudentList, int& studentNum){
     string firstName, lastName, province, s_CGPA, s_researchScore, line;
@@ -200,16 +212,8 @@ void countryIsValid(string& country){
     exit(-1);  
 }
 
-bool inputIsValid(string input){
-    int num = atoi(input.c_str());
-    if(num == NULL || num < 1 || num > 5){
-        cout<<"Error: \""<<input<<"\" is an invalid input\n\n";
-        return false;
-    }
-    return true;
-}
 
-void insertDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList,int& studentNum){
+void insertDomesticStudent(LinkedList<DomesticStudent>& linkedList,int& studentNum){
     string firstName, lastName, province, s_CGPA, s_researchScore, line;
     float CGPA;
     int researchScore;
@@ -237,13 +241,47 @@ void insertDomesticStudent(LinkedList<DomesticStudent>& domesticStudentList,int&
 
     //inserting domestic student to domesticStudentList
     DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
-    domesticStudentList.insertNode(domesticStudent);
+    linkedList.insertNode(domesticStudent);
 
     cout<<"\n\nInserted:\n"<<*domesticStudent<<endl;
     studentNum++;
 }
 
-void insertInternationalStudent(LinkedList<InternationalStudent>& internationalStudentList, int& studentNum){
+void insertDomesticStudent(LinkedList<Student>& linkedList,int& studentNum){
+    string firstName, lastName, province, s_CGPA, s_researchScore, line;
+    float CGPA;
+    int researchScore;
+
+    //getting inputs
+    cout<<"First Name: ";
+    cin>>firstName;
+    formatString(firstName);
+
+    cout<<"\nLast Name: ";
+    cin>>lastName;
+    formatString(lastName);
+
+    cout<<"\nProvince: ";
+    cin>>province;
+    provinceIsValid(province);
+
+    cout<<"\nCGPA: ";
+    cin>>s_CGPA;
+    CGPA = atof(s_CGPA.c_str());
+
+    cout<<"\nResearch Score: ";
+    cin>>s_researchScore;
+    researchScore = atoi(s_researchScore.c_str());
+
+    //inserting domestic student to domesticStudentList
+    DomesticStudentPtr domesticStudent = new DomesticStudent(firstName,lastName,CGPA,researchScore,(20200000 + studentNum),province);
+    linkedList.insertNode(domesticStudent);
+
+    cout<<"\n\nInserted:\n"<<*domesticStudent<<endl;
+    studentNum++;
+}
+
+void insertInternationalStudent(LinkedList<InternationalStudent>& linkedList, int& studentNum){
     string firstName, lastName, s_CGPA, s_researchScore, country, s_reading, s_listening, s_speaking, s_writing, line;
     float CGPA;
     int reading, listening, speaking, writing,researchScore;
@@ -289,7 +327,58 @@ void insertInternationalStudent(LinkedList<InternationalStudent>& internationalS
     //inserting international student to internationalStudentList
     Toefl toeflScore(reading,listening,speaking,writing);
     InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
-    internationalStudentList.insertNode(internationalStudent);
+    linkedList.insertNode(internationalStudent);
+
+    studentNum++;
+}
+
+void insertInternationalStudent(LinkedList<Student>& linkedList, int& studentNum){
+    string firstName, lastName, s_CGPA, s_researchScore, country, s_reading, s_listening, s_speaking, s_writing, line;
+    float CGPA;
+    int reading, listening, speaking, writing,researchScore;
+    
+    //getting inputs
+    cout<<"First Name: ";
+    cin>>firstName;
+    formatString(firstName);
+
+    cout<<"\nLast Name: ";
+    cin>>lastName;
+    formatString(lastName);
+
+    cout<<"\nCountry: ";
+    cin>>country;
+    formatString(country);
+    countryIsValid(country);
+
+    cout<<"\nCGPA: ";
+    cin>>CGPA;
+    CGPA = atof(s_CGPA.c_str());
+
+    cout<<"\nResearch Score: ";
+    cin>>researchScore;
+    researchScore = atoi(s_researchScore.c_str());
+
+    cout<<"\nToefl Reading Score: ";
+    cin>>s_reading;
+    reading = atoi(s_reading.c_str());
+
+    cout<<"\nToefl Listening Score: ";
+    cin>>s_listening;
+    listening = atoi(s_listening.c_str());
+
+    cout<<"\nToefl Speaking Score: ";
+    cin>>s_speaking;
+    speaking = atoi(s_speaking.c_str());
+
+    cout<<"\nToefl Writing Score: ";
+    cin>>s_writing;
+    writing = atoi(s_writing.c_str());
+
+    //inserting international student to internationalStudentList
+    Toefl toeflScore(reading,listening,speaking,writing);
+    InternationalStudentPtr internationalStudent = new InternationalStudent(firstName,lastName,CGPA,researchScore,(20200100 + studentNum),country,toeflScore);
+    linkedList.insertNode(internationalStudent);
 
     studentNum++;
 }
@@ -320,7 +409,18 @@ void deleteInternationalStudent(LinkedList<InternationalStudent>& internationalS
     internationalStudentList.deleteNode(firstName,lastName);
 }
 
+void deleteStudent(LinkedList<Student>& studentList){
+    string firstName, lastName;
+    cout<<"First Name: ";
+    cin>>firstName;
+    formatString(firstName);
 
+    cout<<"\nLast Name: ";
+    cin>>lastName;
+    formatString(lastName);
+
+    studentList.deleteNode(firstName,lastName);
+}
 
 
 

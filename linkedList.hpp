@@ -50,7 +50,8 @@ class LinkedList{
         void searchApplicationID(int applicationID);
         void searchCGPA(float CGPA);
         void searchResearchScore(int researchScore);
-        void searchName(std::string firstName, std::string lastName);
+        void searchName(::string firstName, ::string lastName);
+        void searchThreshold(float CGPAThreshold, int researchScoreThreshold);
         
         //delete (deletes head and tail ptrs)
         void delete_head_tail();
@@ -63,7 +64,7 @@ class LinkedList{
 
         //overloaded output operator
         template <class Y>
-        friend std::ostream& operator<<(std::ostream& outs, LinkedList<Y>& linkedList);
+        friend ::ostream& operator<<(::ostream& outs, LinkedList<Y>& linkedList);
 };
 
 
