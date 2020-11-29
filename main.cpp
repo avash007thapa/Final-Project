@@ -327,8 +327,8 @@ int main(){
             case 7 :
                 cout<<"Merge the domestic and international student list"<<endl;
                 cout<<"****************************************************************\n";
-                studentList = mergeList(domesticStudentList,internationalStudentList);
-                studentList.print(); 
+                mergeList(domesticStudentList,internationalStudentList,studentList);
+                //studentList.print(); 
                 merged = true;
                 break;
         }        
