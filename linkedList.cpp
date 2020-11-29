@@ -154,25 +154,26 @@ template <class T>
 void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
     NodePtr prev = nullptr;
 	NodePtr here = head;
-
+    int counter = 0;
 	if(head == nullptr){
 		std::cerr << "Error(deleteNode): List is already empty\n";
         return;
 	}
     while(here != nullptr){
-        if((here->student->FirstName.compare(firstName) == 0) && (here->student->LastName.compare(lastName) == 0)){
-            std::cout<<"DELETED\n"<<here->student<<"\n\n";
+        cout << here->student->firstName << " " << here->student->lastName << endl;
+        cout << ((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)) <<endl;
+        if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
+            counter++;
+            std::cout<<"DELETED\n"<<*(here->student)<<"\n\n";
             if(here == head){
                 prev = head;
                 head = head->link;
-
                 delete prev;
                 prev->link = nullptr;
             }
             else if(here == tail){
                 delete here;
                 here->link = nullptr;
-
                 tail = prev;
                 prev->link = nullptr;
             }
@@ -181,9 +182,13 @@ void LinkedList<T>::deleteNode(std::string firstName, std::string lastName){
                 delete here;
                 here->link = nullptr;
             }
-        }
+        }   
         prev = here;
         here = here->link;
+    }
+    cout<< counter;
+    if(counter == 0){
+        cout << "\nThe student with name " << firstName << " " << lastName << " was not found!\n\n\n"; 
     }
 }
 
@@ -195,7 +200,7 @@ void LinkedList<T>::searchApplicationID(int applicationID){
     bool flag = false;
     while(here != nullptr){
         if(here->student->applicationID == applicationID){
-            std::cout<<here->student<<std::endl;
+            std::cout<<*(here->student)<<std::endl;
             flag = true;
         }
         here = here->link;
@@ -210,7 +215,7 @@ void LinkedList<T>::searchCGPA(float CGPA){
     bool flag = false;
     while(here != nullptr){
         if(here->student->CGPA == CGPA){
-            std::cout<<here->student<<std::endl;
+            std::cout<<*(here->student)<<std::endl;
             flag = true;
         }
         here = here->link;
@@ -225,7 +230,7 @@ void LinkedList<T>::searchResearchScore(int researchScore){
     bool flag = false;
     while(here != nullptr){
         if(here->student->researchScore == researchScore){
-            std::cout<<here->student<<std::endl;
+            std::cout<<*(here->student)<<std::endl;
             flag = true;
         }
         here = here->link;
@@ -240,7 +245,7 @@ void LinkedList<T>::searchName(std::string firstName, std::string lastName){
     bool flag = false;
     while(here != nullptr){
         if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
-            std::cout<<here->student<<std::endl;
+            std::cout<<*(here->student)<<std::endl;
             flag = true;
         }
         here = here->link;
