@@ -6,7 +6,6 @@ using namespace std;
 #include "linkedList.cpp"
 #include "linkedList.hpp"
 
-
 using namespace std;
 
 void outputMenu(){
@@ -19,6 +18,7 @@ void outputMenu(){
   cout << " (3) - Merge the domestic student list and international student list\n";
   cout << "\n****************************************************************\n";    
 } 
+
 
 
 int main(){

@@ -58,7 +58,6 @@ class LinkedList{
         //merge
         friend LinkedList<Student> merge(LinkedList<Student>& domesticList, LinkedList<Student>& internationalList);
 
-        //overload output operators
         template <class Y>
         friend std::ostream& operator<<(std::ostream& outs, LinkedList<Y>& linkedList);
 };
