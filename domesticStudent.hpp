@@ -25,8 +25,7 @@ class DomesticStudent:public Student{
 
 		//compare function
 		friend int compareProvince(DomesticStudent student1, DomesticStudent student2);
-		friend int compareOverall(DomesticStudent student1, DomesticStudent student2);
-
+		
 		//overloaded output operator
 		friend ostream& operator <<(ostream& outs, DomesticStudent& student);
 		

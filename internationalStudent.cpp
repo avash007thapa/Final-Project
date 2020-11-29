@@ -37,26 +37,10 @@ void InternationalStudent::print(){
 
 
 //comparing countries between students
-int compareCountry(InternationalStudent student1, InternationalStudent student2){
+int compareCountry(InternationalStudent& student1, InternationalStudent& student2){
 	return student1.country.compare(student2.country);
 }
-//comparing the overall score between two students
-int compareOverall(InternationalStudent student1, InternationalStudent student2){
-	if(compareResearchScore(student1,student2) == -1){
-		return 1;
-	}
-	else if(compareResearchScore(student1,student2) == 0){
-		if(compareCGPA(student1,student2) == -1){
-			return 1;
-		}
-		else if(compareCGPA(student1,student2) == 0){
-			if(compareCountry(student1,student2) == 1){
-				return 1;
-			}
-		}
-	}
-	return 0;
-}
+
 
 //overloading the output operator for InternationalStdents
 ostream& operator<<(ostream& outs, InternationalStudent& student){

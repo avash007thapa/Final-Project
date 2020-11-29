@@ -4,7 +4,7 @@
 #include <iostream>
 #include "linkedList.hpp"
 
-void outputMenu(bool merged);
+void outputMenu();
 
 void domFile2DomList(LinkedList<DomesticStudent>& domesticStudentList, int& studentNum);
 
