@@ -25,6 +25,7 @@ class DomesticStudent:public Student{
 		friend int compareOverall(Student& student1, Student& student2);
 		
 		friend ostream& operator <<(ostream& outs, DomesticStudent& student);
+		virtual void print();
 };
 typedef DomesticStudent* DomesticStudentPtr;
 

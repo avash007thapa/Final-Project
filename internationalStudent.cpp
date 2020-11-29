@@ -66,6 +66,16 @@ ostream& operator<<(ostream& outs, InternationalStudent& student){
 	return outs;
 }
 
-// void print(){
-// 	cout<<*this;
-// }
+void InternationalStudent::print(){
+	cout<<firstName<<" "<<lastName<<endl;
+	cout<<"Research Score: "<<researchScore<<endl;
+	//ie. if CGPA is 4, print out 4.0
+	if((CGPA - floor(CGPA)) == 0){
+		cout<<"CGPA: "<<CGPA<<".0"<<endl;
+	}
+	else{
+		cout<<"CGPA: "<<CGPA<<endl;
+	}
+	cout<<"Country: "<<country<<endl;
+	cout<<"Application ID: "<<applicationID<<endl;
+}

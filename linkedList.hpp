@@ -12,11 +12,11 @@ class LinkedList{
     private:
         class Node{
             public:
-                T student;
+                T* student;
                 Node* link;
             
                 //constructors
-                Node(T student);
+                Node(T* student);
                 Node();
         };
         typedef Node* NodePtr;
@@ -25,7 +25,7 @@ class LinkedList{
         NodePtr tail;
     public:
         //constructors
-        LinkedList(T student);
+        LinkedList(T* student);
         LinkedList();
 
         //copy constructor
@@ -40,7 +40,7 @@ class LinkedList{
         void deleteLinkedList(NodePtr node);
 
         //insertNode
-        void insertNode(T student);
+        void insertNode(T* student);
 
         //deleteNode
         void deleteNode(string firstName, string lastName);
@@ -53,6 +53,8 @@ class LinkedList{
         
         //delete (deletes head and tail ptrs)
         void delete_head_tail();
+        
+        void print();
 
         friend void mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList, LinkedList<Student>& studentList);
 
