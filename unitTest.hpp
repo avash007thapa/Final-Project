@@ -7,6 +7,6 @@
 #include "internationalStudent.hpp"
 #include "domesticStudent.hpp"
 
-void UnitTest(LinkedList<DomesticStudent>& domesticStudentList, LinkedList<InternationalStudent>& internationalStudent, LinkedList<Student> studentList, int& studentNum);
+void UnitTest(LinkedList<DomesticStudent> domesticStudentList, LinkedList<InternationalStudent> internationalStudent, LinkedList<Student> studentList, int studentNum);
 
 #endif

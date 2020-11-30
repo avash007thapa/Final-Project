@@ -52,6 +52,9 @@ class LinkedList{
         void searchResearchScore(int researchScore);
         void searchName(::string firstName, ::string lastName);
         void searchThreshold(float CGPAThreshold, int researchScoreThreshold);
+
+        //checks if applicaionID is already in the list (and doesn't print anything)
+        bool checkApplicationID(int applicationID);
         
         //delete (deletes head and tail ptrs)
         void delete_head_tail();

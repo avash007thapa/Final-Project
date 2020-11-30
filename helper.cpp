@@ -443,6 +443,10 @@ void mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<Internation
                 InternationalStudentPtr internationalStudent = new InternationalStudent(*(iHere->student));
                 studentList.insertNode(internationalStudent);
             }
+            else{
+                cout<<"----REMOVED----\n";
+                iHere->student->print();
+            }
             iHere = iHere->link;
         }
     }

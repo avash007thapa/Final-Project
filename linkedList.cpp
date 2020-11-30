@@ -33,7 +33,7 @@ LinkedList<T>::LinkedList(T* student){
 		tail->link = nullptr;
 	}
 	catch(bad_alloc){
-		cerr<<"Bad Memory allocation in LinkedList::LinkedList\n";
+		cout<<"Bad Memory allocation in LinkedList::LinkedList\n";
 		exit(1);
 	}
 }
@@ -71,7 +71,7 @@ typename LinkedList<T>::NodePtr LinkedList<T>::deepCopyLinkedList(NodePtr node){
         return newNode;
     }
     catch(bad_alloc){
-        cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
+        cout<<"Error(deepCopyLinkedList): bad_alloc\n";
         exit(1);
     }
 }
@@ -113,6 +113,11 @@ void LinkedList<T>::deleteLinkedList(NodePtr node){
 template <class T>
 void LinkedList<T>::insertNode(T* student){
     try{
+        if(checkApplicationID(student.getApplicationID())){
+            cout<<"Error(insertNode): Cannot insert node with the same applicationID: "<<student.getApplicationID()<<endl;
+            return;
+        }
+
 		NodePtr prev = nullptr;
         NodePtr here = head; 
         NodePtr newNode = new Node(student);
@@ -148,7 +153,7 @@ void LinkedList<T>::insertNode(T* student){
 		} 
     }
     catch(bad_alloc){
-        cerr<<"Error(insertNode): bad_alloc\n";
+        cout<<"Error(insertNode): bad_alloc\n";
         exit(1);
     }
 }
@@ -163,7 +168,7 @@ void LinkedList<T>::deleteNode(string firstName, string lastName){
     
     //if head is nullptr, list is empty
 	if(head == nullptr){
-		cerr << "Error(deleteNode): List is already empty\n";
+		cout << "Error(deleteNode): List is already empty\n";
         return;
 	}
     while(here != nullptr){
@@ -226,9 +231,23 @@ void LinkedList<T>::searchApplicationID(int applicationID){
     }
 }
 
+//print all students with same applicationID
+template <class T>
+bool LinkedList<T>::checkApplicationID(int applicationID){
+    NodePtr here = head;
+    while(here != nullptr){
+        if(here->student->applicationID == applicationID){
+            return true;
+        }
+        here = here->link;
+    }
+    return false;
+}
+
 //print all students with same CGPA
 template <class T>
 void LinkedList<T>::searchCGPA(float CGPA){
+    CGPA = float1f(CGPA);
     NodePtr here = head;
     int counter = 0;
     while(here != nullptr){
@@ -271,6 +290,9 @@ template <class T>
 void LinkedList<T>::searchName(string firstName, string lastName){
     NodePtr here = head;
     int counter = 0;
+    formatString(firstName);
+    formatString(lastName);
+    
     while(here != nullptr){
         if((here->student->firstName.compare(firstName) == 0) && (here->student->lastName.compare(lastName) == 0)){
             cout<<*(here->student)<<endl;
@@ -313,6 +335,17 @@ template <class T>
 void LinkedList<T>::delete_head_tail(){
     NodePtr here = head;
     
+    //if list is empty
+    if(head == nullptr){
+        cout<<"Error(delete_head_tail): List is empty\n";
+        return;
+    }
+    
+    //if theres only one item in the list
+    if(head == tail){
+        
+    }
+
     //delete head
     head = head->link;
     cout<<"----DELETED HEAD----\n";
