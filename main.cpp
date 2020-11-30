@@ -48,7 +48,7 @@ int main(){
         cout<<"\n\n";      
       
         //error checking input
-        while(!inputIsValid(userInput,7)){
+        while(!inputIsValid(userInput,8)){
             
             outputMenu(merged);
 
@@ -95,7 +95,6 @@ int main(){
                 cout<<"| (3) - Search by research score\n";
                 cout<<"| (4) - Search by full name\n";
                 cout<<"| (5) - Search by CGPA and research score threshold\n\n";
-                cout<<"| (6) - Run unit test\n";
                 cout<<"| Enter input: ";
                 cin>>sInput2;
                 cout<<"\n\n";
@@ -331,7 +330,7 @@ int main(){
             case 7 :
                 cout<<"Unit Test"<<endl;
                 cout<<"****************************************************************\n";
-                UnitTest(domesticStudentList, internationalStudentList, studentList, studentNum);
+                UnitTest(studentNum);
                 break;
             case 8 :
                 cout<<"Merge the domestic and international student list"<<endl;

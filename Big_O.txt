@@ -1,0 +1,31 @@
+Insert (insertNode)  :
+
+    checkapplicationID() - N times
+    while loop - N times    
+    
+    N+N = 2N --> Worst time complexity of O(N)
+
+Search  :
+
+    All of the Search functions: CGPA, applicationID, researchScore, name and Threshold have the
+    Worst time complexitO(N)
+
+
+Deletion (deleteNode)  :
+
+    Worst time completion of O(N)
+
+
+
+Merge (mergeList)  :
+
+    while loop - (N)
+        Insert Node -> already in order - (2N)
+
+    +
+
+    while loop - (N)
+        Insert to the previous list - (N)
+
+
+    (2N^2) + (N^2) --> Worst time complexity of O(N^2) 

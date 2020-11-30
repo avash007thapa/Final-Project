@@ -113,8 +113,8 @@ void LinkedList<T>::deleteLinkedList(NodePtr node){
 template <class T>
 void LinkedList<T>::insertNode(T* student){
     try{
-        if(checkApplicationID(student.getApplicationID())){
-            cout<<"Error(insertNode): Cannot insert node with the same applicationID: "<<student.getApplicationID()<<endl;
+        if(checkApplicationID(student->getApplicationID())){
+            cout<<"Error(insertNode): Cannot insert node with the same applicationID: "<<student->getApplicationID()<<endl;
             return;
         }
 
@@ -247,7 +247,7 @@ bool LinkedList<T>::checkApplicationID(int applicationID){
 //print all students with same CGPA
 template <class T>
 void LinkedList<T>::searchCGPA(float CGPA){
-    CGPA = float1f(CGPA);
+    CGPA = round1f(CGPA);
     NodePtr here = head;
     int counter = 0;
     while(here != nullptr){
@@ -341,19 +341,27 @@ void LinkedList<T>::delete_head_tail(){
         return;
     }
     
-    //if theres only one item in the list
     if(head == tail){
-        
+        //delete head
+        head = head->link;
+        cout<<"----DELETED HEAD----\n";
+        here->student->print();
+        cout<<endl<<endl;
+        here->student->deleteThis();
+        delete here;
+        return;
     }
-
-    //delete head
-    head = head->link;
-    cout<<"----DELETED HEAD----\n";
-    here->student->print();
-    cout<<endl<<endl;
-    here->student->deleteThis();
-    delete here;
+    else{
+        //delete head
+        head = head->link;
+        cout<<"----DELETED HEAD----\n";
+        here->student->print();
+        cout<<endl<<endl;
+        here->student->deleteThis();
+        delete here;
+    }
     
+
     //delete tail
     here = head;
     while(here->link != nullptr){
