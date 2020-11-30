@@ -427,24 +427,27 @@ float round1f(float num){
 
 
 //Merge (merges a domestic list and an international list into a student list)
-LinkedList<Student> mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList){
-    LinkedList<Student> returnList;
-    
-    auto dHere = domesticList.head;
-    while(dHere != nullptr){
-        DomesticStudentPtr domesticStudent = new DomesticStudent(*(dHere->student));
-        returnList.insertNode(domesticStudent);
-        dHere = dHere->link;
-    }
-
-    auto iHere = internationalList.head;
-    
-    while(iHere != nullptr){
-        if(iHere->student->getToeflScore().passed()){
-            InternationalStudentPtr internationalStudent = new InternationalStudent(*(iHere->student));
-            returnList.insertNode(iHere->student);
+void mergeList(LinkedList<DomesticStudent>& domesticList, LinkedList<InternationalStudent>& internationalList, LinkedList<Student>& studentList){
+    try{
+        auto dHere = domesticList.head;
+        while(dHere != nullptr){
+            DomesticStudentPtr domesticStudent = new DomesticStudent(*(dHere->student));
+            studentList.insertNode(domesticStudent);
+            dHere = dHere->link;
         }
-        iHere = iHere->link;
+
+        auto iHere = internationalList.head;
+
+        while(iHere != nullptr){
+            if(iHere->student->getToeflScore().passed()){
+                InternationalStudentPtr internationalStudent = new InternationalStudent(*(iHere->student));
+                studentList.insertNode(internationalStudent);
+            }
+            iHere = iHere->link;
+        }
     }
-    return returnList;
+    catch(bad_alloc){
+        cerr<<"Error(deepCopyLinkedList): bad_alloc\n";
+        exit(1);
+    }
 }

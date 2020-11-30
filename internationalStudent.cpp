@@ -34,6 +34,10 @@ void InternationalStudent::print(){
 	cout<<*this;
 }
 
+void InternationalStudent::deleteThis(){
+	delete this;
+}
+
 
 //comparing countries between students
 int compareCountry(InternationalStudent student1, InternationalStudent student2){

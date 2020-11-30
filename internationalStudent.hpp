@@ -27,6 +27,8 @@ class InternationalStudent:public Student{
 		//virtual function
 		virtual void print();
 
+		virtual void deleteThis();
+
 		//compare function
 		friend int compareCountry(InternationalStudent student1, InternationalStudent student2);
 		friend int compareOverall(InternationalStudent student1, InternationalStudent student2);

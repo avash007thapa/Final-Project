@@ -23,6 +23,8 @@ class DomesticStudent:public Student{
 		//virtual function
 		virtual void print();
 
+		virtual void deleteThis();
+
 		//compare function
 		friend int compareProvince(DomesticStudent student1, DomesticStudent student2);
 		friend int compareOverall(DomesticStudent student1, DomesticStudent student2);

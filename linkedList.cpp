@@ -97,7 +97,7 @@ template <class T>
 void LinkedList<T>::deleteLinkedList(NodePtr node){
     if(node != nullptr){
 		deleteLinkedList(node->link);
-        //delete node->student;
+        node->student->deleteThis();
 		delete node;
 		node = nullptr;
 	}
@@ -175,11 +175,13 @@ void LinkedList<T>::deleteNode(string firstName, string lastName){
             if(here == head){
                 prev = head;
                 head = head->link;
+                prev->student->deleteThis();
                 delete prev;
                 here = head;
             }
             //delete at tail
             else if(here == tail){
+                here->student->deleteThis();
                 delete here;
                 here->link = nullptr;
                 tail = prev;
@@ -189,6 +191,7 @@ void LinkedList<T>::deleteNode(string firstName, string lastName){
             //delete in list
             else{
                 prev->link = here->link;
+                here->student->deleteThis();
                 delete here;
                 here = prev;
             }
@@ -312,7 +315,10 @@ void LinkedList<T>::delete_head_tail(){
     
     //delete head
     head = head->link;
-    cout<<"----DELETED HEAD----\n"<<*(here->student)<<endl<<endl;
+    cout<<"----DELETED HEAD----\n";
+    here->student->print();
+    cout<<endl<<endl;
+    here->student->deleteThis();
     delete here;
     
     //delete tail
@@ -320,7 +326,10 @@ void LinkedList<T>::delete_head_tail(){
     while(here->link != nullptr){
         if(here->link->link == nullptr){
             tail = here;
-            cout<<"----DELETED TAIL----\n"<<*(here->link->student)<<endl<<endl;
+            cout<<"----DELETED TAIL----\n";
+            here->link->student->print();
+            cout<<endl<<endl;
+            here->link->student->deleteThis();
             delete here->link;
             tail->link = nullptr;
             break;
