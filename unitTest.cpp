@@ -152,7 +152,7 @@ void UnitTest(LinkedList<DomesticStudent>& domesticStudentList, LinkedList<Inter
     InternationalStudent istu1;
     //dstu1.head = NULL;
     //istu1.head = NULL;
-    studentList = mergeList(domesticStudentList, internationalStudentList); // Regular case
+    mergeList(domesticStudentList, internationalStudentList, studentList); // Regular case
     // Boundary case ?
     //studentList = mergeList(dstu1, istu1);// Error case ? (merging two empty lists)
     studentList.print();
