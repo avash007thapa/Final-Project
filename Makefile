@@ -43,4 +43,4 @@ toefl.o: toefl.cpp
 
 #remove built files
 clean:
-	del main.exe main.o helper.o unitTest.o student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o *~
+	rm -rf main main.o helper.o unitTest.o student.o internationalStudent.o domesticStudent.o toefl.o linkedList.o *~

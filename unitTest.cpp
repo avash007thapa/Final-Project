@@ -141,12 +141,8 @@ void UnitTest(int studentNum){
     cout << "\n*********************************************** Deleting international students by first name, last name basis  ********************************************\n";
     
     Toefl toefl5(20,20,20,20);
-    InternationalStudent intStu5("Tingting","Zhao",(float)3.40,83,20201107,"Korea",toefl5);
-    intStuList1.insertNode(&intStu5);
-
-    Toefl toefl6(20,20,20,20);
-    InternationalStudent intStu6("Tingting","Zhao",(float)3.40,83,20201107,"Korea",toefl6);
-    intStuList1.insertNode(&intStu6);
+    InternationalStudentPtr intStu5 = new InternationalStudent ("Tingting","Zhao",(float)3.40,83,20201107,"Korea",toefl5);
+    intStuList1.insertNode(intStu5);
 
     intStuList1.deleteNode("Setayesh", "Shams");     // Regular case (in list)
     intStuList1.deleteNode("Tingting", "Zhao");      // Boundary case (there are more than 1 students with this name)
@@ -157,13 +153,6 @@ void UnitTest(int studentNum){
     cout << "\n********************************************* Deleting domestic students' linked list head and tail *********************************************\n";
     
     Toefl toefl4(20,20,30,30);
-    studentNum++;
-    DomesticStudentPtr a = new DomesticStudent("first1","last",(float)3.0,100,studentNum,"BC");
-    DomesticStudentPtr b = new DomesticStudent("first2","last",(float)3.0,100,studentNum+1,"BC");
-    DomesticStudentPtr c = new DomesticStudent("first3","last",(float)3.0,100,studentNum+2,"BC");
-    domStuList1.insertNode(a);
-    domStuList1.insertNode(b);
-    domStuList1.insertNode(c);
 
     studentNum++;
     InternationalStudentPtr d = new InternationalStudent ("first1","last",(float)3.0,100,studentNum,"Canada",toefl4);
